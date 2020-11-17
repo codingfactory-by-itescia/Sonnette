@@ -1,0 +1,98 @@
+body {
+    margin:0;   
+    display:flex;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    height: 8.5vh;
+    align-items: center;  
+    border-bottom: 2px solid black;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, .2); 
+}
+.darkMode {
+    background-color: rgb(38, 41, 43);
+    color: white;
+}
+.darkModeBtn {
+    cursor: pointer;
+}
+.formContainer {
+    height: 93vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form {
+    width: 300px;
+    padding: 2%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
+} 
+form input {
+    padding: 1%;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid rgb(209, 44, 58);
+    outline: none;
+    width: 98%;
+}
+.namesContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.namesContainer input{
+    width: 45%;
+}
+form button {
+    background-color: rgb(209, 44, 58);
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 7px 12px;
+    margin: 10px 0;
+    width: 40%;
+    cursor: pointer;
+    font-size: 16px;
+}
+.showPasswordContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 15px;
+    align-items: center;
+}
+.showPasswordContainer .checkbox {
+    width: max-content;
+    margin-right: 10px
+}
+
+
+.login{
+    align-items: center;
+    display: flex;
+    width: 400px;
+    justify-content: space-evenly;
+}
+
+a.btLogin{
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(209, 44, 58);
+    text-decoration: none;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance:button;
+    color:white;
+}

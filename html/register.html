@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/register.css">
+        <title>Cod'Ring - Inscription </title>
+    </head>
+
+    <body>
+
+        <header>
+            
+            <img id="logo" src="" alt="Logo">
+            <a class="darkModeBtn">La nuit please</a>
+            <div class="login">
+                <p> Vous avez déjà un compte? </p>
+                <a class="btLogin" href="../login.html">Se Connecter</a>
+            </div>
+
+        </header>
+
+        <div class="formContainer">
+            <form>
+                <h2>Inscrivez-vous</h2>
+                <div class="namesContainer">
+                    <input type="text" required placeholder="Nom">
+                    <input type="text" required placeholder="Prénom">
+                </div>
+                <input type="email" required placeholder="default@exemple">
+                <input id="password" type="password" required placeholder="Mot de passe">
+                <input id="password2" type="password" required placeholder="Confirmation du mot de passe">
+                <div class="showPasswordContainer">
+                    <input class="checkbox" type="checkbox" onclick="showPasswords()">
+                    <label>Montrer les mots de passe</label>
+                </div>
+                <button>S'inscrire</button>
+            </form>
+        </div>
+
+    </body>
+
+    <script src="../js/register.js"></script>
+    <script src="../js/darkMode.js"></script>
+
+</html>    
