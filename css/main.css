@@ -1,61 +1,136 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
 #divGlobal{
     display: flex;
-    border: solid black 2px;
+    border-bottom: solid black 2px;
     justify-content: space-between;
     text-align: center;
-    border-radius: 5px;
 }
-
-body {
-    background-color: grey;
-}
-
+/*body {
+    background-color: lightgray;
+}*/
 #divComment {
     padding-top: 0.5%;
     flex: 20%;
-    border: solid black 2px;
+    border-right: solid black 2px;
 }
-
 #divLogo {
     flex: 60%;
 }
-
 #divConnexion {
-    padding-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     flex: 20%; 
-    border: solid black 2px; 
+    border-left: solid black 2px;
 }
-
-button {
-    height: 6em;
-    width: 50em;
-    background-color: #00C6B7;
+a:hover{
+    color:rgb(139, 30, 30);
 }
-
-.main {
-    margin-top: 10%;
-    width: 100%;
+#disconnectionBtn {
+    background-color: rgb(209, 44, 58);
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 7px 12px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 14px;
+}
+.main{
+    height: 93vh;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+}
+form {
+    width: 300px;
+    height:40%;
+    padding: 2%;
+    border-radius: 5px;
     flex-direction: column;
-}
-
-#divMessage{
+    align-items: center;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
+} 
+form input {
+    padding: 1%;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid rgb(209, 44, 58);
+    outline: none;
     width: 100%;
-    display: flex;
-    justify-content: center;
 }
-
-#msg {
-    width: 20em;
-}
-
-#button{
-    margin-top: 10%;
-    display: flex;
-    justify-content: center;
-    
+form button {
+    height:90%;
+    margin: 10px 0;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    background-color:rgb(209, 44, 58);
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    border: none;
 }
 button:hover{
+    background-color:rgb(139, 30, 30);
+}
+.darkModeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1%;
+}
+.darkModeContainer p {
+    font-size: 13px;
+    margin: 0;
+    margin-top: 5px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 22px;
+}  
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 70px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50px;
+    transition: .4s;
+}
+input:checked + .slider {
+    background-color: rgb(209, 44, 58);
+} 
+input:checked + .slider:before {
+    transform: translateX(28px);
+}
+.darkMode {
+    background-color: rgb(38, 41, 43);
     color: white;
 }
+.darkModeBtn {
+    cursor: pointer;

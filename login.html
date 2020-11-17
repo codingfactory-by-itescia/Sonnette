@@ -9,21 +9,26 @@
     <body>
         
         <header>
-            <img id="logo" src="" alt="Logo">
-            <a class="darkModeBtn">La nuit please</a>
+            <img id="logo" src="../images/logo_sonnette.png" alt="Logo">
+            <div class="darkModeContainer">
+                <label class="switch">
+                    <input type="checkbox" id="darkModeCheckbox">
+                    <span class="slider"></span>
+                </label>
+                <p>Dark mode</p>
             </div>
         </header>
 
         <div class="formContainer">
             <form>
                 <h2>Connectez-vous</h2>
-                <input type="email" required placeholder="Email">
+                <input type="email" id="email" required placeholder="Email">
                 <input id="password" type="password" required placeholder="Mot de passe">
                 <div class="showPasswordContainer">
                     <input class="checkbox" type="checkbox" id="checkbox" onclick="showPasswords()">
                     <label for="checkbox">Montrer le mot de passe</label>
                 </div>
-                <button>Connexion</button>
+                <button onclick="checkIfUserExist()">Connexion</button>
                 <p>Vous n'avez pas de compte ? <a href="html/register.html">S'inscrire</a></p>
             </form>
         </div>
@@ -32,7 +37,6 @@
     </body>
 
     <script src="js/login.js"></script>
-    <script src="js/register.js"></script>
     <script src="js/darkMode.js"></script>
 
 </html>
