@@ -8,9 +8,7 @@ body {
     justify-content: space-between;
     text-align: center;
 }
-/*body {
-    background-color: lightgray;
-}*/
+
 #divComment {
     padding-top: 0.5%;
     flex: 20%;
@@ -39,6 +37,9 @@ a:hover{
     margin: 10px 0;
     cursor: pointer;
     font-size: 14px;
+}
+#disconnectionBtn:hover{
+    background-color:rgb(139, 30, 30);
 }
 .main{
     height: 93vh;
@@ -75,7 +76,7 @@ form button {
     font-weight: bold;
     border: none;
 }
-button:hover{
+form button:hover{
     background-color:rgb(139, 30, 30);
 }
 .darkModeContainer {
@@ -134,3 +135,4 @@ input:checked + .slider:before {
 }
 .darkModeBtn {
     cursor: pointer;
+}
