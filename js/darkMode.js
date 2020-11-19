@@ -8,24 +8,29 @@ if (localStorage.getItem('darkMode') == null) {
 // Add correct mode at refresh
 if (localStorage.getItem('darkMode') == 'true') {
     darkMode('add')
-    darkModeCheckbox.checked = true
+    if (darkModeCheckbox) {
+        darkModeCheckbox.checked = true
+    }
 } else {
     darkMode('remove')
 }
 
 // Listen if user
-darkModeCheckbox.addEventListener('change', () => {
-    if (localStorage.getItem('darkMode') === 'false') {
-        darkMode('add')
-    } else {
-        darkMode('remove')
+if (darkModeCheckbox) {
+    darkModeCheckbox.addEventListener('change', () => {
+        if (localStorage.getItem('darkMode') === 'false') {
+            darkMode('add')
+        } else {
+            darkMode('remove')
+        }
     }
-})
+)}
 
 function darkMode(toggle) {
     let html = document.querySelector('html')
     let inputs = document.querySelectorAll('input')
     let textArea = document.querySelector('#msgArea')
+    let radioContainer = document.querySelectorAll('.radioContainer')
 
     if (toggle === 'add') {
         html.classList.add('darkMode')
@@ -35,6 +40,7 @@ function darkMode(toggle) {
             input.classList.add('darkMode')
         }
         localStorage.setItem('darkMode', true)
+
     }
     else {
         html.classList.remove('darkMode')

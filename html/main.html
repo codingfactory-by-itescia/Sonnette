@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="../css/main.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../images/logo_sonnette.png">
         <title>Accueil</title>
     </head>
 
@@ -24,13 +25,6 @@
                 </div>
                 <div id="divConnexion">
                     <a id="disconnectionBtn">Déconnexion</a>
-                    <div class="darkModeContainer">
-                        <label class="switch">
-                            <input type="checkbox" id="darkModeCheckbox">
-                            <span class="slider"></span>
-                        </label>
-                        <p>Dark mode</p>
-                    </div>
                 </div>
             </div>
         </header>
@@ -48,32 +42,32 @@
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound1" checked>
                                 <span class="checkmark"></span>
-                                <label for="sound1">Alerte 1</label>
+                                <label for="sound1" onclick="playSound(1)" title="Cliquer pour jouer l'alerte">Alerte 1</label>
                             </div>
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound2">
                                 <span class="checkmark"></span>
-                                <label for="sound2">Alerte 2</label>
+                                <label for="sound2" onclick="playSound(2)" title="Cliquer pour jouer l'alerte">Alerte 2</label>
                             </div>
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound3">
                                 <span class="checkmark"></span>
-                                <label for="sound3">Alerte 3</label>
+                                <label for="sound3" onclick="playSound(3)" title="Cliquer pour jouer l'alerte">Alerte 3</label>
                             </div>
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound4">
                                 <span class="checkmark"></span>
-                                <label for="sound4">Alerte 4</label>
+                                <label for="sound4" onclick="playSound(4)" title="Cliquer pour jouer l'alerte">Alerte 4</label>
                             </div>
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound5">
                                 <span class="checkmark"></span>
-                                <label for="sound5">Alerte 5</label>
+                                <label for="sound5" onclick="playSound(5)" title="Cliquer pour jouer l'alerte">Alerte 5</label>
                             </div>
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound6">
                                 <span class="checkmark"></span>
-                                <label for="sound6">Alerte 6</label>
+                                <label for="sound6" onclick="playSound(6)" title="Cliquer pour jouer l'alerte">Alerte 6</label>
                             </div>
                         </div>
                             <div class="radioContainer">
@@ -89,7 +83,13 @@
         </div>
         <div id="param">
             <div class="flexContent">
-                <p>La personnalisation de votre compte arrive prochainement !</p>
+                <div class="darkModeContainer">
+                    <label class="switch">
+                        <input type="checkbox" id="darkModeCheckbox">
+                        <span class="slider"></span>
+                    </label>
+                    <p>Dark mode</p>
+                </div>
             </div>
         </div>
         <div id="success">
@@ -112,5 +112,5 @@
     <script src="../js/main.js"></script>
     <script src="../js/darkMode.js"></script>
     <script src="../js/KonamiCode.js"></script>
-
+    <script src="../js/buttonAnimation.js"></script>
 </html>

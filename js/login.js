@@ -15,7 +15,7 @@ if (localStorage.getItem('connected') == null) {
 if (localStorage.getItem('connected') == "true") {
     window.location.href = 'html/main.html'
 }
-  
+
 async function checkIfUserExist() {
     let emailInput = document.getElementById('email')
     let passInput = document.getElementById('password')
@@ -27,9 +27,12 @@ async function checkIfUserExist() {
   
         if(emailInput.value == userList[i].email && passInput.value == userList[i].password) {
             counter++
-            localStorage.setItem('connected', true)
-            window.location.href = "html/main.html"
-            break
+            localStorage.setItem('connected', true);
+            sessionStorage.removeItem(sessionStorage.key(1))
+            sessionStorage.setItem(userList[i].prenom, userList[i].nom);
+            window.location.href = "html/main.html";
+            console.log('log');
+            break;
         }
     }
     if (counter == 0) {

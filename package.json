@@ -1,12 +1,11 @@
 {
-  "name": "ringCoding",
+  "name": "ringcoding",
   "version": "1.0.0",
   "description": "ringCoding",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {

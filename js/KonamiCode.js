@@ -40,7 +40,7 @@ let allowedKeys = {
   
   
   function activateCheats() {
-    document.body.style.backgroundImage = "url('../images/agile.jpg')";
+    document.body.style.backgroundImage = "url('../images/agile.png')";
 
     if(localStorage.getItem("darkMode") == 'true'){
       document.body.style.backgroundColor = 'none'
