@@ -1,24 +1,13 @@
 function showPasswords() {
     let password = document.getElementById('password');
-    let password2 = document.getElementById('password2');
     
     if (password.type === "password") {
         password.type = "text";
     } else{
         password.type = "password";
     }
-    
-    if (password2.type === "password") {
-        password2.type = "text";
-    } else{
-        password2.type = "password";
-    }
 }
 
-if (localStorage.getItem('userList') == null) {
-    localStorage.setItem('userList', '[]')
-}
-  
 if (localStorage.getItem('connected') == null) {
     localStorage.setItem('connected', false)
 }
@@ -27,10 +16,11 @@ if (localStorage.getItem('connected') == "true") {
     window.location.href = 'html/main.html'
 }
   
-function checkIfUserExist() {
+async function checkIfUserExist() {
     let emailInput = document.getElementById('email')
     let passInput = document.getElementById('password')
-    let userList = JSON.parse(localStorage.getItem('userList'))
+    let data = await fetch('http://localhost:3000/api/userlist')
+    let userList = await data.json()
     let counter = 0
   
     for (let i = 0; i < userList.length; i++) {
@@ -47,19 +37,3 @@ function checkIfUserExist() {
         return false
     }
 }
-
-function post() {
-    event.preventDefault()
-    let email = document.querySelector('#email').value
-    let password = document.querySelector('#password').value
-  
-    let data = {email, password}
-    let options = {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    }
-    fetch('http://localhost:3000/api/userlist', options)
-  }

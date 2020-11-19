@@ -25,10 +25,11 @@ darkModeCheckbox.addEventListener('change', () => {
 function darkMode(toggle) {
     let html = document.querySelector('html')
     let inputs = document.querySelectorAll('input')
-    let link = document.getElementById('theDropdown');
+    let textArea = document.querySelector('#msgArea')
+
     if (toggle === 'add') {
         html.classList.add('darkMode')
-        link.classList.toggle('darkMode')
+        textArea == null ? '' : textArea.classList.add('darkMode')
         for (let i = 0; i < inputs.length; i++) {
             const input = inputs[i];
             input.classList.add('darkMode')
@@ -37,7 +38,7 @@ function darkMode(toggle) {
     }
     else {
         html.classList.remove('darkMode')
-        link.classList.remove('darkMode')
+        textArea == null ? '' : textArea.classList.remove('darkMode')
         for (let i = 0; i < inputs.length; i++) {
             const input = inputs[i];
             input.classList.remove('darkMode')

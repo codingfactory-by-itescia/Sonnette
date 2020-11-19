@@ -15,20 +15,17 @@ function showPasswords() {
     }
 }
 
-if (localStorage.getItem('userList') == null) {
-    localStorage.setItem('userList', '[]')
-}
-
 let nomInput = document.getElementById('nom')
 let prenomInput = document.getElementById('prenom')
 let emailInput = document.getElementById('email')
 let passwordInput = document.getElementById('password')
 let confirmPasswordInput = document.getElementById('password2')
-let userList = JSON.parse(localStorage.getItem('userList'))
 
-function checkIfUserExist() {
+async function checkIfUserExist() {
+    let data = await fetch('http://localhost:3000/api/userlist')
+    let userList = await data.json()
     let counter = 0
-  
+
     for(let i = 0; i < userList.length; i++) {
         if(emailInput.value == userList[i].email){
             counter++
@@ -41,13 +38,10 @@ function checkIfUserExist() {
     }
 }
 
-const validator = require('validator');
-
-
 function checkForPassword() {
     
     if(passwordInput.value === confirmPasswordInput.value && isPasswordCorrect(passwordInput.value) /*&& validator.isEmail(emailInput.value)==true*/) {
-        createNewProfile()
+        createNewUser()
 
     /*} else if (validator.isEmail(emailInput.value)== false){
         alert("l'email n'est pas valide")
@@ -62,19 +56,25 @@ function checkForPassword() {
     }
 }
 
-function createNewProfile() {
-    let user = {
-        nom: nomInput.value,
+function createNewUser() {
+    event.preventDefault()
+    let data = {
+        nom : nomInput.value,
         prenom: prenomInput.value,
         email: emailInput.value,
         password: passwordInput.value
     }
+    let options = {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }
+    fetch('http://localhost:3000/api/userlist', options)
 
-    let users = JSON.parse(localStorage.getItem('userList'))
-    users.push(user)
-    localStorage.setItem('userList', JSON.stringify(users))
     localStorage.setItem('connected', true)
-    
+    console.log('data saved');
     window.location.href = 'main.html'
 }
 
@@ -117,8 +117,3 @@ function isNumber(letter) {
         return false
     }
 }
-
-    
-
-
-

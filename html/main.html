@@ -37,10 +37,53 @@
 
 
         <div id="main">
-            <div class="flexContent">
+            <div class="formContainer">
                 <form>
-                    <input type="text" id="msg" name="msg" placeholder="Ecrivez votre message à célébrer !">     
-                    <button onclick="sendMessage()">Click Me !</button>
+                    <div class="textAreaContainer">
+                        <textarea id="msgArea" placeholder="Ecrivez votre message à célébrer !"></textarea>
+                        <button class="validMsgBtn" onclick="validTextArea()">Valider mon message</button>
+                    </div>
+                    <div class="soundSelectionContainer">
+                        <div class="radioInputContainer">
+                            <div class="radioContainer">
+                                <input type="radio" name='sound' id="sound1" checked>
+                                <span class="checkmark"></span>
+                                <label for="sound1">Alerte 1</label>
+                            </div>
+                            <div class="radioContainer">
+                                <input type="radio" name='sound' id="sound2">
+                                <span class="checkmark"></span>
+                                <label for="sound2">Alerte 2</label>
+                            </div>
+                            <div class="radioContainer">
+                                <input type="radio" name='sound' id="sound3">
+                                <span class="checkmark"></span>
+                                <label for="sound3">Alerte 3</label>
+                            </div>
+                            <div class="radioContainer">
+                                <input type="radio" name='sound' id="sound4">
+                                <span class="checkmark"></span>
+                                <label for="sound4">Alerte 4</label>
+                            </div>
+                            <div class="radioContainer">
+                                <input type="radio" name='sound' id="sound5">
+                                <span class="checkmark"></span>
+                                <label for="sound5">Alerte 5</label>
+                            </div>
+                            <div class="radioContainer">
+                                <input type="radio" name='sound' id="sound6">
+                                <span class="checkmark"></span>
+                                <label for="sound6">Alerte 6</label>
+                            </div>
+                        </div>
+                            <div class="radioContainer">
+                                <input type="file" name="sound" class="personalSound" accept="audio/*">
+                            </div>
+                        <button class="validSoundBtn" onclick="validSound()">Choisir cette alerte</button>
+                    </div>
+                    <div class="sendMsgContainer">
+                        <button class="sendMsgBtn" onclick="sendMessage()">Click Me !</button>
+                    </div>
                 </form>
             </div>
         </div>

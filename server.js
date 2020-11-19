@@ -16,11 +16,8 @@ app.use((req, res, next) => {
     next();
   });
 
-
 // POST
 app.post('/api/userlist', (req, res) => {
-    console.log('request !');
-    console.log(req.body);
     db.insert(req.body)
 })
 // READ
@@ -34,4 +31,6 @@ app.get('/api/userlist', (req, res) => {
     })
 })
 
-app.listen(3000)
+app.listen(3000, () => {
+    console.log('server started');
+})

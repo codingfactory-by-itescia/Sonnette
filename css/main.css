@@ -2,6 +2,7 @@ body {
     font-family: sans-serif;
     margin: 0;
 }
+
 #divGlobal{
     display: flex;
     border-bottom: solid black 2px;
@@ -70,46 +71,116 @@ a:hover{
 #disconnectionBtn:hover{
     background-color:rgb(139, 30, 30);
 }
-#main {
-    display:none;
-}
-.flexContent{
-    height: 93vh;
-    display: flex;
+#main{
+    height: 91.5vh;
+    display: none;
     align-items: center;
     justify-content: center;
 }
-form {
-    width: 300px;
-    height:40%;
-    padding: 2%;
-    border-radius: 5px;
-    flex-direction: column;
+.formContainer {
+    display: flex;
     align-items: center;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
-} 
-form input {
-    padding: 1%;
-    margin: 10px 0;
-    border: none;
-    border-bottom: 2px solid rgb(209, 44, 58);
-    outline: none;
-    width: 100%;
+    border-radius: 5px;
+}
+form {
+    width: 1500px;
+    height: 80%;
+    display: flex;
+    transition: .3s ease-in-out;
 }
 form button {
-    height:83%;
-    margin: 10px 0;
-    width: 100%;
-    cursor: pointer;
-    font-size: 16px;
-    background-color:rgb(209, 44, 58);
+    background-color: rgb(209, 44, 58);
     border-radius: 8px;
+    border: none;
     color: white;
     font-weight: bold;
-    border: none;
+    padding: 7px 12px;
+    margin: 20px 30px 0 0;
+    cursor: pointer;
+    font-size: 14px;
+    align-self: flex-end;
+    outline: none;
 }
-form button:hover{
-    background-color:rgb(139, 30, 30);
+.textAreaContainer, .soundSelectionContainer, .sendMsgContainer {
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#msgArea {
+    width: 83%;
+    height: 250px;
+    border: 2px solid rgb(209, 44, 58);
+    resize: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 2%;
+    font-family: sans-serif;
+}
+.sendMsgBtn {
+    margin: 0;
+    width: 85%;
+    height: 100%;
+    align-self: center;
+}
+.radioContainer {
+    display: flex;
+    align-items: center;
+    margin: 7px 0;
+}
+.radioContainer label {
+    cursor: pointer;
+}
+.radioContainer input {
+    opacity: 0;
+    margin: 0;
+    margin-right: -12px;
+    cursor: pointer;
+}
+.radioContainer .checkmark {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: rgb(214, 214, 214);
+    cursor: pointer;
+}
+.radioContainer input:checked ~ .checkmark {
+    background-color: rgb(209, 44, 58);
+    box-shadow: 0 0px 8px 0 rgba(209, 44, 58, .2), 0 0px 20px 0 rgba(209, 44, 58, .2)
+}
+.radioContainer input:last-child {
+    opacity: 1;
+}
+.personalSound {
+    visibility: hidden;
+    width: 157px;
+}
+.personalSound:last-child {
+    margin-top: -20px;
+}
+.personalSound::before {
+    visibility: visible;
+    content: '+ Importer une alerte';
+    display: inline-block;
+    background-color: rgb(209, 44, 58);
+    padding: 9px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 700;
+    color: white;
+}
+.radioInputContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 200px;
 }
 #param{
     display: none;
@@ -120,7 +191,13 @@ form button:hover{
 #how{
     display:none;
 }
-.show {display:block !important;}
+.show {
+    display:block !important;
+    width: 100%;
+}
+.showMenu {
+    display:flex !important;
+}
 
 .darkModeContainer {
     display: flex;
@@ -179,4 +256,13 @@ input:checked + .slider:before {
 }
 .darkModeBtn {
     cursor: pointer;
+}
+
+.flexContent {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 600px;
 }

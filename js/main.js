@@ -3,10 +3,34 @@ disconnectionBtn.addEventListener('click', () => {
     localStorage.setItem('connected', false)
     window.location.href = '../index.html'
 })
+
+let form = document.querySelector('form')
+let textArea = document.querySelector('#msgArea')
+
+function validTextArea() {
+    if (textArea.value.length > 0) {
+        event.preventDefault()
+        form.style.transform = "translateX(-500px)"
+    } else {
+        alert('Ton message est vide')
+        return false
+    }
+}
+function validSound() {
+    event.preventDefault()
+    form.style.transform = "translateX(-1000px)"
+}
+function sendMsg() {
+    let msg = textArea.value
+    let sound = 'wip'
+
+    console.log(msg);
+}
+
 const whurl = "https://discord.com/api/webhooks/778269268533444658/DqY1ieHcWbGCG6LEjzoGUDNXSIyffvc21zViIofbm0vson_v2rtuFrjUrTqYt6LNG3H8";
 
 function sendMessage() {
-    let txt = document.getElementById("msg").value;
+    let txt = document.getElementById("msgArea").value;
     let msg = {"content": txt};
     console.log(msg)
     fetch(whurl + "?wait=true",{
@@ -40,24 +64,15 @@ function dropdown() {
 
 let nextMenu = document.getElementById('main');
 
-nextMenu.classList.toggle('show')
+nextMenu.classList.toggle('showMenu')
 
 function changeMenu(menu){
   //Hide the old active menu
   let oldMenu = nextMenu;
-  oldMenu.classList.toggle("show");
+  oldMenu.classList.toggle("showMenu");
 
   //Show the new active menu
   nextMenu = document.getElementById(menu);
-  nextMenu.classList.toggle("show");
+  nextMenu.classList.toggle("showMenu");
+  console.log(oldMenu,nextMenu)
 }
-
-
-
-
-
-
-
-
-
-

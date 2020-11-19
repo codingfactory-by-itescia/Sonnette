@@ -48,6 +48,7 @@ let allowedKeys = {
   
     let audio = new Audio('../audio/audio.mp3.mp3');
     audio.play();
+    audio.volume = 0.1;
   
     alert("Agile no jutsu no André");
   }
