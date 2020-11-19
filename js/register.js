@@ -41,11 +41,19 @@ function checkIfUserExist() {
     }
 }
 
+const validator = require('validator');
+
+
 function checkForPassword() {
     
-    if(passwordInput.value === confirmPasswordInput.value && isPasswordCorrect(passwordInput.value)) {
+    if(passwordInput.value === confirmPasswordInput.value && isPasswordCorrect(passwordInput.value) /*&& validator.isEmail(emailInput.value)==true*/) {
         createNewProfile()
-    } else if (passwordInput.value != confirmPasswordInput.value){
+
+    /*} else if (validator.isEmail(emailInput.value)== false){
+        alert("l'email n'est pas valide")
+        return false*/
+
+    }else if (passwordInput.value != confirmPasswordInput.value){
         alert('Les mots de passe ne sont pas identiques')
         return false
     } else {
@@ -109,3 +117,8 @@ function isNumber(letter) {
         return false
     }
 }
+
+    
+
+
+

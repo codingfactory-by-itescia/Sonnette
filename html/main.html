@@ -11,7 +11,13 @@
         <header>
             <div id="divGlobal">
                 <div id="divComment">
-                    <h3>Comment ça marche</h3>
+                    <h3 onclick="dropdown()" class="dropbtn">Menu</h3>
+                    <div id="theDropdown" class="dropDown">
+                        <p onclick="changeMenu('main')">Page Principale</p>
+                        <p onclick="changeMenu('param')">Réglages</p>
+                        <p onclick="changeMenu('success')">Récompenses</p>
+                        <p onclick="changeMenu('how')">Comment ça marche ?</p>
+                    </div>
                 </div>
                 <div id="divLogo">
                     <h1>Cod' Ring</h1>
@@ -30,13 +36,38 @@
         </header>
 
 
-        <div class="main">
-            <form>
-                <input type="text" id="msg" name="msg" placeholder="Ecrivez votre message à célébrer !">     
-                <button onclick="sendMessage()">Click Me !</button>
-            </form>
+        <div id="main">
+            <div class="flexContent">
+                <form>
+                    <input type="text" id="msg" name="msg" placeholder="Ecrivez votre message à célébrer !">     
+                    <button onclick="sendMessage()">Click Me !</button>
+                </form>
+            </div>
+        </div>
+        <div id="param">
+            <div class="flexContent">
+                <p>La personnalisation de votre compte arrive prochainement !</p>
+            </div>
+        </div>
+        <div id="success">
+            <div class="flexContent">
+                <p>Coming soon !</p>
+            </div>
+        </div>
+        <div id="how">
+            <div class="flexContent">
+                <p>
+                    Envie de montrer au monde entier vos exploits ? <br>
+                    Grace à la cod'Ring vous pourrez le faire savoir ! <br>
+                    <br>
+                    Ecrivez simplement ce que vous avez à dire, puis d'une simple pression <br>
+                    du bouton, l'application enverra votre message à tout les autres utilisateurs !
+                </p>
+            </div>
         </div>
     </body>
     <script src="../js/main.js"></script>
     <script src="../js/darkMode.js"></script>
+    <script src="../js/KonamiCode.js"></script>
+
 </html>

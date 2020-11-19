@@ -13,6 +13,35 @@ body {
     padding-top: 0.5%;
     flex: 20%;
     border-right: solid black 2px;
+    position: relative;
+    display: inline-block;
+}
+.dropbtn {
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.dropbtn:hover {
+    color:rgb(209, 44, 58);
+}
+.dropDown {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 10px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropDown p {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropDown p:hover {
+    color:rgb(209, 44, 58);
+    border:solid;
+    border-color: black;
+    border-width: 1px;
 }
 #divLogo {
     flex: 60%;
@@ -41,7 +70,10 @@ a:hover{
 #disconnectionBtn:hover{
     background-color:rgb(139, 30, 30);
 }
-.main{
+#main {
+    display:none;
+}
+.flexContent{
     height: 93vh;
     display: flex;
     align-items: center;
@@ -65,7 +97,7 @@ form input {
     width: 100%;
 }
 form button {
-    height:90%;
+    height:83%;
     margin: 10px 0;
     width: 100%;
     cursor: pointer;
@@ -79,6 +111,17 @@ form button {
 form button:hover{
     background-color:rgb(139, 30, 30);
 }
+#param{
+    display: none;
+}
+#success {
+    display:none;
+}
+#how{
+    display:none;
+}
+.show {display:block !important;}
+
 .darkModeContainer {
     display: flex;
     flex-direction: column;
@@ -129,7 +172,8 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(28px);
 }
-.darkMode {
+.darkMode, 
+.darkMode a{
     background-color: rgb(38, 41, 43);
     color: white;
 }

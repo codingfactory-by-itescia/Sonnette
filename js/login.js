@@ -47,3 +47,19 @@ function checkIfUserExist() {
         return false
     }
 }
+
+function post() {
+    event.preventDefault()
+    let email = document.querySelector('#email').value
+    let password = document.querySelector('#password').value
+  
+    let data = {email, password}
+    let options = {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }
+    fetch('http://localhost:3000/api/userlist', options)
+  }
