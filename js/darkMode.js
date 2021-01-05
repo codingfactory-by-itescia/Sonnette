@@ -1,12 +1,12 @@
 let darkModeCheckbox = document.querySelector('#darkModeCheckbox')
 
 // If variable 'darkMode' doesn't exist, create it
-if (localStorage.getItem('darkMode') == null) {
+if (localStorage.getItem('darkMode') === null) {
     localStorage.setItem('darkMode', false)
 }
 
 // Add correct mode at refresh
-if (localStorage.getItem('darkMode') == 'true') {
+if (localStorage.getItem('darkMode') === 'true') {
     darkMode('add')
     if (darkModeCheckbox) {
         darkModeCheckbox.checked = true
@@ -15,40 +15,41 @@ if (localStorage.getItem('darkMode') == 'true') {
     darkMode('remove')
 }
 
-// Listen if user
 if (darkModeCheckbox) {
     darkModeCheckbox.addEventListener('change', () => {
         if (localStorage.getItem('darkMode') === 'false') {
             darkMode('add')
+            localStorage.setItem('darkMode', 'true')
         } else {
             darkMode('remove')
+            localStorage.setItem('darkMode', 'false')
         }
     }
 )}
 
-function darkMode(toggle) {
-    let html = document.querySelector('html')
-    let inputs = document.querySelectorAll('input')
-    let textArea = document.querySelector('#msgArea')
-    let radioContainer = document.querySelectorAll('.radioContainer')
+function darkMode(arg) {
+    let head = document.querySelectorAll('head')[0]
 
-    if (toggle === 'add') {
-        html.classList.add('darkMode')
-        textArea == null ? '' : textArea.classList.add('darkMode')
-        for (let i = 0; i < inputs.length; i++) {
-            const input = inputs[i];
-            input.classList.add('darkMode')
-        }
-        localStorage.setItem('darkMode', true)
+    // Add dark mode by adding the darMode.css file to the html page
+    if (arg === 'add') {
+        let cssFile = document.createElement('link')
+        cssFile.rel  = 'stylesheet';
+        cssFile.type = 'text/css';
+        cssFile.href = '../css/darkMode.css'
 
+        head.appendChild(cssFile)
     }
+    // Remove dark mode by deleting the darkMode.css file
     else {
-        html.classList.remove('darkMode')
-        textArea == null ? '' : textArea.classList.remove('darkMode')
-        for (let i = 0; i < inputs.length; i++) {
-            const input = inputs[i];
-            input.classList.remove('darkMode')
+        for (let i = 0; i < document.styleSheets.length; i++) {
+            let cssFile = document.styleSheets[i].href
+            let regExp = new RegExp('\/css\/darkMode\.css$')
+
+            if (regExp.test(cssFile)) {
+                cssFile.disabled = true
+                document.location.reload(true);
+                break
+            }
         }
-        localStorage.setItem('darkMode', false)
     }
 }
