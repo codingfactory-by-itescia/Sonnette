@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* HAMBURGER */
+.hambContainer {
+    margin: 30px 20px;
+    padding: 5px;
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+.hambContainer span {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border-radius: 50px;
+    transition: .5s;
+}
+.hambContainer .topSpan {
+}
+.hambContainer .middleSpan {
+    content: '';
+    top: 6px;
+}
+.hambContainer .bottomSpan {
+    content: '';
+}
+
+
+#divLogo {
+
+}
+#divConnexion {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 20%; 
+}
+#disconnectionBtn {
+    background-color: rgb(209, 44, 58);
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 7px 12px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 14px;
+}

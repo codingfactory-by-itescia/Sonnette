@@ -5,7 +5,6 @@ body {
 
 #divGlobal{
     display: flex;
-    border-bottom: solid black 2px;
     justify-content: space-between;
     text-align: center;
 }
@@ -13,37 +12,8 @@ body {
 #divComment {
     padding-top: 0.5%;
     flex: 20%;
-    border-right: solid black 2px;
     position: relative;
     display: inline-block;
-}
-.dropbtn {
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-.dropbtn:hover {
-    color:rgb(209, 44, 58);
-}
-.dropDown {
-    display: none;
-    position: absolute;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 10px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-.dropDown p {
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    cursor: pointer;
-}
-.dropDown p:hover {
-    color:rgb(209, 44, 58);
-    border:solid;
-    border-color: black;
-    border-width: 1px;
 }
 #divLogo {
     flex: 60%;
@@ -53,10 +23,6 @@ body {
     justify-content: space-around;
     align-items: center;
     flex: 20%; 
-    border-left: solid black 2px;
-}
-a:hover{
-    color:rgb(139, 30, 30);
 }
 #disconnectionBtn {
     background-color: rgb(209, 44, 58);
@@ -68,9 +34,6 @@ a:hover{
     margin: 10px 0;
     cursor: pointer;
     font-size: 14px;
-}
-#disconnectionBtn:hover{
-    background-color:rgb(139, 30, 30);
 }
 #main{
     height: 91.5vh;
@@ -197,70 +160,6 @@ form button {
 }
 .showMenu {
     display:flex !important;
-}
-
-.darkModeContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 1%;
-    width: max-content;
-}
-.darkModeContainer p {
-    font-size: 13px;
-    margin: 0;
-    margin-top: 5px;
-}
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 22px;
-}  
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}  
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 70px;
-}
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    border-radius: 50px;
-    transition: .4s;
-}
-input:checked + .slider {
-    background-color: rgb(209, 44, 58);
-} 
-input:checked + .slider:before {
-    transform: translateX(28px);
-}
-.radioContainer img {
-    width: 20px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-.darkMode, .darkMode a {
-    background-color: rgb(38, 41, 43);
-    color: white;
-}
-.darkModeBtn {
-    cursor: pointer;
 }
 
 .flexContent {
