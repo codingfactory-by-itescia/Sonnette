@@ -6,6 +6,10 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+a {
+    text-decoration: none;
+    color:  rgb(102, 0, 204);
+  }
 #divConnexion {
     margin-right: 15px;
 }

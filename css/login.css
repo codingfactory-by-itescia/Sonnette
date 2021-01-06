@@ -56,7 +56,7 @@ header{
     transition: .4s;
 }
 input:checked + .slider {
-    background-color: rgb(209, 44, 58);
+    background-color: rgb(102, 0, 204);
 } 
 input:checked + .slider:before {
     transform: translateX(28px);
@@ -87,12 +87,12 @@ form input {
     padding: 1%;
     margin: 10px 0;
     border: none;
-    border-bottom: 2px solid rgb(209, 44, 58);
+    border-bottom: 2px solid rgb(102, 0, 204);
     outline: none;
     width: 98%;
 }
 form button {
-    background-color: rgb(209, 44, 58);
+    background-color: rgb(102, 0, 204);
     border-radius: 8px;
     border: none;
     color: white;
@@ -118,7 +118,7 @@ form p {
     font-size: 12px;
 }
 form p a {
-    color: rgb(209, 44, 58);
+    color: rgb(102, 0, 204);
     font-size: 13px;
     cursor: pointer;
     text-decoration: none;
