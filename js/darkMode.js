@@ -2,7 +2,7 @@ let darkModeCheckbox = document.querySelector('#darkModeCheckbox')
 
 // If variable 'darkMode' doesn't exist, create it
 if (localStorage.getItem('darkMode') === null) {
-    localStorage.setItem('darkMode', false)
+    localStorage.setItem('darkMode', 'true')
 }
 
 // Add correct mode at refresh
