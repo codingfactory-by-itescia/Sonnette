@@ -74,7 +74,7 @@ function createNewUser() {
     fetch('http://localhost:3000/api/userlist', options)
 
     localStorage.setItem('connected', true)
-    sessionStorage.setItem(prenomInput.value, nomInput.value);
+    localStorage.setItem('username', prenomInput.value + ' ' + nomInput.value);
 
     console.log('data saved');
     window.location.href = 'main.html'

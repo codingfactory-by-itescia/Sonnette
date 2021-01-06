@@ -37,7 +37,7 @@ function sendMessage() {
     let msg = {"content": txt};
     /*console.log(sessionStorage.getItem(sessionStorage.key(0)))
     console.log(sessionStorage)*/
-    msg.username = sessionStorage.key(1) + ' ' + sessionStorage.getItem(sessionStorage.key(1))
+    msg.username = localStorage.getItem('username')
     console.log(msg)
     fetch(urlDis + "?wait=true",{
         method:"POST",
