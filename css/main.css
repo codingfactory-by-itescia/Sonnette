@@ -143,7 +143,6 @@ form button {
   margin-top: 30px;
 }
 
-<<<<<<< HEAD
 .validMsgBtn , .fontStyle , .sendMsgBtn{
   font-family: 'Comfortaa', cursive;
 }
@@ -151,7 +150,6 @@ form button {
 
 /* #param{
     display: none;
-=======
 /* MSG HISTORY */
 .msgHistoryPanel {
   width: 400px;
@@ -169,7 +167,6 @@ form button {
 }
 .msgHistoryPanel header h2 {
   font-size: 20px;
->>>>>>> backend
 }
 .msgHistoryPanel header .rightArrowContainer {
   position: absolute;
