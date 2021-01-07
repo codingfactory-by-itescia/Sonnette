@@ -6,10 +6,20 @@ body {
 }
 header{
     display: flex;
-    justify-content: space-between;
-    height: 8.5vh;
+    justify-content: center;
     align-items: center;  
-    box-shadow: 0 0 3px 3px rgba(0, 0, 0, .4); 
+    height: 8.5vh;
+    position: relative; 
+}
+#logo{
+    position: absolute;
+    left: 30px;
+}
+#divLogo h1 {
+    transition: .3s;
+}
+#divLogo h1:hover {
+    font-size: 35px;
 }
 .fontStyle{
     font-family: 'Comfortaa', cursive;

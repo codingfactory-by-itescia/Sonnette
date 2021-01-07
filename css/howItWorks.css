@@ -8,6 +8,10 @@ a {
     text-decoration: none;
     color:  rgb(102, 0, 204);
   }
+
+.fontStyle{
+    font-family: 'Comfortaa', cursive;
+}
   
 .howItWorksContainer {
     width: 100%;

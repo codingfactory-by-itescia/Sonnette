@@ -98,10 +98,10 @@ function addMsgToHistory(msg) {
     msgHistoryContainer.insertAdjacentHTML('afterbegin', `
         <div class="msgCard">
             <div class="userInfos">
-                <p class="userName">${msg.username}</p>
-                <p class="msgTime">${getTime()}</p>
+                <p class="userName fontStyle">${msg.username}</p>
+                <p class="msgTime fontStyle">${getTime()}</p>
             </div>
-            <p class="msgContent">${msg.content}</p>
+            <p class="msgContent fontStyle">${msg.content}</p>
         </div>
     `)
 }
