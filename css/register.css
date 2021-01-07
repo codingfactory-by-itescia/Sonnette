@@ -11,6 +11,9 @@ header{
     height: 8.5vh;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2); 
 }
+.fontStyle{
+    font-family: 'Comfortaa', cursive;
+}
 .darkModeContainer {
     display: flex;
     flex-direction: column;
