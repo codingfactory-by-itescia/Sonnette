@@ -40,10 +40,11 @@ function sendMessage() {
     event.preventDefault()
     let txt = document.getElementById("msgArea").value;
     let msg = {"content": txt};
-    /*console.log(sessionStorage.getItem(sessionStorage.key(0)))
-    console.log(sessionStorage)*/
     msg.username = localStorage.getItem('username')
-    console.log(msg)
+
+    // Display the message in the history section
+    addMsgToHistory(msg)
+    
     fetch(urlDis + "?wait=true",{
         method:"POST",
         headers: {"content-type":"application/json"
@@ -64,7 +65,6 @@ function sendMessage() {
         console.log(durationMsg)
         window.location.reload()
     }
-    
 }
 
 let voiceList = document.querySelector('#voiceList');
@@ -89,4 +89,30 @@ function PopulateVoices(){
     });
 
     voiceList.selectedIndex = selectedIndex;
+}
+
+function addMsgToHistory(msg) {
+    let msgHistoryContainer = document.querySelector('.msgHistoryContainer')
+
+    msgHistoryContainer.insertAdjacentHTML('afterbegin', `
+        <div class="msgCard">
+            <div class="userInfos">
+                <p class="userName">${msg.username}</p>
+                <p class="msgTime">${getTime()}</p>
+            </div>
+            <p class="msgContent">${msg.content}</p>
+        </div>
+    `)
+}
+
+function getTime() {
+    let date = new Date()
+    let min = date.getMinutes()
+
+    if (min < 10) {
+        min = '0' + min
+    }
+
+    let time = date.getHours() + ':' + min
+    return time
 }
