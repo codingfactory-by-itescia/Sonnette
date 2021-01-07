@@ -42,6 +42,8 @@
                         <button class="validMsgBtn" onclick="validTextArea()">Valider mon message</button>
                     </div>
                     <div class="soundSelectionContainer">
+                        <div class="leftArrowContainer" onclick="goBack('0')"></div>
+
                         <div class="radioInputContainer">
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound1" checked>
@@ -80,7 +82,9 @@
                         <button class="validSoundBtn" onclick="validSound()">Choisir cette alerte</button>
                     </div>
                     <div class="sendMsgContainer">
-                        Select Voice : <select name="" id="voiceList"></select>
+                        <div class="leftArrowContainer" onclick="goBack('-500')"></div>
+                        <p>Sélection de la voix :</p>
+                        <select id="voiceList"></select>
                         <button class="sendMsgBtn" onclick="sendMessage()">Click Me !</button>
                     </div>
                 </form>

@@ -8,6 +8,17 @@ body {
     align-items: center;
     justify-content: center;
 }
+.leftArrowContainer {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 25px;
+  height: 25px;
+  background-image: url('../images/whiteLeftArrow.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
 .formContainer {
     display: flex;
     align-items: center;
@@ -43,6 +54,7 @@ form button {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 #msgArea {
     width: 83%;
@@ -112,7 +124,23 @@ form button {
     justify-content: space-between;
     width: 200px;
 }
-#param{
+.sendMsgContainer #voiceList {
+    border-radius: 4px;
+    padding: 4px;
+    border: 1px solid rgb(102, 0, 204);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url('../images/blackDownArrow.png');
+    background-position: right 5px top 50%;
+    background-size: 9px;
+    background-repeat: no-repeat;
+    padding-right: 17px;
+}
+.sendMsgContainer p {
+  margin-top: 30px;
+}
+/* #param{
     display: none;
 }
 #success {
@@ -137,14 +165,13 @@ form button {
     flex-direction: column;
     height: 857.344px;
 }
-
+*/
   /*animation*/
   .sendMsgBtn {
     display: inline-block;
     font-size: 1em;
+    margin: 30px 0; 
     padding: 1em 2em;
-    margin-top: 100px;
-    margin-bottom: 60px;
     -webkit-appearance: none;
     appearance: none;
     background-color: rgb(102, 0, 204);

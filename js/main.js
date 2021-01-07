@@ -7,6 +7,11 @@ disconnectionBtn.addEventListener('click', () => {
 let form = document.querySelector('form')
 let textArea = document.querySelector('#msgArea')
 
+function goBack(distance) {
+    form.style.transform = `translateX(${distance}px)`
+}
+
+
 function validTextArea() {
     if (textArea.value.length > 0) {
         event.preventDefault()

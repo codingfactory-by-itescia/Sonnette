@@ -2,11 +2,19 @@
     background-color: rgb(38, 41, 43);
     color: white !important;
 }
+
+/* MAIN */
 .hambContainer span {
     background-color: white;
 }
 .formContainer{
     background-color: none !important;
-    
 }
+.sendMsgContainer #voiceList {
+    background-image: url('../images/whiteDownArrow.png');
+}
+.leftArrowContainer {
+    background-image: url('../images/whiteLeftArrow.png');
+}
+
 
