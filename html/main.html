@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" href="../css/header.css">
         <link rel="icon" href="../images/logo_sonnette.png">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
         <title>Accueil</title>
     </head>
 
@@ -49,42 +51,42 @@
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound1" checked>
                                 <span class="checkmark"></span>
-                                <label for="sound1" onclick="playSound(1)" title="Cliquer pour jouer l'alerte">Alerte 1</label>
+                                <label class="fontStyle" for="sound1" onclick="playSound(1)" title="Cliquer pour jouer l'alerte">Alerte 1</label>
                             </div>
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound2">
                                 <span class="checkmark"></span>
-                                <label for="sound2" onclick="playSound(2)" title="Cliquer pour jouer l'alerte">Alerte 2</label>
+                                <label class="fontStyle" for="sound2" onclick="playSound(2)" title="Cliquer pour jouer l'alerte">Alerte 2</label>
                             </div>
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound3">
                                 <span class="checkmark"></span>
-                                <label for="sound3" onclick="playSound(3)" title="Cliquer pour jouer l'alerte">Alerte 3</label>
+                                <label class="fontStyle" for="sound3" onclick="playSound(3)" title="Cliquer pour jouer l'alerte">Alerte 3</label>
                             </div>
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound4">
                                 <span class="checkmark"></span>
-                                <label for="sound4" onclick="playSound(4)" title="Cliquer pour jouer l'alerte">Alerte 4</label>
+                                <label class="fontStyle" for="sound4" onclick="playSound(4)" title="Cliquer pour jouer l'alerte">Alerte 4</label>
                             </div>
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound5">
                                 <span class="checkmark"></span>
-                                <label for="sound5" onclick="playSound(5)" title="Cliquer pour jouer l'alerte">Alerte 5</label>
+                                <label class="fontStyle" for="sound5" onclick="playSound(5)" title="Cliquer pour jouer l'alerte">Alerte 5</label>
                             </div>
                             <div class="radioContainer">
                                 <input type="radio" name='sound' id="sound6">
                                 <span class="checkmark"></span>
-                                <label for="sound6" onclick="playSound(6)" title="Cliquer pour jouer l'alerte">Alerte 6</label>
+                                <label class="fontStyle" for="sound6" onclick="playSound(6)" title="Cliquer pour jouer l'alerte">Alerte 6</label>
                             </div>
                         </div>
                             <div class="radioContainer">
                                 <input type="file" name="sound" class="personalSound" accept="audio/*">
                             </div>
-                        <button class="validSoundBtn" onclick="validSound()">Choisir cette alerte</button>
+                        <button class="fontStyle" class="validSoundBtn" onclick="validSound()">Choisir cette alerte</button>
                     </div>
                     <div class="sendMsgContainer">
                         <div class="leftArrowContainer" onclick="goBack('-500')"></div>
-                        <p>Sélection de la voix :</p>
+                        <p class="fontStyle" >Sélection de la voix :</p>
                         <select id="voiceList"></select>
                         <button class="sendMsgBtn" onclick="sendMessage()">Click Me !</button>
                     </div>

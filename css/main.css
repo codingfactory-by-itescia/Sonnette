@@ -102,7 +102,7 @@ form button {
 }
 .personalSound {
     visibility: hidden;
-    width: 157px;
+    width: 200px;
 }
 .personalSound:last-child {
     margin-top: -20px;
@@ -110,9 +110,10 @@ form button {
 .personalSound::before {
     visibility: visible;
     content: '+ Importer une alerte';
+    font-family: 'Comfortaa', cursive;
     display: inline-block;
     background-color: rgb(102, 0, 204);
-    padding: 9px 12px;
+    padding: 9px 21px;
     cursor: pointer;
     border-radius: 8px;
     font-weight: 700;
@@ -140,6 +141,12 @@ form button {
 .sendMsgContainer p {
   margin-top: 30px;
 }
+
+.validMsgBtn , .fontStyle , .sendMsgBtn{
+  font-family: 'Comfortaa', cursive;
+}
+
+
 /* #param{
     display: none;
 }
