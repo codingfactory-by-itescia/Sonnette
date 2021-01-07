@@ -63,7 +63,8 @@ function sendMessage() {
     toSpeak.onend = function(event){
         durationMsg = event.elapsedTime
         console.log(durationMsg)
-        window.location.reload()
+        textArea.value = ''
+        form.style.transform = 'translate(0)'
     }
 }
 
