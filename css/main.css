@@ -5,8 +5,9 @@ body {
 #main{
   height: 93vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    position: relative;
 }
 .leftArrowContainer {
   position: absolute;
@@ -142,6 +143,7 @@ form button {
   margin-top: 30px;
 }
 
+<<<<<<< HEAD
 .validMsgBtn , .fontStyle , .sendMsgBtn{
   font-family: 'Comfortaa', cursive;
 }
@@ -149,30 +151,63 @@ form button {
 
 /* #param{
     display: none;
+=======
+/* MSG HISTORY */
+.msgHistoryPanel {
+  width: 400px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 20px 13px 0px rgba(0, 0, 0, 0.2);
 }
-#success {
-    display:none;
+.msgHistoryPanel header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
-#how{
-    display:none;
+.msgHistoryPanel header h2 {
+  font-size: 20px;
+>>>>>>> backend
 }
-.show {
-    display:block !important;
-    width: 100%;
+.msgHistoryPanel header .rightArrowContainer {
+  position: absolute;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
-.showMenu {
-    display:flex !important;
+.msgHistoryContainer .msgCard {
+  width: 90%;
+  padding: 10px 5%;
+  font-size: 14px;
+  background-color: rgba(128, 128, 128, 0.1) !important;
+}
+.msgCard .userInfos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  background-color: transparent !important;
+}
+.msgCard .userName {
+  font-weight: bold;
+  color: rgb(102, 0, 204);
+  margin-bottom: 5px;
+  margin: 0;
+  background-color: transparent !important;
+}
+.msgCard .msgTime {
+  opacity: .6;
+  font-size: 10px;
+  background-color: transparent !important;
+}
+.msgCard .msgContent{
+  text-align: justify;
+  background-color: transparent !important;
 }
 
-.flexContent {
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 857.344px;
-}
-*/
   /*animation*/
   .sendMsgBtn {
     display: inline-block;

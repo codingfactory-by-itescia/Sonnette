@@ -18,7 +18,7 @@ a {
     transition: .3s;
 }
 #divLogo h1:hover {
-    font-size: 40px;
+    font-size: 35px;
 }
 #disconnectionBtn {
     background-color: rgb(102, 0, 204);
