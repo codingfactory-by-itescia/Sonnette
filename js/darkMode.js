@@ -19,11 +19,11 @@ if (localStorage.getItem('darkMode') === 'true') {
 if (darkModeCheckbox) {
     darkModeCheckbox.addEventListener('change', () => {
         if (localStorage.getItem('darkMode') === 'false') {
-            darkMode('add')
             localStorage.setItem('darkMode', 'true')
+            darkMode('add')
         } else {
-            darkMode('remove')
             localStorage.setItem('darkMode', 'false')
+            darkMode('remove')
         }
     }
 )}
