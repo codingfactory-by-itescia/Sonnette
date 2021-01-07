@@ -5,9 +5,8 @@ body {
 #main{
   height: 93vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: relative;
+    justify-content: center;
 }
 .leftArrowContainer {
   position: absolute;
@@ -142,6 +141,7 @@ form button {
   margin-top: 30px;
 }
 
+<<<<<<< HEAD
 /* MSG HISTORY */
 .msgHistoryPanel {
   width: 400px;
@@ -166,37 +166,39 @@ form button {
   width: 20px;
   height: 20px;
   cursor: pointer;
-}
-.msgHistoryContainer .msgCard {
-  width: 90%;
-  padding: 10px 5%;
-  font-size: 14px;
-  background-color: rgba(128, 128, 128, 0.1) !important;
-}
-.msgCard .userInfos {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 5px;
-  background-color: transparent !important;
-}
-.msgCard .userName {
-  font-weight: bold;
-  color: rgb(102, 0, 204);
-  margin-bottom: 5px;
-  margin: 0;
-  background-color: transparent !important;
-}
-.msgCard .msgTime {
-  opacity: .6;
-  font-size: 10px;
-  background-color: transparent !important;
-}
-.msgCard .msgContent{
-  text-align: justify;
-  background-color: transparent !important;
+=======
+.validMsgBtn , .fontStyle , .sendMsgBtn{
+  font-family: 'Comfortaa', cursive;
 }
 
+
+/* #param{
+    display: none;
+>>>>>>> parent of 19838f1... Merge remote-tracking branch 'origin/backend' into backend
+}
+#success {
+    display:none;
+}
+#how{
+    display:none;
+}
+.show {
+    display:block !important;
+    width: 100%;
+}
+.showMenu {
+    display:flex !important;
+}
+
+.flexContent {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 857.344px;
+}
+*/
   /*animation*/
   .sendMsgBtn {
     display: inline-block;
