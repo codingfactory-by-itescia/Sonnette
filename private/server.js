@@ -1,13 +1,24 @@
 const express = require('express')
-const dataStore = require('nedb')
+const dotenv = require('dotenv').config()
+const {MongoClient} = require('mongodb');
+const mongoose = require('mongoose')
 
-// DB init
-const db =  new dataStore({ filename: 'userList'})
-db.loadDatabase()
-
-// Init server
+// Server initiation
 const app = express()
+app.listen(3001, () => {
+    console.log('server started');
+})
 app.use(express.json())
+app.use(express.text())
+
+// Database initiation
+const DB_URI = "mongodb+srv://Ugo_P:WaDUFQj9vMjxEE7O@codringcluster.zarcm.mongodb.net/test?retryWrites=true&w=majority"
+mongoose.connect(DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => { console.log('Connected to db') })
+.catch((error) => { console.log(error) })
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -31,6 +42,3 @@ app.get('/api/userlist', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('server started');
-})

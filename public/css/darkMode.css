@@ -11,10 +11,10 @@
     background-color: none !important;
 }
 .sendMsgContainer #voiceList {
-    background-image: url('../images/whiteDownArrow.png');
+    background-image: url('../img/whiteDownArrow.png');
 }
 .leftArrowContainer {
-    background-image: url('../images/whiteLeftArrow.png');
+    background-image: url('../img/whiteLeftArrow.png');
 }
 .msgHistoryPanel {
     background-color :rgb(38, 41, 43);

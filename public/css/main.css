@@ -15,7 +15,7 @@ body {
   left: 20px;
   width: 25px;
   height: 25px;
-  background-image: url('../images/blackLeftArrow.png');
+  background-image: url('../img/blackLeftArrow.png');
   background-size: 100%;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -133,7 +133,7 @@ form button {
     outline: none;
     cursor: pointer;
     appearance: none;
-    background-image: url('../images/blackDownArrow.png');
+    background-image: url('../img/blackDownArrow.png');
     background-position: right 5px top 50%;
     background-size: 9px;
     background-repeat: no-repeat;
