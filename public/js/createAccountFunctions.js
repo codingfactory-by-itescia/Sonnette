@@ -6,10 +6,9 @@ createAccountBtn.addEventListener('click', async (event) => {
     // Don't reset the form
     event.preventDefault()
 
-    // Wait for the execution of the function
-    let isInputsCorrect = await checkInputs(createAccountInputs)
-    
     // check if all inputs are filled and if the values aren't already taken
+    let isInputsCorrect = await checkInputs(createAccountInputs, 'createAccountForm')
+    
     if (isInputsCorrect) {
         // Get user data with values of inputs
         let userData = {
@@ -37,7 +36,8 @@ createAccountBtn.addEventListener('click', async (event) => {
         createAccountForm.reset()
     }
 })
-async function checkInputs(inputs) {
+
+async function checkInputs(inputs, form) {
     let emailRegexp = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
 
     for (let i = 0; i < inputs.length; i++) {
@@ -52,65 +52,25 @@ async function checkInputs(inputs) {
         
         // Check the username
         if (attribute == 'Nom d\'utilisateur' && !isUsernameCorrect) {
-            errorMsg('Ce nom d\'utilisateur éxiste déjà', 'createAccountForm')
+            errorMsg('Ce nom d\'utilisateur éxiste déjà', form)
             return false
         } else if (attribute == 'Nom d\'utilisateur' && input.value.length < 3) {
-            errorMsg('Nom d\'utilisateur trop court', 'createAccountForm')
+            errorMsg('Nom d\'utilisateur trop court', form)
             return false
         }
         // Check the email
-        else if (attribute == 'email' && !emailRegexp.test(input.value)) {
-            errorMsg('Email invalide', 'createAccountForm')
+        else if (attribute == 'Email' && !emailRegexp.test(input.value)) {
+            errorMsg('Email invalide', form)
             return false
-        } else if (attribute == 'email' && !isEmailCorrect) {
-            errorMsg('Cet email existe déjà', 'createAccountForm')
+        } else if (attribute == 'Email' && !isEmailCorrect) {
+            errorMsg('Cet email existe déjà', form)
             return false
         }
         // Check the password
         else if (attribute == 'Mot de passe' && !isPasswordCorrect) {
-            errorMsg('Mot de passe incorrect', 'createAccountForm')
+            errorMsg('Mot de passe trop court', form)
             return false
         }
     }
     return true
-}
-async function checkUsername (username) {
-    // Check if the username already exists
-    let accounts = await getAllAccounts()
-    for (let i = 0; i < accounts.length; i++) {
-        if (accounts[i].username == username) {
-            return false
-        }
-    }
-    return true
-}
-async function checkEmail (email) {
-    // Check if the email already exists
-    let accounts = await getAllAccounts()
-    
-    for (let i = 0; i < accounts.length; i++) {
-        if (accounts[i].email == email) {
-            return false
-        }
-    }
-    return true
-    
-}
-async function checkPassword (password) {
-    if (password.length < 3) {
-        return false
-    }
-    return true
-}
-function errorMsg(msg, form) {
-    const msgContainer = document.querySelector(`#${form} #confirmCreateAccount`)
-    msgContainer.innerHTML = msg
-    msgContainer.classList.remove('successMsg')
-    msgContainer.classList.add('errorMsg')
-}
-function successMsg(msg, form) {
-    const msgContainer = document.querySelector(`#${form} #confirmCreateAccount`)
-    msgContainer.innerHTML = msg
-    msgContainer.classList.add('successMsg')
-    msgContainer.classList.remove('errorMsg')
 }

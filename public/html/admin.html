@@ -44,20 +44,20 @@
 
             <div class="websiteDataContainer">
                 <div class="totalAccountsContainer">
-                    <p id="totalAccountsNumber" class="dataNumber">58</p>
-                    <p id="totalAccountsTitle" class="dataTitle">compte</p>
+                    <p id="totalAccountsNumber" class="dataNumber"></p>
+                    <p id="totalAccountsTitle" class="dataTitle"></p>
                 </div>
                 <div class="totalMessagesContainer">
-                    <p id="totalMessagesNumber" class="dataNumber">109</p>
-                    <p id="totalMessagesTitle" class="dataTitle">méssage</p>
+                    <p id="totalMessagesNumber" class="dataNumber"></p>
+                    <p id="totalMessagesTitle" class="dataTitle"></p>
                 </div>
             </div>
 
             <div class="formsContainer">
-                <form id="createAccountForm">
+                <form class="createAccountForm">
                     <h2>Créer un compte</h2>
                     <input type="text" placeholder="Nom d'utilisateur">
-                    <input type="email" placeholder="email">
+                    <input type="email" placeholder="Email">
                     <input type="password" placeholder="Mot de passe">
                     <label>Rôle de l'utilisateur</label>
                     <div class="isAdminContainer">
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <button id="createAccountBtn">Créer le compte</button>
-                    <p id="confirmCreateAccount"></p>
+                    <p id="msgContainer"></p>
                 </form>
 
             </div>
@@ -87,8 +87,6 @@
                 <div class="accountsList">
                     <p class="accountErrorMsg hidden">Aucun compte ne correspond à votre recherche</p>
                 </div>
-                
-                
             </div>
         </div>
 
@@ -107,8 +105,7 @@
     <script src="../js/admin/admin.js"></script>
     <script src="../js/admin/accountsList.js"></script>
     <script src="../js/admin/messages.js"></script>
-    <script src="../js/admin/createAccount.js"></script>
-    <script src="../js/darkMode.js"></script>
+    <script src="../js/darkmode/darkMode.js"></script>
     <script src="../js/KonamiCode.js"></script>
     <script src="../js/menu.js"></script>
 </body>
