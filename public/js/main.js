@@ -113,8 +113,8 @@ function addMsgToHistory(msg) {
     
 }
 
-function printHistoryMsg(){
-    msgData = getAllMessages()
+ async function printHistoryMsg(){
+    msgData = await getAllMessages()
 
     let msgHistoryContainer = document.querySelector('.msgHistoryContainer')
     for (let i = 0; i < msgData.length; i++) {
@@ -122,8 +122,8 @@ function printHistoryMsg(){
         msgHistoryContainer.insertAdjacentHTML('afterbegin', `
         <div class="msgCard">
             <div class="userInfos">
-                <p class="userName fontStyle">${msg.username}</p>
-                <p class="msgTime fontStyle">${getTime()}</p>
+                <p class="userName fontStyle">${msg.author}</p>
+                <p class="msgTime fontStyle">${msg.createdAt}</p>
             </div>
             <p class="msgContent fontStyle">${msg.body}</p>
         </div>
