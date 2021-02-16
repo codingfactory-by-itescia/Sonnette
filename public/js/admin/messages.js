@@ -70,3 +70,11 @@ function messagesSearchSystem() {
         }
     })
 }
+
+async function getAllMessages() {
+    let messages
+    await fetch('/db/getMessages')
+        .then((response) => response.json())
+        .then((data) => messages = data)
+    return messages
+}
