@@ -57,6 +57,8 @@ app.get('/db/getMessages', (req, res) => {
 
 // Create new message
 app.get('/db/newMessage', (req, res) => {
+    
+
     const newMessage = new Message({
         author: 'user 4',
         authorId: '602a8962dfdd061fb33d0e6d',
@@ -67,9 +69,6 @@ app.get('/db/newMessage', (req, res) => {
         .then((result) => { res.send(result) })
         .catch((error) => { res.send(error) })
 })
-
-
-
 
 
 
