@@ -46,13 +46,6 @@ function successMsg(msg, form) {
     msgContainer.classList.remove('errorMsg')
 }
 
-
-
-
-
-
-
-
 function showPasswords() {
     let password = document.getElementById('password');
     let password2 = document.getElementById('password2');
