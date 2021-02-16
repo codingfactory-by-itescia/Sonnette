@@ -11,7 +11,14 @@ function connect() {
     .then(() => { console.log('Connected to db') })
     .catch((error) => { console.log(error) })
 }
-
+function getAllAccounts() {
+    let accounts
+    schemas.Account.find()
+        .then((data) => {
+            accounts = data
+        })
+    return accounts
+}
 
 
 

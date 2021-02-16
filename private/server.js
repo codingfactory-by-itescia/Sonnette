@@ -34,9 +34,9 @@ app.post('/db/createAccount', (req, res) => {
 
 // Get all accounts
 app.get('/db/getAccounts', (req, res) => {
-    Account.find()
-        .then((result) => { res.send(result) })
-        .catch((error) => { res.send(error)})
+    Account.find().then((data) => {
+        res.send(data)
+    })
 })
 
 // Get account by ID
@@ -46,6 +46,13 @@ app.get('/db/getAccount', (req, res) => {
     Account.findById(id)
         .then((result) => { res.send(result) })
         .catch((error) => { res.send(error)})
+})
+
+// Get all messages
+app.get('/db/getMessages', (req, res) => {
+    Message.find().then((data) => {
+        res.send(data)
+    })
 })
 
 // Create new message
