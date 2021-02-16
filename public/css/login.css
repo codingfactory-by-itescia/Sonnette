@@ -149,3 +149,6 @@ img{
     font-size: 13px;
     color: red !important;
 }
+.msgContainer {
+    margin: 0;
+}

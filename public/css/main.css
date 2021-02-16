@@ -286,3 +286,9 @@ form button {
       background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
     }
   }
+
+  @media (max-width: 1320px) {
+    .msgHistoryPanel {
+      display: none;
+    }
+  }

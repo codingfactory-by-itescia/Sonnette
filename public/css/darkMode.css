@@ -20,4 +20,7 @@
     background-color :rgb(38, 41, 43);
 }
 
-
+/* ADMIN PANEL */
+.binContainer {
+    background-image: url('../img/whiteBin.png');
+}

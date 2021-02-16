@@ -14,7 +14,7 @@ connectionBtn.addEventListener('click', async (event) => {
     event.preventDefault()
 
     // check if all inputs are filled and if the values aren't already taken
-    let isInputsCorrect = await checkInputs(loginInput, 'formContainer')
+    let isInputsCorrect = await checkInputs(loginInput)
 
     if (isInputsCorrect) {
         // set the user id in local storage
@@ -83,11 +83,10 @@ function errorMsg(msg) {
     msgContainer.classList.add('errorMsg')
 }
 async function getUserId(email) {
+    // Get the id of a user with his email
     let accounts = await getAllAccounts()
-    let id = 'nop'
-    console.log(email + "\n");
+    let id
     for (let i = 0; i < accounts.length; i++) {
-        console.log(accounts[i].email);
         if (accounts[i].email == email) {
             id = accounts[i]._id.toString()
             break
@@ -95,8 +94,6 @@ async function getUserId(email) {
     }
     return id
 }
-
-
 function showPasswords() {
     let password = document.getElementById('password');
     

@@ -171,3 +171,16 @@ form p a {
 img{
     height:100px;
 }
+.successMsg {
+    margin: 0;
+    font-size: 13px;
+    color: green !important;
+}
+.errorMsg {
+    margin: 0;
+    font-size: 13px;
+    color: red !important;
+}
+.msgContainer {
+    margin: 0;
+}

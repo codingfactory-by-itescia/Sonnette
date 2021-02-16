@@ -30,8 +30,10 @@ createAccountBtn.addEventListener('click', async (event) => {
         fetch('/db/createAccount', options)
         .then(() => successMsg(`Nouvel ${userData.isAdmin ? 'administrateur' : 'utilisateur'} créé`))
     
-        // Reset all inputs of the form
+        // Reset all inputs of the form, update the list of accounts and the website data
         document.querySelector('.createAccountForm').reset()
+        updateAccountsList()
+        displayWebsiteData()
     }
 })
 
@@ -57,7 +59,7 @@ async function checkInputs(inputs) {
         errorMsg('Email invalide')
         return false
     } else if (!isEmailCorrect) {
-        errorMsg('Cet email n\'est associée à aucun compte')
+        errorMsg('Email déjà associée à un compte')
         return false
     }
     // Check password
@@ -114,4 +116,7 @@ function successMsg(msg) {
     msgContainer.innerHTML = msg
     msgContainer.classList.add('successMsg')
     msgContainer.classList.remove('errorMsg')
+    setTimeout(() => {
+        msgContainer.innerHTML = ''
+    }, 10000)
 }

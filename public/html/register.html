@@ -21,20 +21,17 @@
         </header>
 
         <div class="formContainer">
-            <form >
+            <form class="registerForm">
                 <h2 class="fontStyle">Inscrivez-vous</h2>
-                <div class="namesContainer">
-                    <input type="text" required placeholder="Nom" id="nom">
-                    <input type="text" required placeholder="Prénom" id="prenom">
-                </div>
-                <input type="email" required placeholder="default@exemple" id="email">
-                <input id="password" type="password" required placeholder="Mot de passe" minlength="6" maxlenght="20">
-                <input id="password2" type="password" required placeholder="Confirmation du mot de passe">
+                <input type="text" id="usernameInput" placeholder="Nom d'utilisateur" required>
+                <input type="email" id="emailInput" placeholder="email" required>
+                <input type="password" id="passwordInput" placeholder="Mot de passe" required>
                 <div class="showPasswordContainer">
-                    <input class="checkbox" type="checkbox" onclick="showPasswords()">
-                    <label class="fontStyle" >Montrer les mots de passe</label>
+                    <input class="checkbox" id="passwordCheckbox" type="checkbox" onclick="showPassword()">
+                    <label class="fontStyle" for="passwordCheckbox">Montrer le mot de passe</label>
                 </div>
-                <button class="fontStyle" type="button" onclick="createNewUser()">S'inscrire</button>
+                <button class="fontStyle registerBtn" type="button">S'inscrire</button>
+                <p class="msgContainer"></p>
                 <p class="fontStyle" >Vous avez déjà compte ? <a href="../index.html">Se connecter</a></p>
             </form>
         </div>

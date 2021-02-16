@@ -48,6 +48,12 @@ app.get('/db/getAccount', (req, res) => {
         .catch((error) => { res.send(error)})
 })
 
+// Delete account by ID
+app.post('/db/deleteAccount', async (req, res) => {
+    let accountToDelete = await Account.findById(req.body)
+    await accountToDelete.remove().then(() => res.sendStatus(200))
+})
+
 // Get all messages
 app.get('/db/getMessages', (req, res) => {
     Message.find().then((data) => {

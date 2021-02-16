@@ -1,3 +1,75 @@
+const registerBtn = document.querySelector('.registerBtn')
+
+registerBtn.addEventListener('click', async (event) => {
+    const inputs = document.querySelectorAll('.registerForm input')
+    // Don't reset the form
+    event.preventDefault()
+
+    // check if all inputs are filled and if the values aren't already taken
+    let isInputsCorrect = await checkInputs(inputs)
+
+    if (isInputsCorrect) {
+        // Get user data with values of inputs
+        let userData = {
+            username: inputs[0].value,
+            email: inputs[1].value,
+            password: inputs[2].value,
+            isAdmin: false
+        }
+        // Create a new user in the database
+        let options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        }
+        fetch('/db/createAccount', options)
+
+        // Set local storage data
+        let data = JSON.parse(localStorage.getItem('codringData'))
+        data.userId = await getUserId(inputs[1].value)
+        data.connected = true
+        localStorage.setItem('codringData', JSON.stringify(data))
+
+        window.location.href = 'main.html'
+    }
+})
+async function checkInputs(inputs) {
+    let emailRegexp = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+
+    // Wait for the execution of all functions
+    let isUsernameCorrect = await checkUsername(inputs[0].value)
+    let isEmailCorrect = await checkEmail(inputs[1].value)
+    let isPasswordCorrect = await checkPassword(inputs[2].value)
+    
+    // Check username
+    if (inputs[0].value.length < 3) {
+        errorMsg('Nom d\'utilisateur trop court')
+        return false
+    } else if (!isUsernameCorrect) {
+        errorMsg('Ce nom d\'utilisateur existe déjà')
+        return false
+    }
+    // Check email
+    else if (!emailRegexp.test(inputs[1].value)) {
+        errorMsg('Email invalide')
+        return false
+    } else if (!isEmailCorrect) {
+        errorMsg('Email déjà associée à un compte')
+        return false
+    }
+    // Check password
+    else if (inputs[2].value.length < 3) {
+        errorMsg('Mot de passe trop court')
+        return false
+    }
+    else if (!isPasswordCorrect) {
+        errorMsg('Mot de passe incorrect')
+        return false
+    }
+    return true
+}
 async function checkUsername (username) {
     // Check if the username already exists
     let accounts = await getAllAccounts()
@@ -18,12 +90,9 @@ async function checkEmail (email) {
         }
     }
     return true
-    
 }
 async function checkPassword (password) {
-    if (password.length < 3) {
-        return false
-    }
+    // Password conditions...
     return true
 }
 async function getAllAccounts() {
@@ -33,137 +102,30 @@ async function getAllAccounts() {
         .then((data) => accounts = data)
     return accounts
 }
-function errorMsg(msg, form) {
-    const msgContainer = document.querySelector(`.${form} .msgContainer`)
+function errorMsg(msg) {
+    const msgContainer = document.querySelector('.msgContainer')
     msgContainer.innerHTML = msg
     msgContainer.classList.remove('successMsg')
     msgContainer.classList.add('errorMsg')
 }
-function successMsg(msg, form) {
-    const msgContainer = document.querySelector(`#${form} #confirmCreateAccount`)
-    msgContainer.innerHTML = msg
-    msgContainer.classList.add('successMsg')
-    msgContainer.classList.remove('errorMsg')
+async function getUserId(email) {
+    // Get the id of a user with his email
+    let accounts = await getAllAccounts()
+    let id
+    for (let i = 0; i < accounts.length; i++) {
+        if (accounts[i].email == email) {
+            id = accounts[i]._id.toString()
+            break
+        }
+    }
+    return id
 }
-
-function showPasswords() {
+function showPassword() {
     let password = document.getElementById('password');
-    let password2 = document.getElementById('password2');
     
     if (password.type === "password") {
         password.type = "text";
     } else{
         password.type = "password";
-    }
-    
-    if (password2.type === "password") {
-        password2.type = "text";
-    } else{
-        password2.type = "password";
-    }
-}
-
-let nomInput = document.getElementById('nom')
-let prenomInput = document.getElementById('prenom')
-let emailInput = document.getElementById('email')
-let passwordInput = document.getElementById('password')
-let confirmPasswordInput = document.getElementById('password2')
-
-async function checkIfUserExist() {
-    let data = await fetch('http://localhost:3000/api/userlist')
-    let userList = await data.json()
-    let counter = 0
-
-    for(let i = 0; i < userList.length; i++) {
-        if(emailInput.value == userList[i].email){
-            counter++
-            alert ("E-mail et/ou identifiant déjà existant")
-            return false
-        }
-    }
-    if (counter == 0) {
-        checkForPassword()
-    }
-}
-
-function checkForPassword() {
-    
-    if(passwordInput.value === confirmPasswordInput.value && isPasswordCorrect(passwordInput.value) /*&& validator.isEmail(emailInput.value)==true*/) {
-        createNewUser()
-
-    /*} else if (validator.isEmail(emailInput.value)== false){
-        alert("l'email n'est pas valide")
-        return false*/
-
-    }else if (passwordInput.value != confirmPasswordInput.value){
-        alert('Les mots de passe ne sont pas identiques')
-        return false
-    } else {
-        alert('Les mots de passe renseignés ne contiennent pas au moins une minuscule, une majuscule, un chiffre et une longueur de 6 caractères')
-        return false
-    }
-}
-
-function createNewUser() {
-    event.preventDefault()
-    let data = {
-        nom : nomInput.value,
-        prenom: prenomInput.value,
-        email: emailInput.value,
-        password: passwordInput.value
-    }
-    let options = {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    }
-    fetch('http://localhost:3000/api/userlist', options)
-
-    localStorage.setItem('connected', true)
-    localStorage.setItem('username', prenomInput.value + ' ' + nomInput.value);
-
-    console.log('data saved');
-    window.location.href = 'main.html'
-}
-
-function isPasswordCorrect(password) {
-    // This function checks if the password contains a capital letter, a lower case, a special character and a number
-    let capCounter = 0
-    let lowCounter = 0
-    let nbCounter = 0
-    let speCharCounter = 0
-    
-    for (let i = 0; i < password.length; i++) {
-        let letter = password[i];
-        if (isNumber(letter)) {
-            nbCounter++
-        } else if (letter === letter.toUpperCase()) {
-            capCounter++
-        } else if (letter === letter.toLowerCase()) {
-            lowCounter++
-        }
-    }
-
-    if (capCounter >= 1 && lowCounter >=1 && nbCounter >= 1) {
-        return true
-    } else {
-        return false
-    }
-}
-
-function isNumber(letter) {
-    let numbers = "0123456789"
-    let counter = 0
-
-    for (let i = 0; i < numbers.length; i++) {
-        if (letter == numbers[i]) {
-            counter++
-            return true
-        }
-    }
-    if (counter == 0) {
-        return false
     }
 }

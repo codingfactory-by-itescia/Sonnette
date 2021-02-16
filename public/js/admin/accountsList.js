@@ -14,6 +14,7 @@ async function displayAccounts() {
                 <p class="accountEmail">${account.email}</p>
                 <p class="accountPassword">${account.password}</p>
                 <p class="accountAdmin">${account.isAdmin ? 'oui' : 'non'}</p>
+                <div class="binContainer" onclick="deleteAccount('${account._id.toString()}')"></div>
             </div>
         `)
     }
@@ -25,6 +26,26 @@ async function displayAccounts() {
         document.querySelector('.accountErrorMsg').innerHTML = 'Aucun compte n\'a été trouvé'
     }
 }
+
+async function deleteAccount(id) {
+    // Delete a user with his ID
+    let options = {
+        method: 'POST',
+        body: id
+    }
+    fetch('/db/deleteAccount', options)
+        .then(() => updateAccountsList())
+}
+function updateAccountsList() {
+    const accountsContainer = document.querySelector('.accountsList')
+    const accounts = document.querySelectorAll('.accountsList .account')
+
+    for (let i = 0; i < accounts.length; i++) {
+        accountsContainer.removeChild(accounts[i]);
+    }
+    displayAccounts()
+}
+
 
 // Search system
 function accountsSearchSystem() {
