@@ -55,14 +55,15 @@ app.get('/db/getMessages', (req, res) => {
     })
 })
 
-// Create new message
-app.get('/db/newMessage', (req, res) => {
-    
 
+
+// Create new message
+app.post('/db/newMessage', (req, res) => {
+    let msgData = req.body
     const newMessage = new Message({
-        author: 'user 4',
-        authorId: '602a8962dfdd061fb33d0e6d',
-        body: 'azerty'
+        author: msgData.author,
+        authorId: msgData.authorId,
+        body: msgData.body
     })
 
     newMessage.save()

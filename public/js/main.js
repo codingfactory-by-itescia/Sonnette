@@ -7,6 +7,8 @@ disconnectionBtn.addEventListener('click', () => {
 let form = document.querySelector('form')
 let textArea = document.querySelector('#msgArea')
 
+printHistoryMsg()
+
 function goBack(distance) {
     form.style.transform = `translateX(${distance}px)`
 }
@@ -93,17 +95,41 @@ function PopulateVoices(){
 }
 
 function addMsgToHistory(msg) {
-    let msgHistoryContainer = document.querySelector('.msgHistoryContainer')
+    let messageData = {
+        author: msg.username,
+        authorId: '3',
+        body: msg.content
+    }
 
-    msgHistoryContainer.insertAdjacentHTML('afterbegin', `
+    // Set fetch options
+    let options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(messageData)
+    }
+    fetch('/db/newMessage', options)
+    
+}
+
+ async function printHistoryMsg(){
+    msgData = await getAllMessages()
+
+    let msgHistoryContainer = document.querySelector('.msgHistoryContainer')
+    for (let i = 0; i < msgData.length; i++) {
+        const msg = msgData[i];
+        msgHistoryContainer.insertAdjacentHTML('afterbegin', `
         <div class="msgCard">
             <div class="userInfos">
-                <p class="userName fontStyle">${msg.username}</p>
-                <p class="msgTime fontStyle">${getTime()}</p>
+                <p class="userName fontStyle">${msg.author}</p>
+                <p class="msgTime fontStyle">${msg.createdAt}</p>
             </div>
-            <p class="msgContent fontStyle">${msg.content}</p>
+            <p class="msgContent fontStyle">${msg.body}</p>
         </div>
     `)
+    }
+    
 }
 
 function getTime() {
@@ -116,4 +142,12 @@ function getTime() {
 
     let time = date.getHours() + ':' + min
     return time
+}
+
+async function getAllMessages() {
+    let messages
+    await fetch('/db/getMessages')
+        .then((response) => response.json())
+        .then((data) => messages = data)
+    return messages
 }

@@ -25,11 +25,3 @@ async function displayWebsiteData() {
     totalMessagesNumber.innerHTML = totalMessages
     totalMessagesTitle.innerHTML = `message${totalMessages > 1 ? 's' : ''}`
 }
-
-async function getAllMessages() {
-    let messages
-    await fetch('/db/getMessages')
-        .then((response) => response.json())
-        .then((data) => messages = data)
-    return messages
-}
