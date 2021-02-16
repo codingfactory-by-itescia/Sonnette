@@ -1,3 +1,4 @@
+// Display website data
 const totalAccountsNumber = document.querySelector('#totalAccountsNumber')
 const totalAccountsTitle = document.querySelector('#totalAccountsTitle')
 const totalMessagesNumber = document.querySelector('#totalMessagesNumber')

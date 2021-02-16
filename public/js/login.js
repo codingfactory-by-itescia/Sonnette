@@ -31,8 +31,8 @@ async function checkInputs(inputs) {
     let emailRegexp = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
 
     // Wait for the execution of all functions
-    isEmailCorrect = await checkEmail(inputs[0].value)
-    isPasswordCorrect = await checkPassword(inputs[1].value, inputs[0].value)
+    let isEmailCorrect = await checkEmail(inputs[0].value)
+    let isPasswordCorrect = await checkPassword(inputs[1].value, inputs[0].value)
     
     if (!emailRegexp.test(inputs[0].value)) {
         errorMsg('Email invalide')
