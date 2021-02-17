@@ -6,10 +6,20 @@ body {
 }
 header{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;  
     height: 8.5vh;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2); 
+    position: relative; 
+}
+#logo{
+    position: absolute;
+    left: 30px;
+}
+#divLogo h1 {
+    transition: .3s;
+}
+#divLogo h1:hover {
+    font-size: 35px;
 }
 .fontStyle{
     font-family: 'Comfortaa', cursive;
@@ -160,4 +170,17 @@ form p a {
 
 img{
     height:100px;
+}
+.successMsg {
+    margin: 0;
+    font-size: 13px;
+    color: green !important;
+}
+.errorMsg {
+    margin: 0;
+    font-size: 13px;
+    color: red !important;
+}
+.msgContainer {
+    margin: 0;
 }

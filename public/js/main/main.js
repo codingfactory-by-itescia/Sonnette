@@ -93,27 +93,20 @@ function PopulateVoices(){
 }
 
 function addMsgToHistory(msg) {
-    let msgHistoryContainer = document.querySelector('.msgHistoryContainer')
-
-    msgHistoryContainer.insertAdjacentHTML('afterbegin', `
-        <div class="msgCard">
-            <div class="userInfos">
-                <p class="userName">${msg.username}</p>
-                <p class="msgTime">${getTime()}</p>
-            </div>
-            <p class="msgContent">${msg.content}</p>
-        </div>
-    `)
-}
-
-function getTime() {
-    let date = new Date()
-    let min = date.getMinutes()
-
-    if (min < 10) {
-        min = '0' + min
+    let messageData = {
+        author: msg.username,
+        authorId: '3',
+        body: msg.content
     }
 
-    let time = date.getHours() + ':' + min
-    return time
+    // Set fetch options
+    let options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(messageData)
+    }
+    fetch('/db/newMessage', options)
 }
+
