@@ -87,7 +87,8 @@ form button {
     margin: 1%;
     border-radius: 6px;
     padding: 10px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
@@ -141,18 +142,20 @@ form button {
     background-size: 15px;
     background-position: center;
     cursor: pointer;
-    position: absolute;
     right: 10px;
 }
 .messagesListContainer {
+    position: absolute;
     width: 30%;
-    height: 99%;
+    height: 90%;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
     border-radius: 7px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin-right: 3px;
+    right: 0;
 }
 .messagesListContainer .messagesListTitle {
     display: flex;
@@ -176,43 +179,69 @@ form button {
     display: inline-flex;
     flex-direction: column;
     width: 100%;
-    padding: 2% 0;
     height: 93%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(198, 195, 200);
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(150, 147, 151);
+}
+
+
 .message {
     display: flex;
     align-items: center;
     width: 95%;
     padding: 2% 0 1% 5%;
+    margin-bottom: 1px;
+    background-color: rgba(128, 128, 128, 0.1) !important;
 }
 
 .message .messageAuthor {
     font-weight: bold;
     font-size: 15px;
+    background-color: transparent !important;
 }
 .message .messageBody {
     padding: 10px 0;
-    opacity: .8;
     font-size: 15px;
+    background-color: transparent !important;
+}
+
+.message .msgTime {
+    font-size: 12px;
+    background-color: transparent !important;
 }
 .msgContent {
     width: 93%;
     height: 100%;
+    background-color: transparent !important;
 }
 .msgBinContainer {
     width: 23px;
     height: 30px;
     margin-right: 1%;
+    background-color: transparent !important;
 }
 .messagesErrorMsg {
-    opacity: .4;
+    /* opacity: .4; */
     width: fit-content;
     align-self: center;
     margin-top: 30px;
     font-size: 14px;
 }
 .accountErrorMsg {
-    opacity: .4;
+    /* opacity: .4; */
     width: fit-content;
     align-self: center;
     margin-top: 50px;

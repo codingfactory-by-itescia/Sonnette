@@ -20,10 +20,21 @@
     background-color :rgb(38, 41, 43);
 }
 
+::-webkit-scrollbar-track {
+background: rgba(78, 78, 78, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+background: rgb(31, 35, 36);
+border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(26, 24, 24);
+  }
+
 /* ADMIN PANEL */
 .binContainer {
     background-image: url('../img/whiteBin.png');
 }
-.messagesList .message:hover, .messagesList .message:hover .messageAuthor, .messagesList .message:hover .messageBody, .messagesList .message:hover .binContainer {
-    background-color: rgb(49, 49, 49) !important;
-}
+
