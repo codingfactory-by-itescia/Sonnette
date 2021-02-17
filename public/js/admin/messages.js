@@ -16,12 +16,29 @@ async function displayMessages() {
     // Display all messages
     for (let i = 0; i < messages.length; i++) {
         const message = messages[i];
+        const msg = messages[i];
+        const dateCrea = msg.createdAt; 
+        const date = new Date(dateCrea);
+        let month = date.getMonth() + 1 ;
+        let min = date.getUTCMinutes();
+        let day = date.getDate()
+        if (min < 10) {
+            min = '0' + min
+        }
+        if (month < 10) {
+            month = '0' + month
+        }
+        if (day < 10) {
+            day = '0' + day
+        }
         messagesList.insertAdjacentHTML('afterbegin',`
             <div class="message">
                 <div class="msgContent">
                     <p class="messageAuthor">${message.author}</p>
                     <p class="messageBody">${message.body}</p>
+                    <p class="msgTime fontStyle">${'date: ' + day + '/' + month + '   ' + ' heure: '  + date.getHours() + ':' + min} </p>
                 </div>
+                
                 <div class="binContainer msgBinContainer" onclick="deleteMsg('${message._id.toString()}')"></div>
             </div>
         `)

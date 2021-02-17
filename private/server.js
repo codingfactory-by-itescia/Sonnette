@@ -38,11 +38,10 @@ app.get('/db/getAccounts', (req, res) => {
     })
 })
 // Get account by ID
-app.get('/db/getAccount', (req, res) => {
-    const id = req.body
-
+app.post('/db/getAccount',(req, res) => {
+    const id = req.body.id
     Account.findById(id)
-        .then((result) => { res.send(result) })
+        .then((result) => { res.send(result)})
         .catch((error) => { res.send(error)})
 })
 // Delete account by ID
