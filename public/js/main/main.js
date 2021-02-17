@@ -41,6 +41,8 @@ async function sendMessage() {
     let txt = document.getElementById("msgArea").value;
     let msg = {"content": txt};
 
+    addMsgToHistory(txt)
+
     // Display the message in the history section
     msg.username = await getAuthor()
 

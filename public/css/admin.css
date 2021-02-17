@@ -221,6 +221,7 @@ form button {
 .message .msgTime {
     font-size: 12px;
     background-color: transparent !important;
+    margin-bottom: 0.7px;
 }
 .msgContent {
     width: 93%;
