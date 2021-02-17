@@ -24,3 +24,6 @@
 .binContainer {
     background-image: url('../img/whiteBin.png');
 }
+.messagesList .message:hover, .messagesList .message:hover .messageAuthor, .messagesList .message:hover .messageBody, .messagesList .message:hover .binContainer {
+    background-color: rgb(49, 49, 49) !important;
+}

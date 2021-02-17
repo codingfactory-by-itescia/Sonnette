@@ -70,7 +70,8 @@ form button {
 }
 .createAccountForm h2 {
     justify-self: center;
-    font-size: 19px;
+    font-size: 18px;
+    text-transform: uppercase;
 }
 .isAdminContainer {
     width: 100%;
@@ -180,23 +181,29 @@ form button {
 }
 .message {
     display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 2% 5%;
+    align-items: center;
+    width: 95%;
+    padding: 2% 0 1% 5%;
 }
-.messagesList .message:hover {
-    background: gray !important;
-}
+
 .message .messageAuthor {
     font-weight: bold;
     font-size: 15px;
 }
 .message .messageBody {
-    margin: 10px 0;
+    padding: 10px 0;
     opacity: .8;
     font-size: 15px;
 }
-
+.msgContent {
+    width: 93%;
+    height: 100%;
+}
+.msgBinContainer {
+    width: 23px;
+    height: 30px;
+    margin-right: 1%;
+}
 .messagesErrorMsg {
     opacity: .4;
     width: fit-content;
