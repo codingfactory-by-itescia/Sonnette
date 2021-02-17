@@ -36,22 +36,21 @@ function playSound(n) {
 const urlDis = "https://discord.com/api/webhooks/778269268533444658/DqY1ieHcWbGCG6LEjzoGUDNXSIyffvc21zViIofbm0vson_v2rtuFrjUrTqYt6LNG3H8";
 
 let durationMsg;
-function sendMessage() {
+async function sendMessage() {
     event.preventDefault()
     let txt = document.getElementById("msgArea").value;
     let msg = {"content": txt};
-    msg.username = localStorage.getItem('username')
 
     // Display the message in the history section
-    addMsgToHistory(msg)
-    
+    msg.username = await getAuthor()
+
     fetch(urlDis + "?wait=true",{
         method:"POST",
         headers: {"content-type":"application/json"
         },
         "body":JSON.stringify(msg)})
         .then(a=>a.json()).then(console.log)
-    console.log(txt);
+    console.log(msg);
     let toSpeak = new SpeechSynthesisUtterance(textArea.value);
     let selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
     voices.forEach((voice)=>{
@@ -92,15 +91,18 @@ function PopulateVoices(){
     voiceList.selectedIndex = selectedIndex;
 }
 
-function addMsgToHistory(msg) {
+async function addMsgToHistory(msg) {
+    let authorId =  JSON.parse(localStorage.getItem('codringData')).userId
+    let author = await getAuthor()
+
     let messageData = {
-        author: msg.username,
-        authorId: '3',
-        body: msg.content
+        author: author,
+        authorId: authorId,
+        body: msg
     }
 
     // Set fetch options
-    let options = {
+    options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -108,5 +110,22 @@ function addMsgToHistory(msg) {
         body: JSON.stringify(messageData)
     }
     fetch('/db/newMessage', options)
+    
+}
+
+async function getAuthor(){
+    let authorId =  {id: JSON.parse(localStorage.getItem('codringData')).userId}
+        let author
+        let options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(authorId)
+        }
+    await fetch('/db/getAccount', options)
+    .then((response) => response.json())
+    .then((data) => author = data.username )
+    return author
 }
 
