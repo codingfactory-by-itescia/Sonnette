@@ -31,38 +31,31 @@ app.post('/db/createAccount', (req, res) => {
         .then(() => { res.sendStatus(200) })
         .catch((error) => { res.send(error) })
 })
-
 // Get all accounts
 app.get('/db/getAccounts', (req, res) => {
     Account.find().then((data) => {
         res.send(data)
     })
 })
-
 // Get account by ID
 app.get('/db/getAccount', (req, res) => {
-    const id = '602a8682239bf91def86143b'
+    const id = req.body
 
     Account.findById(id)
         .then((result) => { res.send(result) })
         .catch((error) => { res.send(error)})
 })
-
 // Delete account by ID
 app.post('/db/deleteAccount', async (req, res) => {
     let accountToDelete = await Account.findById(req.body)
     await accountToDelete.remove().then(() => res.sendStatus(200))
 })
-
 // Get all messages
 app.get('/db/getMessages', (req, res) => {
     Message.find().then((data) => {
         res.send(data)
     })
 })
-
-
-
 // Create new message
 app.post('/db/newMessage', (req, res) => {
     let msgData = req.body
@@ -76,34 +69,8 @@ app.post('/db/newMessage', (req, res) => {
         .then((result) => { res.send(result) })
         .catch((error) => { res.send(error) })
 })
-
-
-
-
-
-
-
-
-
-
-/* app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-    next();
-  });
-
-// POST
-app.post('/api/userlist', (req, res) => {
-    db.insert(req.body)
+// Delete message by ID
+app.post('/db/deleteMessage', async (req, res) => {
+    let messageToDelete = await Message.findById(req.body)
+    await messageToDelete.remove().then(() => res.sendStatus(200))
 })
-// READ
-app.get('/api/userlist', (req, res) => {
-    db.find({}, (err, docs) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send(docs)
-        }
-    })
-}) */

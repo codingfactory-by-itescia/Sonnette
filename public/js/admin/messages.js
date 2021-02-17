@@ -5,14 +5,24 @@ const messagesListInput = document.querySelector('#accountListInput')
 displayMessages()
 
 async function displayMessages() {
-    let messages = await getAllMessages()
-
+    let messages = document.querySelectorAll('.messagesList .message')
+    
+    // Delete all messages in the container
+    for (let i = 0; i < messages.length; i++) {
+        messagesList.removeChild(messages[i]);
+    }
+    
+    messages = await getAllMessages()
+    // Display all messages
     for (let i = 0; i < messages.length; i++) {
         const message = messages[i];
         messagesList.insertAdjacentHTML('afterbegin',`
             <div class="message">
-                <p class="messageAuthor">${message.author}</p>
-                <p class="messageBody">${message.body}</p>
+                <div class="msgContent">
+                    <p class="messageAuthor">${message.author}</p>
+                    <p class="messageBody">${message.body}</p>
+                </div>
+                <div class="binContainer msgBinContainer" onclick="deleteMsg('${message._id.toString()}')"></div>
             </div>
         `)
     }
@@ -23,6 +33,16 @@ async function displayMessages() {
     } else {
         document.querySelector('.messagesErrorMsg').innerHTML = 'Aucun message n\'a été trouvé'
     }
+}
+
+async function deleteMsg(id) {
+    // Delete a message with his ID
+    let options = {
+        method: 'POST',
+        body: id
+    }
+    fetch('/db/deleteMessage', options)
+        .then(() => displayMessages())
 }
 
 // Search system

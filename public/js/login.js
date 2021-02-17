@@ -4,7 +4,7 @@ if (localStorage.getItem('codringData') == null) {
     localStorage.setItem('codringData', '{}')
 }
   
-if (JSON.parse(localStorage.getItem('codringData')).connected == "true") {
+if (JSON.parse(localStorage.getItem('codringData')).connected) {
     window.location.href = 'html/main.html'
 }
 
