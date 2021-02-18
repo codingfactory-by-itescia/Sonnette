@@ -1,9 +1,3 @@
-let disconnectionBtn = document.getElementById('disconnectionBtn')
-disconnectionBtn.addEventListener('click', () => {
-    localStorage.setItem('connected', false)
-    window.location.href = '../index.html'
-})
-
 let form = document.querySelector('form')
 let textArea = document.querySelector('#msgArea')
 
@@ -116,7 +110,7 @@ async function addMsgToHistory(msg) {
 }
 
 async function getAuthor(){
-    let authorId =  {id: JSON.parse(localStorage.getItem('codringData')).userId}
+    let authorId =  JSON.parse(localStorage.getItem('codringData')).userId
         let author
         let options = {
             method: 'POST',
