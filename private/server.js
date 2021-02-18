@@ -58,6 +58,7 @@ app.get('/db/getMessages', (req, res) => {
 // Create new message
 app.post('/db/newMessage', (req, res) => {
     let msgData = req.body
+    
     const newMessage = new Message({
         author: msgData.author,
         authorId: msgData.authorId,
