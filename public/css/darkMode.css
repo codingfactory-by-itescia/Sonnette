@@ -18,8 +18,12 @@
 }
 .msgHistoryPanel {
     background-color :rgb(38, 41, 43);
+    border-color: rgb(35, 37, 37);
 }
-
+.purchaseHistoryPanel {
+    background-color :rgb(38, 41, 43);
+    border-color: rgb(35, 37, 37);
+}
 ::-webkit-scrollbar-track {
 background: rgba(78, 78, 78, 0.1);
 }

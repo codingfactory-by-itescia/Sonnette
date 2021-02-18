@@ -90,7 +90,7 @@ function PopulateVoices(){
 async function addMsgToHistory(msg) {
     let authorId =  JSON.parse(localStorage.getItem('codringData')).userId
     let author = await getAuthor()
-
+    console.log(author)
     let messageData = {
         author: author,
         authorId: authorId,
@@ -110,15 +110,12 @@ async function addMsgToHistory(msg) {
 }
 
 async function getAuthor(){
-    let authorId =  JSON.parse(localStorage.getItem('codringData')).userId
-        let author
-        let options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(authorId)
-        }
+    let authorId = JSON.parse(localStorage.getItem('codringData')).userId
+    let author
+    let options = {
+        method: 'POST',
+        body: authorId
+    }
     await fetch('/db/getAccount', options)
     .then((response) => response.json())
     .then((data) => author = data.username )

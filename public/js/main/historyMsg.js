@@ -20,15 +20,20 @@ async function printHistoryMsg(){
         if (day < 10) {
             day = '0' + day
         }
-        msgHistoryContainer.insertAdjacentHTML('afterbegin', `
+        let dateToday = new Date()
+        let today = dateToday.getDate()
+        if(day == today || day + 1 == today){
+            msgHistoryContainer.insertAdjacentHTML('afterbegin', `
         <div class="msgCard">
             <div class="userInfos">
                 <p class="userName fontStyle">${msg.author}</p>
-                <p class="msgTime fontStyle">${day + '/' + month + ' '  + date.getHours() + ':' + min} </p>
+                <p class="msgTime fontStyle" style="opacity: .4">${day + '/' + month + ' '  + date.getHours() + ':' + min} </p>
             </div>
             <p class="msgContent fontStyle">${msg.body}</p>
         </div>
         `)
+        }
+        
     }
     
 }

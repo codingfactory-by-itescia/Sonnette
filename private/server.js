@@ -44,6 +44,13 @@ app.post('/db/getAccount',(req, res) => {
         .then((result) => { res.send(result)})
         .catch((error) => { res.send(error)})
 })
+// Get account by ID
+app.post('/db/getAccount',(req, res) => {
+    const id = req.body
+    Account.findById(id)
+        .then((result) => { res.send(result)})
+        .catch((error) => { res.send(error)})
+})
 // Delete account by ID
 app.post('/db/deleteAccount', async (req, res) => {
     let accountToDelete = await Account.findById(req.body)

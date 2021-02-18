@@ -1,0 +1,410 @@
+body {
+    font-family: 'Comfortaa', cursive;
+    margin: 0;
+}
+#main{
+  height: 93vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.leftArrowContainer {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 25px;
+  height: 25px;
+  background-image: url('../img/blackLeftArrow.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.formContainer {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+}
+form {
+    width: 1500px;
+    height: 80%;
+    display: flex;
+    transition: .3s ease-in-out;
+}
+form button {
+    background-color: rgb(102, 0, 204);
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 7px 12px;
+    margin: 20px 30px 0 0;
+    cursor: pointer;
+    font-size: 14px;
+    align-self: flex-end;
+    outline: none;
+}
+.textAreaContainer, .soundSelectionContainer, .sendMsgContainer {
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+#msgArea {
+    width: 83%;
+    height: 250px;
+    border: 2px solid rgb(102, 0, 204);
+    resize: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 2%;
+    font-family: sans-serif;
+}
+.sendMsgBtn {
+    margin: 0;
+    width: 85%;
+    height: 100%;
+    align-self: center;
+}
+.radioContainer {
+    display: flex;
+    align-items: center;
+    margin: 7px 0;
+}
+.radioContainer label {
+    cursor: pointer;
+}
+.checkmark {
+    width: 13px;
+    height: 13px;
+    margin-right: 6px;
+    background-color: rgb(202, 202, 202);
+    border-radius: 50%;
+}
+.radioContainer input {
+    opacity: 0;
+    margin: 0;
+    margin-right: -12px;
+    cursor: pointer;
+}
+.radioContainer input:checked ~ .checkmark {
+    background-color: rgb(102, 0, 204);
+    box-shadow: 0 0px 8px 0 rgba(102, 0, 204, .2), 0 0px 20px 0 rgba(102, 0, 204, .2)
+}
+.radioContainer input:last-child {
+    opacity: 1;
+}
+.personalSound {
+    visibility: hidden;
+    width: 200px;
+}
+.personalSound:last-child {
+    margin-top: -20px;
+}
+.personalSound::before {
+    visibility: visible;
+    content: '+ Importer une alerte';
+    font-family: 'Comfortaa', cursive;
+    display: inline-block;
+    background-color: rgb(102, 0, 204);
+    padding: 9px 21px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 700;
+    color: white;
+}
+.radioInputContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 200px;
+}
+.sendMsgContainer #voiceList {
+    border-radius: 4px;
+    padding: 4px;
+    border: 1px solid rgb(102, 0, 204);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url('../img/blackDownArrow.png');
+    background-position: right 5px top 50%;
+    background-size: 9px;
+    background-repeat: no-repeat;
+    padding-right: 17px;
+}
+.sendMsgContainer p {
+  margin-top: 30px;
+}
+
+.validMsgBtn , .fontStyle , .sendMsgBtn{
+  font-family: 'Comfortaa', cursive;
+}
+
+
+/* #param{
+    display: none;
+/* MSG HISTORY */
+.msgHistoryPanel {
+  width: 40%;
+  height: 85%;
+  margin-right: 3px;
+  position: absolute;
+  top: 10vh;
+  left: 100px;
+  background-color: white;
+  box-shadow: 10px 10px 13px 2px rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-color: rgb(223, 227, 228);
+  border-bottom: none;
+  border-right: none;
+}
+.msgHistoryPanel header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.msgHistoryPanel header h2 {
+  font-size: 20px;
+}
+.msgHistoryPanel header .rightArrowContainer {
+  position: absolute;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.msgHistoryContainer{
+  height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar{
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(198, 195, 200);
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(150, 147, 151);
+}
+
+.msgHistoryContainer .msgCard {
+  width: 90%;
+  padding: 13px 5%;
+  font-size: 14px;
+  background-color: rgba(128, 128, 128, 0.1) !important;
+  margin-bottom: 1px;
+}
+
+
+.msgCard .userInfos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  background-color: transparent !important;
+}
+.msgCard .userName {
+  font-weight: bold;
+  color: rgb(102, 0, 204);
+  margin-bottom: 5px;
+  margin: 0;
+  background-color: transparent !important;
+}
+.msgCard .msgTime {
+  padding-top: 17px;
+  opacity: .6;
+  font-size: 10px;
+  background-color: transparent !important;
+}
+.msgCard .msgContent{
+  text-align: justify;
+  background-color: transparent !important;
+}
+
+/* MSG HISTORY */
+.purchaseHistoryPanel {
+    width: 40%;
+    height: 85%;
+    margin-right: 3px;
+    position: absolute;
+    top: 10vh;
+    right: 100px;
+    background-color: white;
+    box-shadow: 10px 10px 13px 2px rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-color: rgb(223, 227, 228);
+    border-bottom: none;
+    border-right: none;
+  }
+  .purchaseHistoryPanel header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .purchaseHistoryPanel header h2 {
+    font-size: 20px;
+  }
+  .purchaseHistoryPanel header .rightArrowContainer {
+    position: absolute;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  .purchaseHistoryContainer{
+    height: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .purchaseHistoryContainer p{
+    position: absolute;
+    top: 45%;
+    left: 40%;
+  }
+  ::-webkit-scrollbar{
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(198, 195, 200);
+    border-radius: 15px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(150, 147, 151);
+  }
+  
+  .purchaseHistoryContainer .msgCard {
+    width: 90%;
+    padding: 13px 5%;
+    font-size: 14px;
+    background-color: rgba(128, 128, 128, 0.1) !important;
+    margin-bottom: 1px;
+  }
+  
+  
+  .purchaseCard .userInfos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    background-color: transparent !important;
+  }
+  .purchaseCard .userName {
+    font-weight: bold;
+    color: rgb(102, 0, 204);
+    margin-bottom: 5px;
+    margin: 0;
+    background-color: transparent !important;
+  }
+  .purchaseCard .purchaseTime {
+    padding-top: 17px;
+    opacity: .6;
+    font-size: 10px;
+    background-color: transparent !important;
+  }
+  .purchaseCard .purchaseContent{
+    text-align: justify;
+    background-color: transparent !important;
+  }
+
+  /*animation*/
+  .sendMsgBtn {
+    display: inline-block;
+    font-size: 1em;
+    margin: 30px 0; 
+    padding: 1em 2em;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: rgb(102, 0, 204);
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    box-shadow: 0 2px 25px rgba(102, 0, 204);
+  }
+  .sendMsgBtn:focus {
+    outline: 0;
+  }
+  .sendMsgBtn:before, .sendMsgBtn:after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+  }
+  .sendMsgBtn:before {
+    display: none;
+    top: -75%;
+    background-image: radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, transparent 20%, rgb(102, 0, 204) 20%, transparent 30%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, transparent 10%, rgb(102, 0, 204) 15%, transparent 20%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+  }
+  .sendMsgBtn:after {
+    display: none;
+    bottom: -75%;
+    background-image: radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, transparent 10%, rgb(102, 0, 204) 15%, transparent 20%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%), radial-gradient(circle, rgb(102, 0, 204) 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  }
+  .sendMsgBtn:active {
+    transform: scale(0.9);
+    background-color: rgb(102, 0, 204);
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+  }
+  .sendMsgBtn.animate:before {
+    display: block;
+    animation: topBubbles ease-in-out 0.75s forwards;
+  }
+  .sendMsgBtn.animate:after {
+    display: block;
+    animation: bottomBubbles ease-in-out 0.75s forwards;
+  }
+  
+  @keyframes topBubbles {
+    0% {
+      background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+    }
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+    }
+    100% {
+      background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+      background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+    }
+  }
+  @keyframes bottomBubbles {
+    0% {
+      background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+    }
+    50% {
+      background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+    }
+    100% {
+      background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+      background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+    }
+  }
+
+  @media (max-width: 1320px) {
+    .msgHistoryPanel {
+      display: none;
+    }
+  }
