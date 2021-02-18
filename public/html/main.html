@@ -24,6 +24,7 @@
             </div>
             <div id="divConnexion">
                 <a id="disconnectionBtn">Déconnexion</a>
+                <img src="../img/admin.png" alt="Panneau d'administration" id="adminPanelIcon">
             </div>
         </header>
 
@@ -51,32 +52,32 @@
 
                         <div class="radioInputContainer">
                             <div class="radioContainer">
-                                <input type="radio" name='sound' id="sound1" checked>
+                                <input type="radio" name='sound' id="sound1" onclick="check1()">
                                 <span class="checkmark"></span>
                                 <label class="fontStyle" for="sound1" onclick="playSound(1)" title="Cliquer pour jouer l'alerte">Alerte 1</label>
                             </div>
                             <div class="radioContainer">
-                                <input type="radio" name='sound' id="sound2">
+                                <input type="radio" name='sound' id="sound2" onclick="check2()">
                                 <span class="checkmark"></span>
                                 <label class="fontStyle" for="sound2" onclick="playSound(2)" title="Cliquer pour jouer l'alerte">Alerte 2</label>
                             </div>
                             <div class="radioContainer">
-                                <input type="radio" name='sound' id="sound3">
+                                <input type="radio" name='sound' id="sound3" onclick="check3()">
                                 <span class="checkmark"></span>
                                 <label class="fontStyle" for="sound3" onclick="playSound(3)" title="Cliquer pour jouer l'alerte">Alerte 3</label>
                             </div>
                             <div class="radioContainer">
-                                <input type="radio" name='sound' id="sound4">
+                                <input type="radio" name='sound' id="sound4" onclick="check4()">
                                 <span class="checkmark"></span>
                                 <label class="fontStyle" for="sound4" onclick="playSound(4)" title="Cliquer pour jouer l'alerte">Alerte 4</label>
                             </div>
                             <div class="radioContainer">
-                                <input type="radio" name='sound' id="sound5">
+                                <input type="radio" name='sound' id="sound5" onclick="check5()">
                                 <span class="checkmark"></span>
                                 <label class="fontStyle" for="sound5" onclick="playSound(5)" title="Cliquer pour jouer l'alerte">Alerte 5</label>
                             </div>
                             <div class="radioContainer">
-                                <input type="radio" name='sound' id="sound6">
+                                <input type="radio" name='sound' id="sound6" onclick="check6()">
                                 <span class="checkmark"></span>
                                 <label class="fontStyle" for="sound6" onclick="playSound(6)" title="Cliquer pour jouer l'alerte">Alerte 6</label>
                             </div>
@@ -118,5 +119,6 @@
     <script src="../js/KonamiCode.js"></script>
     <script src="../js/buttonAnimation.js"></script>
     <script src="../js/menu.js"></script>
+    <script src="../js/main/adminIcon.js"></script>
     <script src="../js/disconnection.js"></script>
 </html>

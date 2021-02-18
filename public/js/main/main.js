@@ -103,30 +103,30 @@ function check7(){
 }
 
 function checkChecked(){
-    if (checkSound1.checked = true){
+    if (checkSound1.checked ==true){
         let audio = new Audio('../audio/sound1.mp3')
         audio.play()
-        sound.volume = .5
-    }else if (checkSound2.checked = true){
+        audio.volume = .2
+    }else if (checkSound2.checked == true){
         let audio = new Audio('../audio/sound2.mp3')
         audio.play()
-        sound.volume = .5
-    }else if (checkSound3.checked = true){
+        audio.volume = .2
+    }else if (checkSound3.checked == true){
         let audio = new Audio('../audio/sound3.mp3')
         audio.play()   
-        sound.volume = .5
-    }else if (checkSound4.checked = true){
+        audio.volume = .2
+    }else if (checkSound4.checked == true){
         let audio = new Audio('../audio/sound4.mp3')
         audio.play()    
-        sound.volume = .5
-    }else if (checkSound5.checked = true){
+        audio.volume = .2
+    }else if (checkSound5.checked == true){
         let audio = new Audio('../audio/sound5.mp3')
         audio.play()  
-        sound.volume = .5  
-    }else if (checkSound6.checked = true){
+        audio.volume = .2
+    }else if (checkSound6.checked == true){
         let audio = new Audio('../audio/sound6.mp3')
         audio.play() 
-        sound.volume = .5
+        audio.volume = .2
     }       
 }
 
@@ -148,8 +148,7 @@ async function sendMessage() {
         headers: {"content-type":"application/json"
         },
         "body":JSON.stringify(msg)})
-        .then(a=>a.json()).then(console.log)
-    console.log(msg);
+        .then(a=>a.json())
     let toSpeak = new SpeechSynthesisUtterance(textArea.value);
     let selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
     voices.forEach((voice)=>{
@@ -157,14 +156,15 @@ async function sendMessage() {
             toSpeak.voice = voice;
         }
     });
+    checkChecked()
+
     synth.speak(toSpeak);
     toSpeak.onend = function(event){
         durationMsg = event.elapsedTime
-        console.log(durationMsg)
         textArea.value = ''
         form.style.transform = 'translate(0)'
     }
-    checkChecked()    
+        
     
 }
 
@@ -195,7 +195,6 @@ function PopulateVoices(){
 async function addMsgToHistory(msg) {
     let authorId =  JSON.parse(localStorage.getItem('codringData')).userId
     let author = await getAuthor()
-    console.log(author)
     let messageData = {
         author: author,
         authorId: authorId,
