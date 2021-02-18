@@ -1,9 +1,3 @@
-let disconnectionBtn = document.getElementById('disconnectionBtn')
-disconnectionBtn.addEventListener('click', () => {
-    localStorage.setItem('connected', false)
-    window.location.href = '../index.html'
-})
-
 let form = document.querySelector('form')
 let textArea = document.querySelector('#msgArea')
 
@@ -201,7 +195,7 @@ function PopulateVoices(){
 async function addMsgToHistory(msg) {
     let authorId =  JSON.parse(localStorage.getItem('codringData')).userId
     let author = await getAuthor()
-
+    console.log(author)
     let messageData = {
         author: author,
         authorId: authorId,
@@ -221,15 +215,12 @@ async function addMsgToHistory(msg) {
 }
 
 async function getAuthor(){
-    let authorId =  {id: JSON.parse(localStorage.getItem('codringData')).userId}
-        let author
-        let options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(authorId)
-        }
+    let authorId = JSON.parse(localStorage.getItem('codringData')).userId
+    let author
+    let options = {
+        method: 'POST',
+        body: authorId
+    }
     await fetch('/db/getAccount', options)
     .then((response) => response.json())
     .then((data) => author = data.username )
