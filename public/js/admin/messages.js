@@ -36,7 +36,7 @@ async function displayMessages() {
                 <div class="msgContent">
                     <p class="messageAuthor">${message.author}</p>
                     <p class="messageBody">${message.body}</p>
-                    <p class="msgTime fontStyle">${'date: ' + day + '/' + month + '   ' + ' heure: '  + date.getHours() + ':' + min} </p>
+                    <p class="msgTime fontStyle" style="opacity: .4">${day + '/' + month + ' '  + date.getHours() + ':' + min} </p>
                 </div>
                 
                 <div class="binContainer msgBinContainer" onclick="deleteMsg('${message._id.toString()}')"></div>
