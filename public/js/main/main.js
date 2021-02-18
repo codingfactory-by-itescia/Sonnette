@@ -103,30 +103,30 @@ function check7(){
 }
 
 function checkChecked(){
-    if (checkSound1.checked = true){
+    if (checkSound1.checked ==true){
         let audio = new Audio('../audio/sound1.mp3')
         audio.play()
-        sound.volume = .5
-    }else if (checkSound2.checked = true){
+        audio.volume = .2
+    }else if (checkSound2.checked == true){
         let audio = new Audio('../audio/sound2.mp3')
         audio.play()
-        sound.volume = .5
-    }else if (checkSound3.checked = true){
+        audio.volume = .2
+    }else if (checkSound3.checked == true){
         let audio = new Audio('../audio/sound3.mp3')
         audio.play()   
-        sound.volume = .5
-    }else if (checkSound4.checked = true){
+        audio.volume = .2
+    }else if (checkSound4.checked == true){
         let audio = new Audio('../audio/sound4.mp3')
         audio.play()    
-        sound.volume = .5
-    }else if (checkSound5.checked = true){
+        audio.volume = .2
+    }else if (checkSound5.checked == true){
         let audio = new Audio('../audio/sound5.mp3')
         audio.play()  
-        sound.volume = .5  
-    }else if (checkSound6.checked = true){
+        audio.volume = .2
+    }else if (checkSound6.checked == true){
         let audio = new Audio('../audio/sound6.mp3')
         audio.play() 
-        sound.volume = .5
+        audio.volume = .2
     }       
 }
 
