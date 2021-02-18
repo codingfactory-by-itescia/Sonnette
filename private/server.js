@@ -39,7 +39,7 @@ app.get('/db/getAccounts', (req, res) => {
 })
 // Get account by ID
 app.post('/db/getAccount',(req, res) => {
-    const id = req.body.id
+    const id = req.body
     Account.findById(id)
         .then((result) => { res.send(result)})
         .catch((error) => { res.send(error)})
@@ -58,6 +58,7 @@ app.get('/db/getMessages', (req, res) => {
 // Create new message
 app.post('/db/newMessage', (req, res) => {
     let msgData = req.body
+    
     const newMessage = new Message({
         author: msgData.author,
         authorId: msgData.authorId,

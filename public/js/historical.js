@@ -24,7 +24,7 @@ async function printHistoryMsg(){
         <div class="msgCard">
             <div class="userInfos">
                 <p class="userName fontStyle">${msg.author}</p>
-                <p class="msgTime fontStyle">${day + '/' + month + ' '  + date.getHours() + ':' + min} </p>
+                <p class="msgTime fontStyle" style="opacity: .4">${day + '/' + month + ' '  + date.getHours() + ':' + min} </p>
             </div>
             <p class="msgContent fontStyle">${msg.body}</p>
         </div>

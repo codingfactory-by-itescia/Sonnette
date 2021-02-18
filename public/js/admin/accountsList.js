@@ -4,7 +4,16 @@ let accountsListContainer = document.querySelector('.accountsList')
 displayAccounts()
 
 async function displayAccounts() {
-    let accounts = await getAllAccounts()
+    const accountsContainer = document.querySelector('.accountsList')
+    let accounts = document.querySelectorAll('.accountsList .account')
+
+    // Delete all accounts of the container
+    for (let i = 0; i < accounts.length; i++) {
+        accountsContainer.removeChild(accounts[i]);
+    }
+
+    // Display all accounts 
+    accounts = await getAllAccounts()
 
     for (let i = 0; i < accounts.length; i++) {
         const account = accounts[i];
@@ -34,18 +43,8 @@ async function deleteAccount(id) {
         body: id
     }
     fetch('/db/deleteAccount', options)
-        .then(() => updateAccountsList())
+        .then(() => displayAccounts())
 }
-function updateAccountsList() {
-    const accountsContainer = document.querySelector('.accountsList')
-    const accounts = document.querySelectorAll('.accountsList .account')
-
-    for (let i = 0; i < accounts.length; i++) {
-        accountsContainer.removeChild(accounts[i]);
-    }
-    displayAccounts()
-}
-
 
 // Search system
 function accountsSearchSystem() {

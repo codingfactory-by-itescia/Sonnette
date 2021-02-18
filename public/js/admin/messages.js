@@ -36,7 +36,7 @@ async function displayMessages() {
                 <div class="msgContent">
                     <p class="messageAuthor">${message.author}</p>
                     <p class="messageBody">${message.body}</p>
-                    <p class="msgTime fontStyle">${'date: ' + day + '/' + month + ' ' + ' heure: '  + date.getHours() + ':' + min} </p>
+                    <p class="msgTime fontStyle" style="opacity: .4">${day + '/' + month + ' '  + date.getHours() + ':' + min} </p>
                 </div>
                 
                 <div class="binContainer msgBinContainer" onclick="deleteMsg('${message._id.toString()}')"></div>
@@ -51,7 +51,6 @@ async function displayMessages() {
         document.querySelector('.messagesErrorMsg').innerHTML = 'Aucun message n\'a été trouvé'
     }
 }
-
 async function deleteMsg(id) {
     // Delete a message with his ID
     let options = {
@@ -61,7 +60,6 @@ async function deleteMsg(id) {
     fetch('/db/deleteMessage', options)
         .then(() => displayMessages())
 }
-
 // Search system
 function messagesSearchSystem() {
     let messagesListInput = document.querySelector('#messagesListInput')
@@ -107,7 +105,6 @@ function messagesSearchSystem() {
         }
     })
 }
-
 async function getAllMessages() {
     let messages
     await fetch('/db/getMessages')
