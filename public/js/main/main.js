@@ -164,8 +164,7 @@ async function sendMessage() {
         textArea.value = ''
         form.style.transform = 'translate(0)'
     }
-        
-    
+    printHistoryMsg()
 }
 
 let voiceList = document.querySelector('#voiceList');

@@ -1,9 +1,17 @@
 printHistoryMsg()
 
 async function printHistoryMsg(){
+
+    let messages = document.querySelectorAll('.msgHistoryContainer .msgCard')
+    let msgHistoryContainer = document.querySelector('.msgHistoryContainer')
+    // Delete all messages in the container
+    for (let i = 0; i < messages.length; i++) {
+        msgHistoryContainer.removeChild(messages[i]);
+    }
+
     msgData = await getAllMessages()
 
-    let msgHistoryContainer = document.querySelector('.msgHistoryContainer')
+    
     for (let i = 0; i < msgData.length; i++) {
         const msg = msgData[i];
         const dateCrea = msg.createdAt; 
