@@ -277,7 +277,7 @@ async function addMsgToHistory(msg) {
         },
         body: JSON.stringify(messageData)
     }
-    fetch('/db/newMessage', options)
+    await fetch('/db/newMessage', options)
     
 }
 

@@ -32,7 +32,7 @@ async function printHistoryMsg(){
         let dateToday = new Date()
         let today = dateToday.getDate()
         if(day == today || day + 1 == today){
-            msgHistoryContainer.insertAdjacentHTML('afterbegin', `
+        msgHistoryContainer.insertAdjacentHTML('afterbegin', `
         <div class="msgCard">
             <div class="userInfos">
                 <p class="userName fontStyle">${msg.author}</p>

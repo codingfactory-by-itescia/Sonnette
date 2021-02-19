@@ -6,6 +6,7 @@ if(codringData.connected == true){
     window.location.href = '../index.html'
 }
 
+
 registerBtn.addEventListener('click', async (event) => {
     const inputs = document.querySelectorAll('.registerForm input')
     // Don't reset the form
@@ -30,7 +31,7 @@ registerBtn.addEventListener('click', async (event) => {
             },
             body: JSON.stringify(userData)
         }
-        fetch('/db/createAccount', options)
+        await fetch('/db/createAccount', options)
 
         // Set local storage data
         let data = JSON.parse(localStorage.getItem('codringData'))
@@ -124,6 +125,7 @@ async function getUserId(email) {
             break
         }
     }
+    console.log(id)
     return id
 }
 function showPassword() {
