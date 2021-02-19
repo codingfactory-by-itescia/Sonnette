@@ -1,0 +1,25 @@
+{
+  "name": "sonnette",
+  "version": "1.0.0",
+  "description": "Cod-Ring",
+  "main": "private/server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.17",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon private/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codingfactory-by-itescia/Sonnette.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codingfactory-by-itescia/Sonnette/issues"
+  },
+  "homepage": "https://github.com/codingfactory-by-itescia/Sonnette#readme"
+}
