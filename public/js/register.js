@@ -1,5 +1,11 @@
 const registerBtn = document.querySelector('.registerBtn')
 
+let codringData = JSON.parse(localStorage.getItem('codringData'))
+
+if(codringData.connected == true){
+    window.location.href = '../index.html'
+}
+
 registerBtn.addEventListener('click', async (event) => {
     const inputs = document.querySelectorAll('.registerForm input')
     // Don't reset the form

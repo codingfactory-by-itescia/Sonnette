@@ -87,13 +87,12 @@ form button {
     margin: 1%;
     border-radius: 6px;
     padding: 10px;
-    overflow-y: scroll;
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
 }
 .accountsListContainer input {
+    position: fixed;
     width: 30%;
     margin: 10px;
     padding: 7px 15px;
@@ -106,9 +105,13 @@ form button {
 .accountsList {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .accountsListTitles {
+    position: static;
+    margin-top: 50px;
+    margin-bottom: 5px;
     display: flex;
     width: 100%;
     opacity: .3;

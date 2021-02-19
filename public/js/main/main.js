@@ -216,8 +216,7 @@ async function sendMessage() {
         headers: {"content-type":"application/json"
         },
         "body":JSON.stringify(msg)})
-        .then(a=>a.json()).then(console.log)
-    console.log(msg);
+        .then(a=>a.json())
     let toSpeak = new SpeechSynthesisUtterance(textArea.value);
     let selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
     voices.forEach((voice)=>{
@@ -266,7 +265,6 @@ function PopulateVoices(){
 async function addMsgToHistory(msg) {
     let authorId =  JSON.parse(localStorage.getItem('codringData')).userId
     let author = await getAuthor()
-    console.log(author)
     let messageData = {
         author: author,
         authorId: authorId,

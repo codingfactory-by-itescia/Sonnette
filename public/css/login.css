@@ -14,6 +14,7 @@ header{
 #logo{
     position: absolute;
     left: 30px;
+    top: 10px
 }
 #divLogo h1 {
     transition: .3s;
@@ -137,7 +138,7 @@ form p a {
     text-decoration: none;
 }
 img{
-    height:100px;
+    height:90px;
 }
 .successMsg {
     margin: 0;
