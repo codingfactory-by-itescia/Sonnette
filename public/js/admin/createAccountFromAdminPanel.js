@@ -32,7 +32,7 @@ createAccountBtn.addEventListener('click', async (event) => {
     
         // Reset all inputs of the form, update the list of accounts and the website data
         document.querySelector('.createAccountForm').reset()
-        updateAccountsList()
+        displayAccounts()
         displayWebsiteData()
     }
 })
