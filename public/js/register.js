@@ -19,9 +19,10 @@ registerBtn.addEventListener('click', async (event) => {
         let userData = {
             username: inputs[0].value,
             email: inputs[1].value,
-            password: inputs[2].value,
+            password: await hashPassword(inputs[2].value),
             isAdmin: false
         }
+
         // Create a new user in the database
         let options = {
             method: 'POST',
@@ -101,6 +102,22 @@ async function checkPassword (password) {
     // Password conditions...
     return true
 }
+async function hashPassword(password) {
+    let hash
+    let options = {
+        method: 'POST',
+        headers: {
+            'content-type': 'text/plain'
+        },
+        body: password
+    }
+    await fetch('/db/hashPassword', options)
+        .then((response) => response.text())
+        .then((result) => {
+            hash = result
+        })
+    return hash
+}
 async function getAllAccounts() {
     let accounts
     await fetch('/db/getAccounts')
@@ -126,6 +143,9 @@ async function getUserId(email) {
     }
     return id
 }
+
+
+
 function showPassword() {
     let password = document.getElementById('password');
     
