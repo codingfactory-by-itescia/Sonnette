@@ -206,8 +206,8 @@ async function sendMessage() {
     let txt = document.getElementById("msgArea").value;
     let msg = {"content": txt};
 
-    addMsgToHistory(txt)
-
+    await addMsgToHistory(txt)
+    printHistoryMsg()
     // Display the message in the history section
     msg.username = await getAuthor()
 
@@ -230,12 +230,10 @@ async function sendMessage() {
     setTimeout(function(){synth.speak(toSpeak);
         toSpeak.onend = function(event){
             durationMsg = event.elapsedTime
-            console.log(durationMsg)
             textArea.value = ''
             form.style.transform = 'translate(0)'
         }; 
-    }, 7000);
-    
+    }, 5000);
 }
 
 let voiceList = document.querySelector('#voiceList');
@@ -279,7 +277,7 @@ async function addMsgToHistory(msg) {
         },
         body: JSON.stringify(messageData)
     }
-    fetch('/db/newMessage', options)
+    await fetch('/db/newMessage', options)
     
 }
 
