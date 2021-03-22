@@ -129,6 +129,7 @@ form button {
 .accountPassword, .tablePassword {
     padding: 1vh 1%;
     width: 20%;
+    overflow: hidden;
 }
 .accountAdmin, .tableAdmin {
     padding: 1vh 1%;
