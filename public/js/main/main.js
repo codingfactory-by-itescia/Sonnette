@@ -10,6 +10,7 @@ function validTextArea() {
     if (textArea.value.length > 0) {
         event.preventDefault()
         form.style.transform = "translateX(-500px)"
+        $('.sendMsgBtn').css("pointer-events", "all")
     } else {
         alert('Ton message est vide')
         return false
@@ -203,6 +204,7 @@ const urlDis = "https://discord.com/api/webhooks/778269268533444658/DqY1ieHcWbGC
 let durationMsg;
 async function sendMessage() {
     event.preventDefault()
+    $('.sendMsgBtn').css("pointer-events", "none")
     let txt = document.getElementById("msgArea").value;
     let msg = {"content": txt};
 
@@ -232,7 +234,7 @@ async function sendMessage() {
             durationMsg = event.elapsedTime
             textArea.value = ''
             form.style.transform = 'translate(0)'
-        }; 
+        };
     }, 5000);
 }
 
@@ -293,4 +295,6 @@ async function getAuthor(){
     .then((data) => author = data.username )
     return author
 }
+
+
 
