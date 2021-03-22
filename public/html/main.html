@@ -88,7 +88,10 @@
                             </div>
                         </div>
                             <div class="radioContainer">
-                                <input type="file" name="sound" class="personalSound" accept="audio/*">
+                                <input for="image_uploads" type="file" name="sound" id="input" class="personalSound" accept="audio/*" multiple>
+                            </div>
+                            <div class="preview">
+                                <p>Aucun fichier sélectionné pour le moment</p>
                             </div>
                         <button class="fontStyle" class="validSoundBtn" onclick="validSound()">Choisir cette alerte</button>
                     </div>
@@ -112,7 +115,6 @@
         </div>
     </body>
 
-    <script src="../js/isConnected.js"></script>
     <script src="../js/main/main.js"></script>
     <script src="../js/main/historyMsg.js"></script>
     <script src="../js/darkmode/darkMode.js"></script>

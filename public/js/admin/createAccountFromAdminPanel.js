@@ -14,7 +14,7 @@ createAccountBtn.addEventListener('click', async (event) => {
         let userData = {
             username: inputs[0].value,
             email: inputs[1].value,
-            password: inputs[2].value,
+            password: await hashPassword(inputs[2].value),
             isAdmin: inputs[3].checked ? true : false
         }
     
@@ -32,7 +32,7 @@ createAccountBtn.addEventListener('click', async (event) => {
     
         // Reset all inputs of the form, update the list of accounts and the website data
         document.querySelector('.createAccountForm').reset()
-        updateAccountsList()
+        displayAccounts()
         displayWebsiteData()
     }
 })
@@ -93,6 +93,22 @@ async function checkEmail (email) {
         }
     }
     return true
+}
+async function hashPassword(password) {
+    let hash
+    let options = {
+        method: 'POST',
+        headers: {
+            'content-type': 'text/plain'
+        },
+        body: password
+    }
+    await fetch('/db/hashPassword', options)
+        .then((response) => response.text())
+        .then((result) => {
+            hash = result
+        })
+    return hash
 }
 async function checkPassword (password) {
     // password conditions...
