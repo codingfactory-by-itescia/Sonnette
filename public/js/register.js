@@ -149,7 +149,7 @@ async function getUserId(email) {
 
 
 function showPassword() {
-    let password = document.getElementById('password');
+    let password = document.getElementById('passwordInput');
     
     if (password.type === "password") {
         password.type = "text";

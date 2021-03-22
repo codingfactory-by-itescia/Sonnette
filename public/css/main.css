@@ -315,6 +315,45 @@ form button {
     }
   }
 
+/* GET REWARDS CONTAINER */
+.getRewardsContainer {
+  background: linear-gradient(221.06deg, #7F48B5 0%, #7F48B5 0.01%, #5F01BC 100%);
+  padding: 1%;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  display: flex;
+  justify-content: space-around;
+  height: 80px;
+  cursor: pointer;
+}
+.getRewardsContainer p {
+  background-color: transparent;
+  font-family: 'poppins', sans-serif;
+}
+.getRewardsContainer .rewardsTxt {
+  background-color: transparent;
+  align-self: center;
+  margin-right: 30px;
+}
+.rewardsTxt .lastConnection {
+  opacity: .7;
+  font-weight: 500;
+  font-size: 14px;
+}
+.rewardsTxt .getRewardsTxt {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.getRewardsContainer img {
+  background: none;
+  height: 116%;
+}
+
+
+/* RESPONSIVE */
   @media (max-width: 1320px) {
     .msgHistoryPanel {
       display: none;
