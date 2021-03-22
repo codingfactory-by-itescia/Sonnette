@@ -11,7 +11,6 @@ async function printHistoryMsg(){
     }
 
     msgData = await getAllMessages()
-
     
     for (let i = 0; i < msgData.length; i++) {
         const msg = msgData[i];

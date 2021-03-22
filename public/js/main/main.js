@@ -262,6 +262,47 @@ function PopulateVoices(){
     voiceList.selectedIndex = selectedIndex;
 }
 
+async function checkForRefresh(size){
+    counter = 0;
+    allMsgData = await getAllMessages();
+    lastsMsg = $('.msgCard');
+    for(i = allMsgData.length - 1; i > allMsgData.length - size; i--){
+        const msg = allMsgData[i];
+        const dateCrea = msg.createdAt; 
+        const date = new Date(dateCrea);
+        let day = date.getDate()
+        if (day < 10) {
+            day = '0' + day
+        }
+        let dateToday = new Date()
+        let today = dateToday.getDate()
+        if(day == today || day + 1 == today){
+            counter++
+        }
+    }
+    if(counter != lastsMsg.length){
+        printHistoryMsg();
+    }
+}
+
+setInterval(async function(){
+    allMsgData = await getAllMessages();
+    lastsMsg = $('.msgCard');
+    lastsMsgUserName = $('.userName');
+    lastsMsgTime = $(".msgTime");
+    lastsMsgContent = $(".msgContent");
+    
+    if (lastsMsg.length > 10) {
+        await checkForRefresh(11)
+    }  
+    else{
+        if(lastsMsg.length != 0){
+        await checkForRefresh(lastsMsg.length)
+        }
+    }
+}, 5000)
+
+
 async function addMsgToHistory(msg) {
     let authorId =  JSON.parse(localStorage.getItem('codringData')).userId
     let author = await getAuthor()
