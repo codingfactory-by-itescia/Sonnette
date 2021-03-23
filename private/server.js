@@ -51,7 +51,7 @@ app.post('/db/deleteAccount', async (req, res) => {
     let accountToDelete = await Account.findById(req.body)
     await accountToDelete.remove().then(() => res.sendStatus(200))
 })
-// Set a new date for "lastConnection" variable
+// Redefine "lastConnection" variable in the user profile
 app.post('/db/editLastConnection', (req,res) => {
     const userId = req.body
     const newLastConnection = new Date()
@@ -60,7 +60,6 @@ app.post('/db/editLastConnection', (req,res) => {
         user.lastConnection = newLastConnection
         await user.save()   
     })
-
 })
 // Get all messages
 app.get('/db/getMessages', (req, res) => {

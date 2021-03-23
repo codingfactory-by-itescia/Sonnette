@@ -34,15 +34,10 @@ function displayDiffTime(diffMinutes, diffHours, diffDays) {
     }
 }
 
-// When the user quit the website, save the actual date in his profil
-window.onbeforeunload = async () => {
-    const userId = JSON.parse(localStorage.getItem('codringData')).userId
-
-    const options = {
-        method: 'POST',
-        body: userId
-    }
-    await fetch('/db/editLastConnection', options)
-}
+// Redefine the "lastConnection" variable in the user profil
+fetch('/db/editLastConnection', {
+    method: 'POST',
+    body: userId
+})
 
 
