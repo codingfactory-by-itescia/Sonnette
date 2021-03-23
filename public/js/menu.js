@@ -4,8 +4,6 @@ let topSpan = document.querySelector('.hambContainer .topSpan')
 let middleSpan = document.querySelector('.hambContainer .middleSpan')
 let bottomSpan = document.querySelector('.hambContainer .bottomSpan')
 
-// Hamburger animation
-
 // Set default style parameters
 topSpan.style.transformOrigin = 'center'
 bottomSpan.style.transformOrigin = 'center'

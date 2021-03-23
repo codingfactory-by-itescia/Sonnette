@@ -1,11 +1,12 @@
 const registerBtn = document.querySelector('.registerBtn')
 
+// Get local storage information
 let codringData = JSON.parse(localStorage.getItem('codringData'))
 
+// If user is connected, Redirection to connection page
 if(codringData.connected == true){
     window.location.href = '../index.html'
 }
-
 
 registerBtn.addEventListener('click', async (event) => {
     const inputs = document.querySelectorAll('.registerForm input')

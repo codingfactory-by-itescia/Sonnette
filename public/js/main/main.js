@@ -5,8 +5,8 @@ function goBack(distance) {
     form.style.transform = `translateX(${distance}px)`
 }
 
-
 function validTextArea() {
+    // Check if message is not empty
     if (textArea.value.length > 0) {
         event.preventDefault()
         form.style.transform = "translateX(-500px)"
@@ -24,11 +24,13 @@ function validSound() {
 }
 
 function playSound(n) {
+    // Play the sounds selected
   let sound = new Audio('../audio/sound' + n + '.mp3')
   sound.play()
   sound.volume = .5
 }
 
+// Check wich sound is selected
 let checkSound1 = document.getElementById("sound1")
 let checkSound2 = document.getElementById("sound2")
 let checkSound3 = document.getElementById("sound3")
