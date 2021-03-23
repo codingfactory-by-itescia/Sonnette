@@ -19,7 +19,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 1%;
     width: max-content;
 }
 .darkModeContainer p {
