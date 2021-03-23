@@ -11,6 +11,7 @@ function validTextArea() {
         event.preventDefault()
         form.style.transform = "translateX(-500px)"
         $('.sendMsgBtn').css("pointer-events", "all")
+        $('.sendMsgContainer .leftArrowContainer').css("pointer-events", "all")
     } else {
         alert('Ton message est vide')
         return false
@@ -205,6 +206,7 @@ let durationMsg;
 async function sendMessage() {
     event.preventDefault()
     $('.sendMsgBtn').css("pointer-events", "none")
+    $('.sendMsgContainer .leftArrowContainer').css("pointer-events", "none")
     let txt = document.getElementById("msgArea").value;
     let msg = {"content": txt};
 
@@ -261,6 +263,39 @@ function PopulateVoices(){
 
     voiceList.selectedIndex = selectedIndex;
 }
+
+async function checkForRefresh(){
+    counter = 0;
+    allMsgData = await getAllMessages();
+    lastsMsg = $('.msgCard');
+    size = lastsMsg.length;
+    for(i = 0; i < allMsgData.length; i++){
+        const msg = allMsgData[i];
+        const dateCrea = msg.createdAt; 
+        const date = new Date(dateCrea);
+        let day = date.getDate()
+        if (day < 10) {
+            day = '0' + day
+        }
+        let dateToday = new Date()
+        let today = dateToday.getDate()
+        if(day == today || day + 1 == today){
+            counter++
+        }
+    }
+    if(counter != size ){
+        printHistoryMsg();
+    }
+}
+
+setInterval(async function(){
+    allMsgData = await getAllMessages();
+    lastsMsg = $('.msgCard');    
+    if (lastsMsg.length != 0) {
+        await checkForRefresh()
+    }
+}, 2000)
+
 
 async function addMsgToHistory(msg) {
     let authorId =  JSON.parse(localStorage.getItem('codringData')).userId

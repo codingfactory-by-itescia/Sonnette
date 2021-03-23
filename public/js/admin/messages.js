@@ -112,3 +112,32 @@ async function getAllMessages() {
         .then((data) => messages = data)
     return messages
 }
+
+async function checkForRefresh(){
+    allMsgData = await getAllMessages();
+    lastsMsg = $('.message');
+    size = lastsMsg.length;
+    for(i = 0; i < allMsgData.length; i++){
+        const msg = allMsgData[i];
+        const dateCrea = msg.createdAt; 
+        const date = new Date(dateCrea);
+        let day = date.getDate()
+        if (day < 10) {
+            day = '0' + day
+        }
+        let dateToday = new Date()
+        let today = dateToday.getDate()
+    }
+    if(allMsgData.length != size ){
+        displayMessages();
+        displayTotalMessages();
+    }
+}
+
+setInterval(async function(){
+    allMsgData = await getAllMessages();
+    lastsMsg = $('.message');    
+    if (lastsMsg.length != 0) {
+        await checkForRefresh()
+    }  
+}, 2000)
