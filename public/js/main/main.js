@@ -11,6 +11,7 @@ function validTextArea() {
         event.preventDefault()
         form.style.transform = "translateX(-500px)"
         $('.sendMsgBtn').css("pointer-events", "all")
+        $('.sendMsgContainer .leftArrowContainer').css("pointer-events", "all")
     } else {
         alert('Ton message est vide')
         return false
@@ -205,6 +206,7 @@ let durationMsg;
 async function sendMessage() {
     event.preventDefault()
     $('.sendMsgBtn').css("pointer-events", "none")
+    $('.sendMsgContainer .leftArrowContainer').css("pointer-events", "none")
     let txt = document.getElementById("msgArea").value;
     let msg = {"content": txt};
 
