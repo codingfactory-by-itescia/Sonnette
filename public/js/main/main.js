@@ -290,14 +290,10 @@ async function checkForRefresh(){
 
 setInterval(async function(){
     allMsgData = await getAllMessages();
-    lastsMsg = $('.msgCard');
-    lastsMsgUserName = $('.userName');
-    lastsMsgTime = $(".msgTime");
-    lastsMsgContent = $(".msgContent");
-    
+    lastsMsg = $('.msgCard');    
     if (lastsMsg.length != 0) {
         await checkForRefresh()
-    }  
+    }
 }, 2000)
 
 

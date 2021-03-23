@@ -17,6 +17,10 @@ async function displayWebsiteData() {
     totalAccountsTitle.innerHTML = `utilisateur${totalAccounts > 1 ? 's' : ''}`
 
     // Display the total of messages
+    await displayTotalMessages();
+}
+
+async function displayTotalMessages(){
     let totalMessages
     await fetch('/db/getMessages')
         .then((response) => response.json())
