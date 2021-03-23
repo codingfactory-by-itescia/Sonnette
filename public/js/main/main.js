@@ -262,11 +262,12 @@ function PopulateVoices(){
     voiceList.selectedIndex = selectedIndex;
 }
 
-async function checkForRefresh(size){
+async function checkForRefresh(){
     counter = 0;
     allMsgData = await getAllMessages();
     lastsMsg = $('.msgCard');
-    for(i = allMsgData.length - 1; i > allMsgData.length - size; i--){
+    size = lastsMsg.length;
+    for(i = 0; i < allMsgData.length; i++){
         const msg = allMsgData[i];
         const dateCrea = msg.createdAt; 
         const date = new Date(dateCrea);
@@ -280,7 +281,7 @@ async function checkForRefresh(size){
             counter++
         }
     }
-    if(counter != lastsMsg.length){
+    if(counter != size ){
         printHistoryMsg();
     }
 }
@@ -292,15 +293,10 @@ setInterval(async function(){
     lastsMsgTime = $(".msgTime");
     lastsMsgContent = $(".msgContent");
     
-    if (lastsMsg.length > 10) {
-        await checkForRefresh(11)
+    if (lastsMsg.length != 0) {
+        await checkForRefresh()
     }  
-    else{
-        if(lastsMsg.length != 0){
-        await checkForRefresh(lastsMsg.length)
-        }
-    }
-}, 5000)
+}, 2000)
 
 
 async function addMsgToHistory(msg) {
