@@ -17,6 +17,10 @@ const accountSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         require: true
+    },
+    lastConnection: {
+        type: Date,
+        require: true
     }
 }, {timestamps: true})
 

@@ -26,7 +26,8 @@ app.post('/db/createAccount', (req, res) => {
         username: userData.username,
         email: userData.email,
         password: userData.password,
-        isAdmin: userData.isAdmin
+        isAdmin: userData.isAdmin,
+        lastConnection: userData.lastConnection
     })
     createAccount.save()
         .then(() => { res.sendStatus(200) })
@@ -56,6 +57,17 @@ app.post('/db/getAccount',(req, res) => {
 app.post('/db/deleteAccount', async (req, res) => {
     let accountToDelete = await Account.findById(req.body)
     await accountToDelete.remove().then(() => res.sendStatus(200))
+})
+// Set a new date for "lastConnection" variable
+app.post('/db/editLastConnection', (req,res) => {
+    const userId = req.body
+    const newLastConnection = new Date()
+
+    Account.findById(userId).then(async (user) => {
+        user.lastConnection = newLastConnection
+        await user.save()   
+    })
+
 })
 // Get all messages
 app.get('/db/getMessages', (req, res) => {

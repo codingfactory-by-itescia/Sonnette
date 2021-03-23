@@ -318,7 +318,7 @@ form button {
 /* GET REWARDS CONTAINER */
 .getRewardsContainer {
   background: linear-gradient(221.06deg, #7F48B5 0%, #7F48B5 0.01%, #5F01BC 100%);
-  padding: 1%;
+  padding: 1% 1.5% 0 1.5%;
   border-radius: 10px;
   position: absolute;
   bottom: 5%;
@@ -327,6 +327,7 @@ form button {
   justify-content: space-around;
   height: 80px;
   cursor: pointer;
+  color: white;
 }
 .getRewardsContainer p {
   background-color: transparent;
@@ -345,11 +346,12 @@ form button {
 .rewardsTxt .getRewardsTxt {
   font-size: 22px;
   font-weight: bold;
+  margin-top: -6px;
 }
 
 .getRewardsContainer img {
   background: none;
-  height: 116%;
+  height: 100%;
 }
 
 

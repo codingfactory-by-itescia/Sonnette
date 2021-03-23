@@ -42,9 +42,7 @@ async function printHistoryMsg(){
         </div>
         `)
         }
-        
     }
-    
 }
 
 function getTime() {

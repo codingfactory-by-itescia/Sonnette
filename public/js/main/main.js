@@ -272,7 +272,7 @@ async function addMsgToHistory(msg) {
     }
 
     // Set fetch options
-    options = {
+    let options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

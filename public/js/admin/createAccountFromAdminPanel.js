@@ -15,7 +15,8 @@ createAccountBtn.addEventListener('click', async (event) => {
             username: inputs[0].value,
             email: inputs[1].value,
             password: await hashPassword(inputs[2].value),
-            isAdmin: inputs[3].checked ? true : false
+            isAdmin: inputs[3].checked ? true : false,
+            lastConnection: new Date()
         }
     
         // Set fetch options

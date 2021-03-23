@@ -21,7 +21,8 @@ registerBtn.addEventListener('click', async (event) => {
             username: inputs[0].value,
             email: inputs[1].value,
             password: await hashPassword(inputs[2].value),
-            isAdmin: false
+            isAdmin: false,
+            lastConnection: new Date()
         }
 
         // Create a new user in the database
@@ -142,7 +143,6 @@ async function getUserId(email) {
             break
         }
     }
-    console.log(id)
     return id
 }
 
