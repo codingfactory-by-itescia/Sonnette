@@ -59,6 +59,7 @@ async function deleteMsg(id) {
     }
     fetch('/db/deleteMessage', options)
         .then(() => displayMessages())
+        .then(() => displayTotalMessages())
 }
 // Search system
 function messagesSearchSystem() {
