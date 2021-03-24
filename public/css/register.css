@@ -2,7 +2,7 @@ body {
     margin:0;   
     display:flex;
     flex-direction: column;
-    font-family: sans-serif;
+    font-family: 'poppins', sans-serif;
 }
 header{
     display: flex;
@@ -94,7 +94,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .1);
 } 
 form input {
     padding: 1%;
@@ -135,15 +135,12 @@ form button {
     width: max-content;
     margin-right: 10px
 }
-
-
 .login{
     align-items: center;
     display: flex;
     width: 400px;
     justify-content: space-evenly;
 }
-
 a.btLogin{
     border-radius: 10px;
     padding-left: 10px;
@@ -183,4 +180,32 @@ img{
 }
 .msgContainer {
     margin: 0;
+}
+
+/* EMAIL CONFIRMATION ALERT */
+.emailConfirmationAlertContainer {
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .3);
+}
+.emailConfirmationAlert {
+    background-color: white;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .1);
+    padding: 20px 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+}
+.emailConfirmationAlert p {
+    margin: 5px 0;
+}
+.emailConfirmationAlert .userEmail {
+    font-weight: 600;
 }

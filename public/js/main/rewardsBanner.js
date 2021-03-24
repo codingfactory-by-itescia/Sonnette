@@ -7,8 +7,6 @@ const options = {
 fetch('/db/getAccount', options)
 .then((response) => response.json())
 .then((user) => {
-    console.log(`Last connection : ${new Date(user.lastConnection).toLocaleString()}`);
-
     const now = new Date()
     const lastConnection = new Date(user.lastConnection)
     const diffMilli = now - lastConnection

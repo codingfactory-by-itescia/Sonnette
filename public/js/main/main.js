@@ -322,6 +322,3 @@ async function getAuthor(){
     .then((data) => author = data.username )
     return author
 }
-
-
-

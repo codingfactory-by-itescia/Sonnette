@@ -1,4 +1,6 @@
 const registerBtn = document.querySelector('.registerBtn')
+const confirmationEmailAlert = document.querySelector('.emailConfirmationAlertContainer')
+const userEmailP = document.querySelector('.userEmail')
 
 // Get local storage information
 let codringData = JSON.parse(localStorage.getItem('codringData'))
@@ -17,32 +19,18 @@ registerBtn.addEventListener('click', async (event) => {
     let isInputsCorrect = await checkInputs(inputs)
 
     if (isInputsCorrect) {
-        // Get user data with values of inputs
+        // Get user data from inputs
         let userData = {
             username: inputs[0].value,
             email: inputs[1].value,
             password: await hashPassword(inputs[2].value),
-            isAdmin: false,
-            lastConnection: new Date()
         }
 
-        // Create a new user in the database
-        let options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        }
-        await fetch('/db/createAccount', options)
+        sendVerificationEmail(userData)
 
-        // Set local storage data
-        let data = JSON.parse(localStorage.getItem('codringData'))
-        data.userId = await getUserId(inputs[1].value)
-        data.connected = true
-        localStorage.setItem('codringData', JSON.stringify(data))
-
-        window.location.href = 'main.html'
+        // Display email sent message
+        confirmationEmailAlert.style.display = 'flex'
+        userEmailP.innerHTML = userData.email
     }
 })
 async function checkInputs(inputs) {
@@ -146,8 +134,6 @@ async function getUserId(email) {
     }
     return id
 }
-
-
 
 function showPassword() {
     let password = document.getElementById('passwordInput');
