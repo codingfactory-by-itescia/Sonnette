@@ -11,6 +11,7 @@ async function printHistoryMsg(){
         msgHistoryContainer.removeChild(messages[i]);
     }
 
+    // Display all messages with details
     for (let i = 0; i < msgData.length; i++) {
         const msg = msgData[i];
         const dateCrea = msg.createdAt; 
@@ -49,6 +50,7 @@ async function getAllMessages() {
 
 
 async function checkForRefresh(){
+    // Check if modification in bdd and not the same on the page
     allMsgData = await getAllMessages();
     lastsMsg = $('.msgCard');
     size = lastsMsg.length;
@@ -66,6 +68,8 @@ async function checkForRefresh(){
     }
 }
 
+
+// Each 2 seconds, check if change append in bdd
 setInterval(async function(){
     allMsgData = await getAllMessages();
     lastsMsg = $('.msgCard');    

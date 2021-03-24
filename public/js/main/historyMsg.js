@@ -12,6 +12,7 @@ async function printHistoryMsg(){
 
     msgData = await getAllMessages()
     
+    // Display all messages with details
     for (let i = 0; i < msgData.length; i++) {
         const msg = msgData[i];
         const dateCrea = msg.createdAt; 

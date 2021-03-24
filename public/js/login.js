@@ -1,9 +1,11 @@
 const connectionBtn = document.querySelector('#conncetionBtn')
 
+// Get local storage information
 if (localStorage.getItem('codringData') == null) {
     localStorage.setItem('codringData', '{}')
 }
   
+// If user is connected, Redirection to main page
 if (JSON.parse(localStorage.getItem('codringData')).connected) {
     window.location.href = 'html/main.html'
 }
