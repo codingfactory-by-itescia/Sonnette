@@ -77,3 +77,50 @@ input:checked + .slider:before {
 .darkModeBtn {
     cursor: pointer;
 }
+
+/* REBOOT PASSWORD */
+.forgotPasswordContainer {
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .3);
+}
+.forgotPassword {
+    background-color: white;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .1);
+    padding: 20px 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+}
+#forgotPasswordInput {
+    padding: 2% 3%;
+    margin: 10px 0;
+    border: none;
+    border: 2px solid rgb(102, 0, 204);
+    border-radius: 5px;
+    outline: none;
+    width: 94%;
+}
+.forgotPassword button {
+    width: 100%;
+    margin-top: 10px;
+}
+button {
+    background-color: rgb(102, 0, 204);
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 7px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    align-self: flex-end;
+    outline: none;
+}

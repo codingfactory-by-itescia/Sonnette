@@ -105,7 +105,7 @@ form input {
     outline: none;
     width: 98%;
 }
-form button {
+form button, .forgotPassword button {
     background-color: rgb(102, 0, 204);
     border-radius: 8px;
     border: none;
@@ -137,7 +137,13 @@ form p a {
     cursor: pointer;
     text-decoration: none;
 }
-img{
+.registerLink {
+    margin-bottom: -4px;
+}
+.forgotPasswordLink {
+    margin-bottom: 0;
+}
+img {
     height:90px;
 }
 .successMsg {
@@ -152,4 +158,43 @@ img{
 }
 .msgContainer {
     margin: 0;
+}
+
+/* FORGOT PASSWORD */
+.forgotPasswordContainer {
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .3);
+}
+.forgotPassword {
+    background-color: white;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .1);
+    padding: 20px 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+}
+.forgotPassword p {
+    margin-bottom: 0;
+}
+.forgotPassword input {
+    padding: 2% 3%;
+    margin: 10px 0;
+    border: none;
+    border: 2px solid rgb(102, 0, 204);
+    border-radius: 5px;
+    outline: none;
+    width: 94%;
+}
+.forgotPassword button {
+    width: 100%;
+    font-size: 15px;
+    outline: none;
 }
