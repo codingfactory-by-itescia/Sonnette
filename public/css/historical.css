@@ -215,6 +215,9 @@ form button {
   margin-bottom: 5px;
   background-color: transparent !important;
 }
+.msgCard .userInfos a:hover {
+  text-decoration: underline;
+}
 .msgCard .userName {
   font-weight: bold;
   color: rgb(102, 0, 204);

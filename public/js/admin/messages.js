@@ -34,7 +34,7 @@ async function displayMessages() {
         messagesList.insertAdjacentHTML('afterbegin',`
             <div class="message">
                 <div class="msgContent">
-                    <p class="messageAuthor">${message.author}</p>
+                    <a href='profil.html?id=${msg.authorId}'><p class="messageAuthor">${msg.author}</p></a>
                     <p class="messageBody">${message.body}</p>
                     <p class="msgTime fontStyle" style="opacity: .4">${day + '/' + month + ' '  + date.getHours() + ':' + min} </p>
                 </div>

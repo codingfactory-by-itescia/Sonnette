@@ -5,6 +5,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
 }
 a {
     text-decoration: none;
@@ -31,8 +32,8 @@ a {
     cursor: pointer;
     font-size: 14px;
 }
-#adminPanelIcon {
-    width: 30px;
+#userIcon {
+    width: 31px;
     vertical-align: middle;
     cursor: pointer;
     margin-left: 10px;

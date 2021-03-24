@@ -2,16 +2,18 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/rewards.css">
+    <link rel="icon" href="../img/logo_sonnette.png">
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/historical.css">
+    <link rel="stylesheet" href="../css/profil.css">
     <link rel="stylesheet" href="../css/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
-    <title>Historique</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Profil de</title>
 </head>
 <body>
-
     <header>
         <div class="unclickableHamb">
             <div class="hambContainer">
@@ -22,7 +24,6 @@
         </div>
         <div id="divLogo">
             <h1><a href="main.html">Cod' Ring</a></h1>
-            
         </div>
         <div id="divConnexion">
             <a id="disconnectionBtn">Déconnexion</a>
@@ -42,26 +43,41 @@
         </ul>
     </div>
 
-    <div class="msgHistoryPanel">
-        <header>
-            <h2 class="fontStyle" >Historique de tous les messages</h2>
-        </header>
-        <div class="msgHistoryContainer">
-            
+    <div class="main">
+        <div class="profilHeader">
+            <p class="username"></p>
+            <p class="creationDate">Compte créé le 23 oct 2021</p>
         </div>
-    </div>
-    <div class="purchaseHistoryPanel">
-            <header>
-                <h2 class="fontStyle"> Historique des récompenses </h2>
-            </header>
-            <div class="purchaseHistoryContainer">
-                <p>Ça arrive bientôt !</p>
+
+        <div class="userDataCounter">
+            <div class="userTotalMsg">
+                <p class="dataCounter"></p>
+                <p></p>
             </div>
+        </div>
+
+        <div class="profilDataContainer">
+
+            <div class="profilMsgHistoryContainer profilSectionContainer">
+                <div class="profilSectionTitle">
+                    <p>Messages de <span class="username"></span></p>
+                </div>
+                <div class="profilMsgHistory">
+                    <p class="emptyMsgAlert"><span class="username" style="color: black;"></span> n'a pas écrit de message...</p>
+                </div>
+            </div>
+            <div class="profilBadgesContainer profilSectionContainer">
+                <div class="profilSectionTitle">
+                    <p>Badges de <span class="username"></span><br><span class="rienAVoir">(des badges ou une connerie dans le genre)</span></p>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/isConnected.js"></script>
-    <script src="../js/historical.js"></script>
+    <script src="../js/profil/profilData.js"></script>
+    <script src="../js/profil/profilMsgHistory.js"></script>
     <script src="../js/menu.js"></script>
     <script src="../js/profil/goToProfilLink.js"></script>
     <script src="../js/disconnection.js"></script>

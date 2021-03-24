@@ -35,7 +35,7 @@ async function printHistoryMsg(){
         msgHistoryContainer.insertAdjacentHTML('afterbegin', `
         <div class="msgCard">
             <div class="userInfos">
-                <p class="userName fontStyle">${msg.author}</p>
+                <a href='profil.html?id=${msg.authorId}'><p class="userName fontStyle">${msg.author}</p></a>
                 <p class="msgTime fontStyle" style="opacity: .4">${day + '/' + month + ' '  + date.getHours() + ':' + min} </p>
             </div>
             <p class="msgContent fontStyle">${msg.body}</p>
