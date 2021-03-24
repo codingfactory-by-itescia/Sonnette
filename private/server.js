@@ -58,7 +58,16 @@ app.post('/db/editLastConnection', (req,res) => {
 
     Account.findById(userId).then(async (user) => {
         user.lastConnection = newLastConnection
-        await user.save()   
+        await user.save()
+    })
+})
+// Redefine the password of the user
+app.post('/db/editPassword', (req,res) => {
+    const userData = JSON.parse(req.body)
+
+    Account.findById(userData.userId).then(async (user) => {
+        user.password = bcrypt.hashSync(userData.newPassword, 10)
+        await user.save()
     })
 })
 // Get all messages

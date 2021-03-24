@@ -41,14 +41,30 @@
     </div>
 
     <div class="settingsContainer">
+        <div class="rebootPasswordContainer">
+            <button>Réinitialiser mon mot de passe</button>
+        </div>
+    </div>
 
+    <!-- HIDE -->
+    <div class="forgotPasswordContainer">
+        <div class="forgotPassword">
+            <p>Saisir l'adresse mail de récupération</p>
+            <input type="email" id="forgotPasswordInput" placeholder="Email">
+            <button>Réinitialiser mon mot de passe</button>
+            <p class="msg"></p>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E"></script> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <script src="../js/isConnected.js"></script>
+    <script src="../js/RebootPasswordFunctions.js"></script>
+    <script src="../js/settingsPage/SettingsRebootPassword.js"></script>
     <script src="../js/disconnection.js"></script>
     <script src="../js/menu.js"></script>
     <script src="../js/main/adminIcon.js"></script>
 </body>
 </html>
+ 

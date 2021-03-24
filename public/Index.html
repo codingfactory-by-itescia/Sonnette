@@ -28,13 +28,24 @@
                 </div>
                 <button class="fontStyle" id="conncetionBtn">Connexion</button>
                 <p class="msgContainer"></p>
-                <p class="fontStyle">Vous n'avez pas de compte ? <a href="html/register.html">S'inscrire</a></p>
+                <p class="fontStyle registerLink">Vous n'avez pas de compte ? <a href="html/register.html">S'inscrire</a></p>
+                <p class="fontStyle forgotPasswordLink"><a>Mot de passe oublié</a></p>
             </form>
+            
+            <div class="forgotPasswordContainer">
+                <div class="forgotPassword">
+                    <p>Saisir l'adresse mail de récupération</p>
+                    <input type="email" id="forgotPasswordInput" placeholder="Email">
+                    <button>Réinitialiser mon mot de passe</button>
+                    <p class="msg"></p>
+                </div>
+            </div>
         </div>
 
     </body>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <script src="js/login.js"></script>
-    <script src="js/darkmode/darkModeIndex.js"></script>
+    <script src="js/RebootPasswordFunctions.js"></script>
 
 </html>
