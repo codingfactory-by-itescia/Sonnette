@@ -124,3 +124,14 @@ button {
     align-self: flex-end;
     outline: none;
 }
+.msg {
+    margin: 10px 0 15px 0;
+    font-size: 13px;
+    margin-bottom: -10px;
+}
+.successMsg {
+    color: green !important;
+}
+.errorMsg {
+    color: red !important;
+}
