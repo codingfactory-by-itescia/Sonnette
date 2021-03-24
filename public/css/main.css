@@ -48,7 +48,7 @@ form button {
     align-self: flex-end;
     outline: none;
 }
-.textAreaContainer, .soundSelectionContainer, .sendMsgContainer {
+.textAreaContainer, .soundSelectionContainer, .sendMsgContainer { 
     width: 500px;
     height: 100%;
     display: flex;
@@ -318,7 +318,7 @@ form button {
 /* GET REWARDS CONTAINER */
 .getRewardsContainer {
   background: linear-gradient(221.06deg, #7F48B5 0%, #7F48B5 0.01%, #5F01BC 100%);
-  padding: 0 20px;
+  padding: 0 30px;
   border-radius: 10px;
   position: absolute;
   bottom: 5%;
