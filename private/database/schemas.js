@@ -22,11 +22,18 @@ const accountSchema = new mongoose.Schema({
         type: Date,
         require: true
     },
-    todoList: [
+    personalTodoList: [
         {
             taskId: mongoose.Schema.Types.ObjectId,
             taskBody: String,
             isDone: Boolean
+        }
+    ],
+    defaultTodoList: [
+        {
+            taskId: String,
+            isDone: Boolean
+
         }
     ]
 }, {timestamps: true})
@@ -46,7 +53,13 @@ const messagesSchema = new mongoose.Schema({
     }
 }, {timestamps: true})
 
+const defaultTodoListSchema = new mongoose.Schema({
+    task: String
+        
+}, {timestamps: true})
+
 module.exports = {
     Account: mongoose.model('accounts', accountSchema),
-    Message: mongoose.model('messages', messagesSchema)
+    Message: mongoose.model('messages', messagesSchema),
+    DefaultTodoList: mongoose.model('defaultTodoList', defaultTodoListSchema)
 }

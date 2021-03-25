@@ -1,7 +1,7 @@
 const input = document.querySelector('.addTaskContainer input')
 const taskContainer = document.querySelector('.personalTodoContainer .todoList')
 const addTaskBtn = document.querySelector('.addTaskContainer img')
-const userId = JSON.parse(localStorage.getItem('codringData')).userId
+let userId = JSON.parse(localStorage.getItem('codringData')).userId
 
 setTaskData()
 displayAllTask()
@@ -16,7 +16,7 @@ async function displayAllTask() {
     // Get all task of the user
     let taskList
 
-    await fetch('/db/getTodoList', { method: 'POST', body: userId})
+    await fetch('/db/getPersonalTodoList', { method: 'POST', body: userId})
     .then(response => response.json())
     .then(result => taskList = result)
 
@@ -65,7 +65,7 @@ async function deleteTask(taskId) {
     }
     taskContainer.removeChild(document.getElementById(taskId))
     
-    await fetch('/db/deleteTask', { method: 'POST', body: JSON.stringify(data) })
+    await fetch('/db/deletePersonalTask', { method: 'POST', body: JSON.stringify(data) })
     .then(() => setTaskData())
 }
 
@@ -77,7 +77,7 @@ async function changeTaskStatus(taskId) {
         taskId: taskId,
         userId: userId
     }
-    await fetch('/db/changeTaskStatus', { method: 'POST', body: JSON.stringify(data) })
+    await fetch('/db/changePersonalTaskStatus', { method: 'POST', body: JSON.stringify(data) })
     .then(() => setTaskData())
 }
 
@@ -85,7 +85,7 @@ async function setTaskData() {
     // Get the total number of of task
     let taskLength
 
-    await fetch('/db/getTodoList', { method: 'POST', body: userId})
+    await fetch('/db/getPersonalTodoList', { method: 'POST', body: userId})
     .then(response => response.json())
     .then(result => taskLength = result.length)
 
@@ -100,4 +100,21 @@ async function setTaskData() {
     // Display the task data and set style to progress circle
     document.querySelector('.personalTodoContainer .taskDoneTitle').innerHTML = `${taskDoneCounter} sur ${taskLength}`
     document.querySelector('.personalTodoContainer .progressCircle2').style.strokeDashoffset = `calc(57 - (57 * ${(taskDoneCounter / taskLength) * 100}) / 100)`
+
+    // If user has no task, display the empty message
+    const emptyTodoListElement = document.querySelector('.personalTodoContainer .emptyTodoList')
+    if (taskLength == 0) {
+        emptyTodoListElement.style.display = 'block'
+    } else {
+        emptyTodoListElement.style.display = 'none'
+    }
 }
+
+// When user clicks on the empty todo list link, display an example of task in the input
+const emptyTodoListLink = document.querySelector('.emptyTodoList a')
+
+emptyTodoListLink.addEventListener('click', () => {
+    input.value = 'Faire des avions en papier'
+    input.focus()
+})
+

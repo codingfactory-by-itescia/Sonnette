@@ -57,7 +57,7 @@ body {
     stroke: #cecece;
 }
 .progressTaskCircleContainer .progressCircle2 {
-    stroke-dashoffset: 0;
+    stroke-dashoffset: 57;
     stroke: rgb(102, 0, 204);
     transition: all .5s;
 }
@@ -116,4 +116,16 @@ body {
 .taskDone .taskTitle p {
     opacity: .5;
     text-decoration: line-through;
+}
+.emptyTodoList {
+    display: none;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 5vh;
+}
+.emptyTodoList a {
+    cursor: pointer;
+}
+.emptyTodoList a:hover {
+    text-decoration: underline;
 }
