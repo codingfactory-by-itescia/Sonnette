@@ -1,0 +1,32 @@
+a {
+    text-decoration: none;
+    color:  rgb(102, 0, 204);
+    font-family: 'Comfortaa', cursive;
+    font-size: x-large;
+}
+.unclickableHamb {
+    padding-right: 40px;
+}
+.closed {
+    transform: translateX(-279px) !important;
+}
+.menuContainer ul li a{
+    font-size: medium;
+}
+h2{
+    font-size: large;
+}
+.purchaseHistoryPanel {
+    width: 70%;
+    height: 85%;
+    margin-right: 3px;
+    position: absolute;
+    top: 10vh;
+    right: 65px;
+    background-color: white;
+    box-shadow: 10px 10px 13px 2px rgb(0 0 0 / 20%);
+    border-style: solid;
+    border-color: rgb(223, 227, 228);
+    border-bottom: none;
+    border-right: none;
+}

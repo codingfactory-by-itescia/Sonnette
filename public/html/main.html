@@ -9,8 +9,10 @@
         <link rel="icon" href="../img/logo_sonnette.png">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+        <link rel="stylesheet" media="screen and (max-width: 414px)" href="../css/responsive/mainResponsive.css" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <title>Accueil</title>
     </head>
 
@@ -92,7 +94,7 @@
                                 <label class="fontStyle" for="sound7" onclick="playSound(7)" title="Cliquer pour jouer l'alerte">Alerte personnalisée</label>
                             </div>
                         </div>
-                            <div class="radioContainer">
+                            <div class="radioContainer" id="responsive">
                                 <input for="image_uploads" type="file" name="sound" id="input" class="personalSound" accept="audio/*">
                             </div>
                             <div class="preview">

@@ -17,6 +17,7 @@ input:-webkit-autofill {
 #logo{
     position: absolute;
     left: 30px;
+    top: 10px
 }
 #divLogo h1 {
     transition: .3s;
@@ -26,6 +27,7 @@ input:-webkit-autofill {
 }
 .fontStyle{
     font-family: 'Comfortaa', cursive;
+    color: rgb(102, 0, 204);
 }
 .darkModeContainer {
     display: flex;
@@ -127,6 +129,9 @@ form button {
     cursor: pointer;
     font-size: 16px;
 }
+#registerBtn{
+    color: white;
+}
 .showPasswordContainer {
     display: flex;
     justify-content: center;
@@ -169,7 +174,7 @@ form p a {
 }
 
 img{
-    height:100px;
+    height:90px;
 }
 .successMsg {
     margin: 0;
