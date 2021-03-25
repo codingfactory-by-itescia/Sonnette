@@ -145,8 +145,7 @@ app.post('/db/deleteTask', async (req, res) => {
             // Search for the wanted task
             if (task._id == data.taskId) {
                 user.todoList.splice(i, 1)
-                await user.save()
-                break
+                await user.save().then(() => res.sendStatus(200))
             }
         }
     })
@@ -161,8 +160,7 @@ app.post('/db/changeTaskStatus', (req, res) => {
             // Search for the wanted task
             if (task._id == data.taskId) {
                 task.isDone ? task.isDone = false : task.isDone = true
-                await user.save()
-                break
+                await user.save().then(() => res.sendStatus(200))
             }
         }
     })
