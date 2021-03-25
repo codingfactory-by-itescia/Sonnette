@@ -180,6 +180,7 @@ img {
     flex-direction: column;
     align-items: center;
     font-size: 15px;
+    position: relative;
 }
 .forgotPassword p {
     margin-bottom: 0;
@@ -197,4 +198,12 @@ img {
     width: 100%;
     font-size: 15px;
     outline: none;
+}
+.closeImg {
+    width: 15px;
+    height: auto;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 }
