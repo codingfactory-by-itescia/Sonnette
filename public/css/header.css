@@ -9,7 +9,7 @@ header {
 }
 a {
     text-decoration: none;
-    color:  rgb(104, 57, 151);
+    color: rgb(102, 0, 204);
     font-family: 'Comfortaa', cursive;
 }
 #divConnexion {
@@ -41,3 +41,4 @@ a {
 .unclickableHamb{
     padding-right: 113.19px;
 }
+
