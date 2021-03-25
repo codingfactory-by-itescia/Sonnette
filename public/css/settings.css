@@ -98,6 +98,7 @@ input:checked + .slider:before {
     flex-direction: column;
     align-items: center;
     font-size: 15px;
+    position: relative;
 }
 #forgotPasswordInput {
     padding: 2% 3%;
@@ -123,6 +124,14 @@ button {
     font-size: 14px;
     align-self: flex-end;
     outline: none;
+}
+.closeImg {
+    width: 15px;
+    height: auto;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 }
 .msg {
     margin: 10px 0 15px 0;
