@@ -11,6 +11,9 @@ header{
     height: 8.5vh;
     position: relative; 
 }
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
 #logo{
     position: absolute;
     left: 30px;

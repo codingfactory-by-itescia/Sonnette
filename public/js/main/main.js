@@ -243,7 +243,9 @@ if(speechSynthesis !== undefined){
     speechSynthesis.onvoiceschanged = PopulateVoices;
 }
 
+
 function PopulateVoices(){
+    // Get the voices of the navigator
     voices = synth.getVoices();
     let selectedIndex = voiceList.selectedIndex < 0 ? 0 : voiceList.selectedIndex;
     voiceList.innerHTML = '';
