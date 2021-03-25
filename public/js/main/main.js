@@ -183,12 +183,19 @@ input.addEventListener('change', updateImageDisplay);
 
 function updateImageDisplay() {
     var curFiles = input.files;    
-
+    let nameFile ;
     if(curFiles.length == 0) {
       para.innerHTML = 'Pas de fichier importé';
     } else {
-        para.innerHTML = 'Nom du son importé ' + curFiles[0].name ;
+        if (curFiles[0].name.length > 15) {
+            nameFile = curFiles[0].name.slice(0,15) 
+        }
+        else{
+            nameFile = curFiles[0].name
+        }
+        para.innerHTML = 'Nom du son importé ' + nameFile ;
         urlCurrentSound = URL.createObjectURL(curFiles[0])
+        check7();
     }
 }
 
