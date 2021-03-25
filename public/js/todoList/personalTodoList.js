@@ -64,21 +64,21 @@ async function deleteTask(taskId) {
         userId: userId
     }
     taskContainer.removeChild(document.getElementById(taskId))
+    
     await fetch('/db/deleteTask', { method: 'POST', body: JSON.stringify(data) })
-
-    setTaskData()
+    .then(() => setTaskData())
 }
 
 async function changeTaskStatus(taskId) {
     // Toggle the "done" or "undone" status of a task
     document.getElementById(taskId).classList.toggle('taskDone')
     
-    setTaskData()
     const data = {
         taskId: taskId,
         userId: userId
     }
     await fetch('/db/changeTaskStatus', { method: 'POST', body: JSON.stringify(data) })
+    .then(() => setTaskData())
 }
 
 async function setTaskData() {
