@@ -24,6 +24,7 @@ header{
 }
 .fontStyle{
     font-family: 'Comfortaa', cursive;
+    color: rgb(102, 0, 204);
 }
 .darkModeContainer {
     display: flex;
@@ -116,6 +117,9 @@ form button {
     width: 43%;
     cursor: pointer;
     font-size: 16px;
+}
+#connexionBtn{
+    color: white;
 }
 .showPasswordContainer {
     display: flex;
