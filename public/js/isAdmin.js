@@ -1,4 +1,3 @@
-const adminIcon = document.querySelector('#adminPanelIcon')
 
 // If the connnected user is an admin, display the admin icon
 isUserAdmin()

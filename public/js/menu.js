@@ -56,3 +56,29 @@ hambContainer.addEventListener('click', () => {
     // Menu animation
     menuContainer.classList.toggle('closed')
 })
+
+
+// If the connnected user is an admin, display the admin panel link in the menu
+const menu = document.querySelector('.menuContainer ul')
+isUserAdmin()
+
+async function isUserAdmin() {
+    let admin
+    // Get user by ID
+    let id = JSON.parse(localStorage.getItem('codringData')).userId
+
+    let options = {
+        method: 'POST',
+        body: id
+    }
+    await fetch('/db/getAccount', options)
+    .then((response) => response.json())
+    .then((data) => data.isAdmin ? admin = true : admin = false)
+
+    if (admin) {
+        menu.insertAdjacentHTML('afterbegin', `
+            <li><a href="admin.html">Panel administrateur</a></li>
+        `)
+    }
+}
+

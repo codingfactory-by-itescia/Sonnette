@@ -1,4 +1,9 @@
 const connectionBtn = document.querySelector('#conncetionBtn')
+const forgotPasswordBtn = document.querySelector('.forgotPasswordLink')
+const forgotPasswordContainer = document.querySelector('.forgotPasswordContainer')
+const mailInput = document.querySelector('#email')
+const recuperationEmailInput = document.querySelector('#forgotPasswordInput')
+const rebootPasswordBtn = document.querySelector('.forgotPassword button')
 
 // Get local storage information
 if (localStorage.getItem('codringData') == null) {
@@ -26,6 +31,24 @@ connectionBtn.addEventListener('click', async (event) => {
         localStorage.setItem('codringData', JSON.stringify(data))
 
         window.location.href = 'html/main.html'
+    }
+})
+
+// Display the "forgot password" section
+forgotPasswordBtn.addEventListener('click', () => {
+    forgotPasswordContainer.style.display = 'flex'
+    // If user already write his email in the previous email input, display it in the new email input
+    recuperationEmailInput.value = mailInput.value
+    recuperationEmailInput.focus()
+})
+
+// Reboot the password
+rebootPasswordBtn.addEventListener('click', async () => {
+    let isEmailCorrect = await checkEmail(recuperationEmailInput.value)
+
+    if (isEmailCorrect) {
+        sendRebootPasswordEmail(recuperationEmailInput.value)
+        sucMsg('Email envoyé')
     }
 })
 
@@ -58,8 +81,8 @@ async function checkEmail (email) {
         }
     }
     return false
-    
 }
+
 async function checkPassword (password, email) {
     let accounts = await getAllAccounts()
 

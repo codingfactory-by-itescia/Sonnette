@@ -126,6 +126,8 @@ async function checkChecked(toSpeak){
         audio = new Audio('../audio/sound6.mp3')
     } else if (checkSound7.checked == true){
         audio = new Audio(urlCurrentSound)
+    } else{
+        SpeakWithTimeOut(toSpeak);
     }
     await getDurationAndSpeak(audio, toSpeak)    
 }
@@ -228,6 +230,7 @@ function SpeakWithTimeOut(toSpeak){
         durationMsg = event.elapsedTime
         textArea.value = ''
         form.style.transform = 'translate(0)'
+        counter.innerText = '0/' + maxLength
     }       
 }
 
@@ -240,7 +243,9 @@ if(speechSynthesis !== undefined){
     speechSynthesis.onvoiceschanged = PopulateVoices;
 }
 
+
 function PopulateVoices(){
+    // Get the voices of the navigator
     voices = synth.getVoices();
     let selectedIndex = voiceList.selectedIndex < 0 ? 0 : voiceList.selectedIndex;
     voiceList.innerHTML = '';
@@ -257,7 +262,7 @@ function PopulateVoices(){
 
 async function checkForRefresh(){
     // Check if ther is the same number of cards in the site that there is in the bdd
-    counter = 0;
+    let counter = 0;
     allMsgData = await getAllMessages();
     lastsMsg = $('.msgCard');
     size = lastsMsg.length;
@@ -322,3 +327,16 @@ async function getAuthor(){
     .then((data) => author = data.username )
     return author
 }
+
+let counter = document.querySelector('.textAreaContainer span');
+let maxLength = textArea.getAttribute('maxlength');
+
+textArea.addEventListener('input', event => {
+    // Counter of caracter in the text area
+    const valueLength = event.target.value.length;
+
+    if (valueLength > maxLength) {
+        return;
+    }
+    counter.innerText = valueLength + '/' + maxLength
+})

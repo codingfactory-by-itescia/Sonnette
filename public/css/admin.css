@@ -218,6 +218,9 @@ form button {
     font-size: 15px;
     background-color: transparent !important;
 }
+.message .messageAuthor:hover {
+    text-decoration: underline;
+}
 .message .messageBody {
     padding: 10px 0;
     font-size: 15px;

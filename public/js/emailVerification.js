@@ -6,6 +6,5 @@ function sendVerificationEmail(userData) {
     }
 
     emailjs.send('service_hd70jhg', 'template_bl9e5q7', options, 'user_fKOFTHNVkZuzqNqHfz7Yw')
-    .then(() => console.log('Email send'))
     .catch((err) => console.log(err))
 }
