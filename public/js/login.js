@@ -1,4 +1,4 @@
-const connectionBtn = document.querySelector('#conncetionBtn')
+const connectionBtn = document.querySelector('#connectionBtn')
 const forgotPasswordBtn = document.querySelector('.forgotPasswordLink')
 const forgotPasswordContainer = document.querySelector('.forgotPasswordContainer')
 const mailInput = document.querySelector('#email')

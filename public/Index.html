@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" media="screen and (max-width: 414px)" href="../css/responsive/loginResponsive.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="img/logo_sonnette.png">
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
@@ -13,7 +14,7 @@
         <header>
             <img id="logo" src="img/logo_sonnette.png" alt="Logo">
             <div id="divLogo">
-                <h1 class="fontStyle">Cod' Ring</h1>
+                <h1 class="fontStyle" id="title">Cod' Ring</h1>
             </div>
         </header>
 
@@ -26,7 +27,7 @@
                     <input class="checkbox" type="checkbox" id="checkbox" onclick="showPasswords()">
                     <label class="fontStyle" for="checkbox">Montrer le mot de passe</label>
                 </div>
-                <button class="fontStyle" id="conncetionBtn">Connexion</button>
+                <button class="fontStyle" id="connectionBtn">Connexion</button>
                 <p class="msgContainer"></p>
                 <p class="fontStyle registerLink">Vous n'avez pas de compte ? <a href="html/register.html">S'inscrire</a></p>
                 <p class="fontStyle forgotPasswordLink"><a>Mot de passe oublié</a></p>

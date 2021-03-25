@@ -171,7 +171,10 @@ form button {
   align-items: center;
   position: relative;
 }
-.msgHistoryPanel header h2 {
+.msgHistoryPanel header {
+  font-size: 20px;
+}
+h2{
   font-size: 20px;
 }
 .msgHistoryPanel header .rightArrowContainer {
@@ -250,6 +253,7 @@ form button {
     border-color: rgb(223, 227, 228);
     border-bottom: none;
     border-right: none;
+    border-radius: 8px;
   }
   .purchaseHistoryPanel header {
     display: flex;
@@ -257,7 +261,7 @@ form button {
     align-items: center;
     position: relative;
   }
-  .purchaseHistoryPanel header h2 {
+  .purchaseHistoryPanel header {
     font-size: 20px;
   }
   .purchaseHistoryPanel header .rightArrowContainer {
@@ -411,3 +415,4 @@ form button {
       display: none;
     }
   }
+

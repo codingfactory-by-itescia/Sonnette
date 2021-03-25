@@ -1,0 +1,107 @@
+a {
+    text-decoration: none;
+    color:  rgb(102, 0, 204);
+    font-family: 'Comfortaa', cursive;
+    font-size: x-large;
+}
+.unclickableHamb {
+    padding-right: 40px;
+}
+.closed {
+    transform: translateX(-279px) !important;
+}
+#msgArea {
+    width: 65%;
+    height: 250px;
+    border: 2px solid rgb(102, 0, 204);
+    resize: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 2%;
+    font-family: sans-serif;
+    margin-right: 20%;
+}
+.formContainer {
+    display: flex;
+    align-items: center;
+    width: 390px;
+    height: 300px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 3px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+}
+form button {
+    background-color: rgb(102, 0, 204);
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 7px 12px;
+    margin: 20px 120px 0 0;
+    cursor: pointer;
+    font-size: 14px;
+    align-self: flex-end;
+    outline: none;
+}
+.getRewardsContainer {
+    background: linear-gradient(
+221.06deg
+, #7F48B5 0%, #7F48B5 0.01%, #5F01BC 100%);
+    padding: 0 30px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    display: flex;
+    justify-content: space-around;
+    height: 100px;
+    cursor: pointer;
+    color: white;
+    margin-right: 20px;
+}
+.textAreaContainer span {
+    width: 74px;
+    position: absolute;
+    right: 137px;
+    top: 70%;
+    transform: translateY(-50%);
+    height: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: bold;
+    color: white;
+    background: rgb(102, 0, 204);
+    border-radius: 5px;
+    text-align: center;
+}
+.size{
+    font-size: medium;
+}
+.menuContainer ul li a{
+    font-size: medium;
+}
+.radioInputContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 200px;
+    margin-right: 22%;
+}
+div#responsive {
+    margin-right: 22%;
+}
+.preview {
+    margin-right: 22%;
+}
+p.fontStyle {
+    margin-right: 22%;
+}
+select#voiceList {
+    margin-right: 22%;
+}
+button.sendMsgBtn {
+    width: 65%;
+    margin-right: 22%;
+}

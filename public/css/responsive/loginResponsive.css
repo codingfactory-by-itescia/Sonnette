@@ -1,0 +1,15 @@
+#logo {
+    position: absolute;
+    left: -30px;
+    top: 10px;
+    height: 130%;
+}
+#logo {
+    position: absolute;
+    left: -30px;
+    top: 10px;
+}
+#divLogo h1 {
+    transition: .3s;
+    margin-top: 35px;
+}
