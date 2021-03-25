@@ -114,3 +114,56 @@ app.post('/db/comparePasswords', async (req, res) => {
         }
     })
 })
+// Get all task of a user
+app.post('/db/getTodoList', (req, res) => {
+    const id = req.body
+    Account.findById(id)
+    .then((user) => res.send(user.todoList))
+})
+// Set a new task in the "todoList" array of the user
+app.post('/db/setNewTask', (req, res) => {
+    const data = JSON.parse(req.body)
+
+    Account.findById(data.userId).then(async (user) => {
+        const task = {
+            taskBody: data.taskBody,
+            isDone: data.isDone
+        }
+    
+        user.todoList.push(task)
+        await user.save()
+        res.send(user.todoList[user.todoList.length-1])
+    })
+})
+// Delete a task with his id
+app.post('/db/deleteTask', async (req, res) => {
+    let data = JSON.parse(req.body)
+
+    Account.findById(data.userId).then(async (user) => {
+        for (let i = 0; i < user.todoList.length; i++) {
+            const task = user.todoList[i];
+            // Search for the wanted task
+            if (task._id == data.taskId) {
+                user.todoList.splice(i, 1)
+                await user.save()
+                break
+            }
+        }
+    })
+})
+// Toggle the "done" or "undone" status of a task
+app.post('/db/changeTaskStatus', (req, res) => {
+    let data = JSON.parse(req.body)
+
+    Account.findById(data.userId).then(async (user) => {
+        for (let i = 0; i < user.todoList.length; i++) {
+            const task = user.todoList[i];
+            // Search for the wanted task
+            if (task._id == data.taskId) {
+                task.isDone ? task.isDone = false : task.isDone = true
+                await user.save()
+                break
+            }
+        }
+    })
+})

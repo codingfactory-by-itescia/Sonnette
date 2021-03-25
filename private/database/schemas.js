@@ -21,7 +21,14 @@ const accountSchema = new mongoose.Schema({
     lastConnection: {
         type: Date,
         require: true
-    }
+    },
+    todoList: [
+        {
+            taskId: mongoose.Schema.Types.ObjectId,
+            taskBody: String,
+            isDone: Boolean
+        }
+    ]
 }, {timestamps: true})
 
 const messagesSchema = new mongoose.Schema({
