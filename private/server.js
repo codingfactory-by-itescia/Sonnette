@@ -203,3 +203,9 @@ app.post('/db/changeDefaultTaskStatus', (req, res) => {
         }
     })
 })
+// Get "defaultTodoList" variable from user account
+app.post('/db/getUserDefaultTodoList', (req, res) => {
+    Account.findById(req.body).then((user) => { 
+        res.send(user.defaultTodoList)
+    })
+})

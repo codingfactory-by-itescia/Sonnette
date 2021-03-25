@@ -2,7 +2,7 @@ const defaultTaskContainer = document.querySelector('.defaultTodoContainer .todo
 userId = JSON.parse(localStorage.getItem('codringData')).userId
 
 setDefaultTaskData()
-displayAllDefaultTask()
+displayAllDefaultTask().then(() => checkForDoneTask())
 
 async function displayAllDefaultTask() {
     // Get all task of the user
@@ -17,10 +17,10 @@ async function displayAllDefaultTask() {
     }
 }
 
-function displayDefaultTask(task) {
+async function displayDefaultTask(task) {
     // Display the new task in the container
     defaultTaskContainer.insertAdjacentHTML('beforeend', `
-        <div class="task ${task.isDone ? 'taskDone': ''}" id="${task._id}">
+        <div class="task" id="${task._id}">
             <div class="completeTaskContainer">
                 <img src="../img/blackDownArrow.png" alt="Compléter la case" onclick="changeDefaultTaskStatus('${task._id}')">
             </div>
@@ -29,6 +29,22 @@ function displayDefaultTask(task) {
             </div>
         </div>
     `)
+    setDefaultTaskData()
+}
+
+async function checkForDoneTask() {
+    // Check if some tasks was already done to add the "taskDone" classlist
+    // Get all default task of the user
+    await fetch('/db/getUserDefaultTodoList', { method: 'POST', body: userId })
+    .then(response => response.json())
+    .then((defaultTodoList) => {
+        for (let i = 0; i < defaultTodoList.length; i++) {
+            const task = defaultTodoList[i];
+            if (task.isDone) {
+                document.getElementById(task.taskId).classList.add('taskDone')
+            }
+        }
+    })
     setDefaultTaskData()
 }
 
