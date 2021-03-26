@@ -75,7 +75,7 @@ body {
 }
 /* MESSSAGE HISTORY */
 .emptyMsgAlert {
-    margin-top: 15vh;
+    margin: 10vh 0;
     opacity: .5;
     display: none;
 }
