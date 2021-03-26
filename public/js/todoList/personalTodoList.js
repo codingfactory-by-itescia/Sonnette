@@ -50,20 +50,18 @@ function displayTask(task) {
 }
 
 async function addNewTask(taskBody) {
-    if (task.length > 3) {
-        input.value = ''
-
-        const task = {
-            userId: userId,
-            taskBody: taskBody,
-            isDone: false
-        }
-        await fetch('/db/setNewTask', { method:'POST', body: JSON.stringify(task) })
-        .then(response => response.json())
-        .then(task => displayTask(task))
-
-        setTaskData()
+    input.value = ''
+    
+    const task = {
+        userId: userId,
+        taskBody: taskBody,
+        isDone: false
     }
+    await fetch('/db/setNewTask', { method:'POST', body: JSON.stringify(task) })
+    .then(response => response.json())
+    .then(task => displayTask(task))
+    
+    setTaskData()
 }
 
 async function deleteTask(taskId) {
