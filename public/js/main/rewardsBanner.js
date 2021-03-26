@@ -27,7 +27,7 @@ function displayDiffTime(diffHours, diffDays) {
     } else if (diffHours > 0) {
         lastConnectionTxt.innerHTML += ` ${diffHours} heure${diffHours > 1 ? 's' : ''}`
     } else {
-        rewardsBanner.style.display = 'flex'
+        rewardsBanner.style.display = 'none'
     }
 }
 

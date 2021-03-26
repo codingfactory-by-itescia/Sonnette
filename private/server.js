@@ -166,11 +166,6 @@ app.post('/db/changePersonalTaskStatus', (req, res) => {
         }
     })
 })
-// Create a new default task
-app.post('/db/addNewDefaultTask', (req, res) => {
-    const task = new DefaultTodoList ({ task: req.body })
-    task.save()
-})
 // Get all default tasks
 app.get('/db/getDefaultTodoList', (req, res) => {
     DefaultTodoList.find().then((taskList) => res.send(taskList))
@@ -208,4 +203,13 @@ app.post('/db/getUserDefaultTodoList', (req, res) => {
     Account.findById(req.body).then((user) => { 
         res.send(user.defaultTodoList)
     })
+})
+// Delete a default task
+app.post('/db/deleteDefaultTask', (req, res) => {
+    DefaultTodoList.findById(req.body).then(async (task) => await task.remove())
+})
+// Create a new default task
+app.post('/db/addNewDefaultTask', (req, res) => {
+    const task = new DefaultTodoList ({ task: req.body })
+    task.save().then((task => res.send(task)))
 })
