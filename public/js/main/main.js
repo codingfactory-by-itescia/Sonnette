@@ -211,9 +211,10 @@ async function sendMessage() {
 
     await addMsgToHistory(txt)
     printHistoryMsg()
+    
     // Display the message in the history section
     msg.username = await getAuthor()
-
+    await sendMessageSlack(msg.username, txt)
     fetch(urlDis + "?wait=true",{
         method:"POST",
         headers: {"content-type":"application/json"
@@ -347,3 +348,15 @@ textArea.addEventListener('input', event => {
     }
     counter.innerText = valueLength + '/' + maxLength
 })
+
+async function sendMessageSlack(name, message){
+    let msgData = {
+        username: name,
+        content: message
+    }
+    let options = {
+        method: 'POST',
+        body: JSON.stringify(msgData)
+    }
+    await fetch('/slack/sendMessage', options)
+}

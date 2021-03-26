@@ -2,6 +2,14 @@ const { static } = require('express');
 const express = require('express');
 const bcrypt = require('bcryptjs')
 const database = require('./database/databaseFunctions');
+const { WebClient } = require('@slack/web-api');
+require = require("esm")(module/*,options*/)
+module.exports = require("../public/js/src_Slack/app.js")
+
+// Slack initiation 
+const SLACK_OAUTH_TOKEN = 'xoxb-1780620095984-1780640389808-EClSr03fBOue4IAK9z7XPiNA'
+const BOT_SPAM_CHANNEL = 'C01MU05PUSK' // this is the channel you want your bot online & spam to go
+const web = new WebClient(SLACK_OAUTH_TOKEN);
 
 // Server initiation
 const app = express()
@@ -12,6 +20,18 @@ app.listen(port, () => {
 app.use(static('public'))
 app.use(express.json())
 app.use(express.text())
+
+// Send message on Slack Server
+app.post('/slack/sendMessage', async (req, res) => {
+    const msgData = JSON.parse(req.body)
+    const message = {
+        username: msgData.username,
+        content: msgData.content
+    }
+    await web.chat.postMessage({ username: message.username, channel: BOT_SPAM_CHANNEL, text: message.content })
+    .then(() => { res.sendStatus(200) })
+    .catch((error) => { res.send(error) })
+})
 
 // Database initiation
 database.connect
@@ -115,34 +135,6 @@ app.post('/db/comparePasswords', async (req, res) => {
         }
     })
 })
-<<<<<<< HEAD
-
-//initiat webhook slack
-const { WebClient } = require('@slack/web-api');
-const { createEventAdapter } = require('@slack/events-api');
-//Slack Token and secret password
-const slackSigningSecret = "20590b1694613ccb8c5e0f7da81d7f2b";
-const slackToken = "xoxb-1780620095984-1780640389808-hLQ1PKbFvpn43j1dpunBEKMh";
-//root the webhook slack
-const slackEvents = createEventAdapter(slackSigningSecret);
-const slackClient = new WebClient(slackToken);
-
-slackEvents.on('app_mention', (event) => {
-    console.log(`Got message from user ${event.user}: ${event.text}`);
-    (async () => {
-      try {
-        await slackClient.chat.postMessage({ channel: event.channel, text: `Hello <@${event.user}>! :tada:` })
-      } catch (error) {
-        console.log(error.data)
-      }
-    })();
-  });
-  slackEvents.on('error', console.error);
-
-  slackEvents.start(port).then(() => {
-    console.log(`Server started on port ${port}`)
-  });
-=======
 // Get all task of a user
 app.post('/db/getPersonalTodoList', (req, res) => {
     const id = req.body
@@ -237,4 +229,3 @@ app.post('/db/getUserDefaultTodoList', (req, res) => {
         res.send(user.defaultTodoList)
     })
 })
->>>>>>> backend
