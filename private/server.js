@@ -224,11 +224,25 @@ app.post('/db/getUserDefaultTodoList', (req, res) => {
     })
 })
 // Delete a default task
-app.post('/db/deleteDefaultTask', (req, res) => {
+app.post('/db/deleteDefaultTask', async (req, res) => {
     DefaultTodoList.findById(req.body).then(async (task) => {
         await task.remove()
-        res.sendStatus(200)
     })
+    // Delete the default task in the "defaultTodoList" variable of each user
+    const userList = await Account.find()
+    for (let i = 0; i < userList.length; i++) {
+        const user = userList[i];
+        // Find the wanted task with his ID
+        for (let j = 0; j < user.defaultTodoList.length; j++) {
+            const task = user.defaultTodoList[j];
+            // When we find the task, delete it
+            if (task.taskId == req.body) {
+                user.defaultTodoList.splice(j,1)
+                await user.save()
+            }
+        }
+    }
+    res.sendStatus(200)
 })
 // Create a new default task
 app.post('/db/addNewDefaultTask', (req, res) => {
