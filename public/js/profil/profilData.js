@@ -32,9 +32,8 @@ async function getUser() {
     }
     await fetch('/db/getAccount', options)
     .then(response => response.json())
-    .then((data) => {
-        user = data
-    })
+    .then((data) => user = data )
+    .catch(() => window.location.href = 'profilNotFound.html')
     return user
 }
 
