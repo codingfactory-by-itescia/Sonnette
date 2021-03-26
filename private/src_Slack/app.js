@@ -1,4 +1,4 @@
-import { SLACK_OAUTH_TOKEN, BOT_SPAM_CHANNEL } from './constants'
+/* import { SLACK_OAUTH_TOKEN, BOT_SPAM_CHANNEL } from './constants'
 import  { WebClient } from '@slack/web-api';
 
 const web = new WebClient(SLACK_OAUTH_TOKEN);
@@ -8,3 +8,4 @@ const web = new WebClient(SLACK_OAUTH_TOKEN);
     // `res` contains information about the posted message
     console.log('Message sent: ', res.ts);
   })();
+ */
