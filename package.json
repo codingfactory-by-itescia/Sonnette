@@ -4,15 +4,17 @@
   "description": "Cod-Ring",
   "main": "private/server.js",
   "dependencies": {
+    "@slack/events-api": "^3.0.0",
+    "@slack/web-api": "^6.1.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "get-audio-duration": "^2.0.3",
     "jquery": "^3.6.0",
     "mongoose": "^5.12.2",
     "nodemon": "^2.0.7"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "nodemon private/server.js"
   },

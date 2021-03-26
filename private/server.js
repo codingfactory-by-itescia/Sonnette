@@ -115,6 +115,34 @@ app.post('/db/comparePasswords', async (req, res) => {
         }
     })
 })
+<<<<<<< HEAD
+
+//initiat webhook slack
+const { WebClient } = require('@slack/web-api');
+const { createEventAdapter } = require('@slack/events-api');
+//Slack Token and secret password
+const slackSigningSecret = "20590b1694613ccb8c5e0f7da81d7f2b";
+const slackToken = "xoxb-1780620095984-1780640389808-hLQ1PKbFvpn43j1dpunBEKMh";
+//root the webhook slack
+const slackEvents = createEventAdapter(slackSigningSecret);
+const slackClient = new WebClient(slackToken);
+
+slackEvents.on('app_mention', (event) => {
+    console.log(`Got message from user ${event.user}: ${event.text}`);
+    (async () => {
+      try {
+        await slackClient.chat.postMessage({ channel: event.channel, text: `Hello <@${event.user}>! :tada:` })
+      } catch (error) {
+        console.log(error.data)
+      }
+    })();
+  });
+  slackEvents.on('error', console.error);
+
+  slackEvents.start(port).then(() => {
+    console.log(`Server started on port ${port}`)
+  });
+=======
 // Get all task of a user
 app.post('/db/getPersonalTodoList', (req, res) => {
     const id = req.body
