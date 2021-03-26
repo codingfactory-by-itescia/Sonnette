@@ -314,7 +314,7 @@ form button {
     margin-right: 5px;
 }
 .emptyTodoList {
-    display: flex;
+    display: none;
     justify-content: center;
     font-size: 13px;
     margin-top: 40%;

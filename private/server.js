@@ -207,7 +207,10 @@ app.post('/db/getUserDefaultTodoList', (req, res) => {
 })
 // Delete a default task
 app.post('/db/deleteDefaultTask', (req, res) => {
-    DefaultTodoList.findById(req.body).then(async (task) => await task.remove())
+    DefaultTodoList.findById(req.body).then(async (task) => {
+        await task.remove()
+        res.sendStatus(200)
+    })
 })
 // Create a new default task
 app.post('/db/addNewDefaultTask', (req, res) => {

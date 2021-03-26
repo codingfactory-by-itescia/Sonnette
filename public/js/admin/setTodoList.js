@@ -48,7 +48,9 @@ async function deleteTask(taskId) {
     await fetch('/db/deleteDefaultTask', { method: 'POST', body: taskId })
     
     // If there is no task, display the empty message by getting the length of all default task
-    await fetch('/db/getAllDefaultTAsk').then((todoList => {
+    await fetch('/db/getDefaultTodoList')
+    .then(response => response.json())
+    .then((todoList => {
         if (todoList.length == 0) emptyTodoListElement.style.display = 'flex'
         else emptyTodoListElement.style.display = 'none'
     }))
