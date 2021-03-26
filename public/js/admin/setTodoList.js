@@ -30,6 +30,9 @@ async function displayAllDefaultTask() {
     for (let i = 0; i < taskList.length; i++) {
         displayDefaultTask(taskList[i])
     }
+
+    // If there is no task, display the empty message by getting the length of all default task
+    if (todoList.length == 0) emptyTodoListElement.style.display = 'flex'
 }
 
 function displayDefaultTask(task) {
