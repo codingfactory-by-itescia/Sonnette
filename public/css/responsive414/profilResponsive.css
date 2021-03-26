@@ -13,3 +13,8 @@ a {
 .menuContainer ul li a{
     font-size: medium;
 }
+@media (max-width: 375px) {
+    .unclickableHamb {
+        padding-right: 5px;
+    }
+}
