@@ -7,11 +7,7 @@ const { WebClient } = require('@slack/web-api');
 require = require("esm")(module/*,options*/)
 
 // Slack initiation 
-<<<<<<< HEAD
-const SLACK_OAUTH_TOKEN = 'xoxb-1780620095984-1780640389808-wguKG7GK69IF0FqaWP3gl5X8'
-=======
 const SLACK_OAUTH_TOKEN = process.env.SLACK_OAUTH_TOKEN;
->>>>>>> backend
 const BOT_SPAM_CHANNEL = 'C01MU05PUSK' // this is the channel you want your bot online & spam to go
 const web = new WebClient(SLACK_OAUTH_TOKEN);
 
