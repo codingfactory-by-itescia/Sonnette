@@ -1,7 +1,4 @@
 a {
-    text-decoration: none;
-    color:  rgb(102, 0, 204);
-    font-family: 'Comfortaa', cursive;
     font-size: x-large;
 }
 .unclickableHamb {
@@ -13,20 +10,33 @@ a {
 .menuContainer ul li a{
     font-size: medium;
 }
-h2{
-    font-size: large;
+/* h2{
+    font-size: 16px;
+} */
+#flex {
+    flex-direction: column;
+    align-items: center;
+}
+header{
+    margin-bottom: 30px;
+}
+.msgHistoryPanel {
+    width: 92%;
+}
+p.userName.fontStyle {
+    font-size: 15px;
+}
+.msgHistoryContainer {
+    height: 85%;
 }
 .purchaseHistoryPanel {
-    width: 70%;
-    height: 85%;
-    margin-right: 3px;
-    position: absolute;
-    top: 10vh;
-    right: 65px;
-    background-color: white;
-    box-shadow: 10px 10px 13px 2px rgb(0 0 0 / 20%);
-    border-style: solid;
-    border-color: rgb(223, 227, 228);
-    border-bottom: none;
-    border-right: none;
+    width: 92%;
+}
+@media (max-width: 375px) {
+    .unclickableHamb {
+        padding-right: 5px;
+    }
+    h2.fontStyle {
+        font-size: 17px;
+    }
 }

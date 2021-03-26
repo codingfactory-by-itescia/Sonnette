@@ -16,3 +16,13 @@ a {
 .fontStyle{
     font-size: medium;
 }
+@media (max-width: 375px) {
+    .unclickableHamb {
+        padding-right: 5px;
+    }
+    h2.fontStyle {
+        font-size: 17px;
+    }
+}
+@media (max-width: 320px) {
+}
