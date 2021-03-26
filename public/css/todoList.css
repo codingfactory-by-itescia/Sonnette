@@ -108,6 +108,13 @@ body {
     cursor: pointer;
     width: 96%;
 }
+.checkMark {
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/uncheck.png');
+    background-size: cover;
+    cursor: pointer;
+}
 .deleteTaskBtn {
     height: 15px;
     cursor: pointer;

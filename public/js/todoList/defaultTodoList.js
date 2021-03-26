@@ -22,7 +22,7 @@ async function displayDefaultTask(task) {
     defaultTaskContainer.insertAdjacentHTML('beforeend', `
         <div class="task" id="${task._id}">
             <div class="completeTaskContainer">
-                <img src="../img/blackDownArrow.png" alt="Compléter la case" onclick="changeDefaultTaskStatus('${task._id}')">
+                <div class="checkMark" onclick="changeDefaultTaskStatus('${task._id}')"></div>
             </div>
             <div class="taskTitle">
                 <p>${task.task}</p>
@@ -41,7 +41,10 @@ async function checkForDoneTask() {
         for (let i = 0; i < defaultTodoList.length; i++) {
             const task = defaultTodoList[i];
             if (task.isDone) {
-                document.getElementById(task.taskId).classList.add('taskDone')
+                const taskElement = document.getElementById(task.taskId)
+                
+                taskElement.classList.add('taskDone')
+                taskElement.querySelector('.checkMark').style.backgroundImage = "url('../img/check.png')"
             }
         }
     })
@@ -50,7 +53,14 @@ async function checkForDoneTask() {
 
 async function changeDefaultTaskStatus(taskId) {
     // Toggle the "done" or "undone" status of a task
-    document.getElementById(taskId).classList.toggle('taskDone')
+    const task = document.getElementById(taskId)
+    task.classList.toggle('taskDone')
+    
+    if (task.classList.contains('taskDone')) {
+        task.querySelector('.checkMark').style.backgroundImage = "url('../img/check.png')"
+    } else {
+        task.querySelector('.checkMark').style.backgroundImage = "url('../img/uncheck.png')"
+    }
     
     const data = {
         taskId: taskId,

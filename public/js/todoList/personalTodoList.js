@@ -30,7 +30,7 @@ function displayTask(task) {
     taskContainer.insertAdjacentHTML('beforeend', `
         <div class="task ${task.isDone ? 'taskDone': ''}" id="${task._id}">
             <div class="completeTaskContainer">
-                <img src="../img/blackDownArrow.png" alt="Compléter la case" onclick="changeTaskStatus('${task._id}')">
+                <div class="checkMark" onclick="changeTaskStatus('${task._id}')"></div>
             </div>
             <div class="taskTitle">
                 <p>${task.taskBody}</p>
@@ -38,11 +38,19 @@ function displayTask(task) {
             <img src="../img/close.png" alt="Supprimer la tâche" class="deleteTaskBtn" onclick="deleteTask('${task._id}')">
         </div>
     `)
+    const taskElement = document.getElementById(task._id)
+
+    if (task.isDone) {
+        taskElement.querySelector('.checkMark').style.backgroundImage = "url('../img/check.png')"
+    } else {
+        taskElement.querySelector('.checkMark').style.backgroundImage = "url('../img/uncheck.png')"
+    }
+
     setTaskData()
 }
 
 async function addNewTask(taskBody) {
-    //if (task.length > 3) {
+    if (task.length > 3) {
         input.value = ''
 
         const task = {
@@ -55,7 +63,7 @@ async function addNewTask(taskBody) {
         .then(task => displayTask(task))
 
         setTaskData()
-    //}
+    }
 }
 
 async function deleteTask(taskId) {
@@ -71,8 +79,15 @@ async function deleteTask(taskId) {
 
 async function changeTaskStatus(taskId) {
     // Toggle the "done" or "undone" status of a task
-    document.getElementById(taskId).classList.toggle('taskDone')
+    const task = document.getElementById(taskId)
+    task.classList.toggle('taskDone')
     
+    if (task.classList.contains('taskDone')) {
+        task.querySelector('.checkMark').style.backgroundImage = "url('../img/check.png')"
+    } else {
+        task.querySelector('.checkMark').style.backgroundImage = "url('../img/uncheck.png')"
+    }
+
     const data = {
         taskId: taskId,
         userId: userId
