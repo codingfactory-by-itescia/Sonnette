@@ -1,0 +1,98 @@
+a {
+    text-decoration: none;
+    color:  rgb(102, 0, 204);
+    font-family: 'Comfortaa', cursive;
+    font-size: x-large;
+}
+.unclickableHamb {
+    padding-right: 40px;
+}
+.closed {
+    transform: translateX(-279px) !important;
+}
+.menuContainer ul li a{
+    font-size: medium;
+}
+p#totalAccountsNumber {
+    font-size: 30px;
+}
+p#totalMessagesNumber {
+    font-size: 30px;
+}
+p#totalMessagesTitle {
+    font-size: 15px;
+}
+.createAccountForm h2 {
+    justify-self: center;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+.leftContainer {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.messagesListContainer .messagesListTitle {
+    width: 98%;
+}
+.messagesListContainer {
+    width: 45%;
+}
+p.messageBody {
+    word-break: break-word;
+}
+.binContainer.msgBinContainer {
+    width: 11%;
+}
+.messagesListContainer .messagesListTitle {
+    width: 98%;
+}
+.formsContainer {
+    display: table-row;
+}
+form {
+    width: 99%;
+    height: 287px;
+}
+.leftContainer {
+    width: 55%;
+    height: 100%;
+    display: table-row;
+    flex-direction: column;
+    align-items: center;
+}
+.tablePassword {
+    width: 100px;
+}
+.accountsListTitles p {
+    font-size: 15px;
+}
+.accountsListContainer {
+    width: 170%;
+}
+p.tableName {
+    width: 22%;
+}
+.accountName{
+    width: 22%;
+}
+.account{
+    word-break: break-all;
+}
+.binContainer {
+    width: 4%;
+    height: 100%;
+    margin-left: 9%;
+}
+.accountAdmin, .tableAdmin {
+    width: 8%;
+}
+p.tableAdmin {
+    width: 70px;
+}
+.accountsListContainer input {
+    position: absolute;
+    width: 40%;
+}
