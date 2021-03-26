@@ -17,6 +17,7 @@ app.use(express.text())
 database.connect
 const Account = database.schemas.Account
 const Message = database.schemas.Message
+const DefaultTodoList = database.schemas.DefaultTodoList
 
 // Create new account
 app.post('/db/createAccount', (req, res) => {
@@ -112,5 +113,99 @@ app.post('/db/comparePasswords', async (req, res) => {
         } else {
             res.sendStatus(400)
         }
+    })
+})
+// Get all task of a user
+app.post('/db/getPersonalTodoList', (req, res) => {
+    const id = req.body
+    Account.findById(id)
+    .then((user) => res.send(user.personalTodoList))
+})
+// Set a new task in the "todoList" array of the user
+app.post('/db/setNewTask', (req, res) => {
+    const data = JSON.parse(req.body)
+
+    Account.findById(data.userId).then(async (user) => {
+        const task = {
+            taskBody: data.taskBody,
+            isDone: data.isDone
+        }
+    
+        user.personalTodoList.push(task)
+        await user.save()
+        res.send(user.personalTodoList[user.personalTodoList.length-1])
+    })
+})
+// Delete a task with his id
+app.post('/db/deletePersonalTask', async (req, res) => {
+    let data = JSON.parse(req.body)
+
+    Account.findById(data.userId).then(async (user) => {
+        for (let i = 0; i < user.personalTodoList.length; i++) {
+            const task = user.personalTodoList[i];
+            // Search for the wanted task
+            if (task._id == data.taskId) {
+                user.personalTodoList.splice(i, 1)
+                await user.save().then(() => res.sendStatus(200))
+            }
+        }
+    })
+})
+// Toggle the "done" or "undone" status of a task
+app.post('/db/changePersonalTaskStatus', (req, res) => {
+    let data = JSON.parse(req.body)
+
+    Account.findById(data.userId).then(async (user) => {
+        for (let i = 0; i < user.personalTodoList.length; i++) {
+            const task = user.personalTodoList[i];
+            // Search for the wanted task
+            if (task._id == data.taskId) {
+                task.isDone ? task.isDone = false : task.isDone = true
+                await user.save().then(() => res.sendStatus(200))
+            }
+        }
+    })
+})
+// Create a new default task
+app.post('/db/addNewDefaultTask', (req, res) => {
+    const task = new DefaultTodoList ({ task: req.body })
+    task.save()
+})
+// Get all default tasks
+app.get('/db/getDefaultTodoList', (req, res) => {
+    DefaultTodoList.find().then((taskList) => res.send(taskList))
+})
+// Toggle the "done" or "undone" status of a default task
+app.post('/db/changeDefaultTaskStatus', (req, res) => {
+    let data = JSON.parse(req.body)
+
+    Account.findById(data.userId).then(async (user) => {
+        let foundMatch = false
+
+        for (let i = 0; i < user.defaultTodoList.length; i++) {
+            const task = user.defaultTodoList[i];
+
+            // Search for the wanted task
+            if (task.taskId == data.taskId) {
+                foundMatch = true
+                task.isDone ? task.isDone = false : task.isDone = true
+                await user.save().then(() => res.sendStatus(200))
+            }
+        }
+        // If the task wasn't found, create it and set it to "isDone"
+        if (!foundMatch) {
+            const newTask = {
+                taskId: data.taskId,
+                isDone: true
+            }
+            user.defaultTodoList.push(newTask)
+            await user.save().then(() => res.sendStatus(200))
+        }
+    })
+})
+// Get "defaultTodoList" variable from user account
+app.post('/db/getUserDefaultTodoList', (req, res) => {
+    Account.findById(req.body).then((user) => { 
+        res.send(user.defaultTodoList)
     })
 })

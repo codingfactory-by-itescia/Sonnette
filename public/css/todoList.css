@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    font-family: "poppins", 'comfortaa', sans-serif;
+}
+/* GENERIC TASK CLASS */
+.main {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 15vh;
+}
+.todoListContainer {
+    width: 30%;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+/* TODOLIST TITLE */
+.todoListTitleContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 3vh 0;
+}
+.todoListTitle p {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 6px;
+    line-height: 25px;
+}
+.todoListTitle {
+    display: flex;
+    align-items: center;
+}
+.progressTaskCircleContainer, .completeTaskContainer {
+    width: 25px;
+    padding: 0 10px;
+    display: flex;
+}
+.progressTaskCircleContainer {
+    position: relative;
+    height: 25px;
+}
+.progressTaskCircleContainer circle {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    fill: none;
+    stroke: rgb(102, 0, 204);
+    stroke-width: 5;
+    transform: translate(2px, 3px);
+    stroke-dasharray: 57;
+    stroke-dashoffset: 57;
+}
+.progressTaskCircleContainer .progressCircle1 {
+    stroke-dashoffset: 0;
+    stroke: #cecece;
+}
+.progressTaskCircleContainer .progressCircle2 {
+    stroke-dashoffset: 57;
+    stroke: rgb(102, 0, 204);
+    transition: all .5s;
+}
+.taskDoneTitle {
+    font-weight: 600;
+    font-size: 14px;
+    opacity: .5;
+    margin-left: 51px;
+}
+/* ADD TASK */
+.addTaskContainer {
+    width: 100%;
+    display: flex;
+    padding-left: 51px;
+}
+.addTaskContainer input {
+    padding: 4px 8px;
+    margin-bottom: 20px;
+    border: 2px solid rgb(102, 0, 204);
+    border-radius: 5px;
+    outline: none;
+    width: 50%;
+}
+.addTaskContainer img {
+    height: 31px;
+    margin-left: 5px;
+    margin-top: 1px;
+    cursor: pointer;
+}
+/* TASK CARD */
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-radius: 7px;
+    transition: background-color .1s
+}
+.task:hover {
+    background-color: rgb(245, 245, 245);
+}
+.taskTitle {
+    width: -webkit-fill-available;
+    justify-self: flex-start;
+    margin-left: 10px;
+}
+.completeTaskContainer img {
+    cursor: pointer;
+    width: 96%;
+}
+.checkMark {
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/uncheck.png');
+    background-size: cover;
+    cursor: pointer;
+}
+.deleteTaskBtn {
+    height: 15px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+.taskDone .taskTitle p {
+    opacity: .5;
+    text-decoration: line-through;
+}
+.emptyTodoList {
+    display: none;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 5vh;
+}
+.emptyTodoList a {
+    cursor: pointer;
+}
+.emptyTodoList a:hover {
+    text-decoration: underline;
+}

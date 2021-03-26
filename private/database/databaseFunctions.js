@@ -26,6 +26,7 @@ module.exports = {
     connect: connect(),
     schemas: {
         Account: schemas.Account,
-        Message: schemas.Message
+        Message: schemas.Message,
+        DefaultTodoList: schemas.DefaultTodoList
     }
 }
