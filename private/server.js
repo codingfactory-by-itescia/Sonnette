@@ -2,6 +2,18 @@ const { static } = require('express');
 const express = require('express');
 const bcrypt = require('bcryptjs')
 const database = require('./database/databaseFunctions');
+const dotenv = require('dotenv').config()
+const { WebClient } = require('@slack/web-api');
+require = require("esm")(module/*,options*/)
+
+// Slack initiation 
+<<<<<<< HEAD
+const SLACK_OAUTH_TOKEN = 'xoxb-1780620095984-1780640389808-wguKG7GK69IF0FqaWP3gl5X8'
+=======
+const SLACK_OAUTH_TOKEN = process.env.SLACK_OAUTH_TOKEN;
+>>>>>>> backend
+const BOT_SPAM_CHANNEL = 'C01MU05PUSK' // this is the channel you want your bot online & spam to go
+const web = new WebClient(SLACK_OAUTH_TOKEN);
 
 // Server initiation
 const app = express()
@@ -12,6 +24,18 @@ app.listen(port, () => {
 app.use(static('public'))
 app.use(express.json())
 app.use(express.text())
+
+// Send message on Slack Server
+app.post('/slack/sendMessage', async (req, res) => {
+    const msgData = JSON.parse(req.body)
+    const message = {
+        username: msgData.username,
+        content: msgData.content
+    }
+    await web.chat.postMessage({ username: message.username, channel: BOT_SPAM_CHANNEL, text: message.content })
+    .then(() => { res.sendStatus(200) })
+    .catch((error) => { res.send(error) })
+})
 
 // Database initiation
 database.connect
@@ -166,11 +190,6 @@ app.post('/db/changePersonalTaskStatus', (req, res) => {
         }
     })
 })
-// Create a new default task
-app.post('/db/addNewDefaultTask', (req, res) => {
-    const task = new DefaultTodoList ({ task: req.body })
-    task.save()
-})
 // Get all default tasks
 app.get('/db/getDefaultTodoList', (req, res) => {
     DefaultTodoList.find().then((taskList) => res.send(taskList))
@@ -208,4 +227,30 @@ app.post('/db/getUserDefaultTodoList', (req, res) => {
     Account.findById(req.body).then((user) => { 
         res.send(user.defaultTodoList)
     })
+})
+// Delete a default task
+app.post('/db/deleteDefaultTask', async (req, res) => {
+    DefaultTodoList.findById(req.body).then(async (task) => {
+        await task.remove()
+    })
+    // Delete the default task in the "defaultTodoList" variable of each user
+    const userList = await Account.find()
+    for (let i = 0; i < userList.length; i++) {
+        const user = userList[i];
+        // Find the wanted task with his ID
+        for (let j = 0; j < user.defaultTodoList.length; j++) {
+            const task = user.defaultTodoList[j];
+            // When we find the task, delete it
+            if (task.taskId == req.body) {
+                user.defaultTodoList.splice(j,1)
+                await user.save()
+            }
+        }
+    }
+    res.sendStatus(200)
+})
+// Create a new default task
+app.post('/db/addNewDefaultTask', (req, res) => {
+    const task = new DefaultTodoList ({ task: req.body })
+    task.save().then((task => res.send(task)))
 })

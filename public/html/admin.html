@@ -77,8 +77,17 @@
                     <p class="msgContainer"></p>
                 </form>
 
-                <form>
-                    <p class="wip">WIP</p>
+                <form class="setTodoForm">
+                    <div class="setTodoFormTitle">
+                        <h2>Gérer les tâches</h2>
+                        <div class="addTaskContainer">
+                            <input type="text" placeholder="Nouvelle tâche">
+                            <img src="../img/add.png" alt="Ajouter la tâche">
+                        </div>
+                    </div>
+                    <div class="todoList">
+                        <p class="emptyTodoList">Il n'y a aucune tâche...</p>
+                    </div>
                 </form>
 
                 <form>
@@ -119,6 +128,7 @@
     <script src="../js/admin/admin.js"></script>
     <script src="../js/admin/accountsList.js"></script>
     <script src="../js/admin/messages.js"></script>
+    <script src="../js/admin/setTodoList.js"></script>
     <script src="../js/KonamiCode.js"></script>
     <script src="../js/menu.js"></script>
     <script src="../js/isConnected.js"></script>

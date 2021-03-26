@@ -37,9 +37,10 @@ async function checkForDoneTask() {
     // Get all default task of the user
     await fetch('/db/getUserDefaultTodoList', { method: 'POST', body: userId })
     .then(response => response.json())
-    .then((defaultTodoList) => {
+    .then(async (defaultTodoList) => {
         for (let i = 0; i < defaultTodoList.length; i++) {
             const task = defaultTodoList[i];
+
             if (task.isDone) {
                 const taskElement = document.getElementById(task.taskId)
                 
@@ -49,6 +50,19 @@ async function checkForDoneTask() {
         }
     })
     setDefaultTaskData()
+}
+
+async function checkIfTaskActive(taskId) {
+    let defaultTodoList
+    await fetch('/db/getDefaultTodoList').then((result) => defaultTodoList = result)
+
+    for (let i = 0; i < defaultTodoList.length; i++) {
+        const defaultTask = defaultTodoList[i];
+        if (defaultTask._id == taskId) {
+            return true
+        }
+    }
+    return false
 }
 
 async function changeDefaultTaskStatus(taskId) {
