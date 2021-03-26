@@ -105,3 +105,48 @@ button.sendMsgBtn {
     width: 65%;
     margin-right: 22%;
 }
+@media (max-width: 375px) {
+    .unclickableHamb {
+        padding-right: 5px;
+    }
+    .formContainer {
+        width: 360px;
+    }
+    #msgArea {
+        width: 63%;
+        margin-right: 28%;
+    }
+    span.fontStyle {
+        margin-right: 5%;
+    }
+    button.validMsgBtn {
+        margin-right: 30%;
+    }
+    .rewardsTxt .getRewardsTxt {
+        font-size: 17px;
+    }
+    .radioInputContainer {
+        margin-right: 25%;
+    }
+    div#responsive {
+        margin-right: 25%;
+    }
+    .preview {
+        margin-right: 27%;
+    }
+    .preview p {
+        font-size: 15px;
+    }
+    button.fontStyle {
+        margin-right: 31%;
+    }
+    p.fontStyle {
+        margin-right: 25%;
+    }
+    select#voiceList {
+        margin-right: 25%;
+    }
+    button.sendMsgBtn {
+        margin-right: 28%;
+    }
+}

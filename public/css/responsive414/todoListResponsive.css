@@ -13,8 +13,10 @@ a {
 .menuContainer ul li a{
     font-size: medium;
 }
-@media (max-width: 375px) {
-    .unclickableHamb {
-        padding-right: 5px;
-    }
+.main {
+    display: table-row;
+}
+.todoListContainer {
+    width: 85%;
+    margin-left: 11px;
 }
