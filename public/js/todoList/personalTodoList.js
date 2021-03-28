@@ -12,6 +12,45 @@ input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addNewTask(input.value)
 })
 
+function setCheckAnimations() {
+    const containers = document.querySelectorAll('.personalTodoContainer .checkMark')
+
+    for (let i = 0; i < containers.length; i++) {
+        const container = containers[i];
+        const animation = lottie.loadAnimation({
+            container: container, // Required
+            path: '../../img/checkList-animation.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: `checkmark${i}`,
+        })
+
+        if (container.classList.contains('uncheck')) {
+            animation.goToAndStop(90, true)
+            animation.playSegments([0,20])
+        } else {
+            animation.goToAndStop(90, true)
+            animation.playSegments([0,56])
+        }
+    
+        container.addEventListener('click', () => {
+            if (container.classList.contains('uncheck')) {
+                container.classList.remove('uncheck')
+                container.classList.add('check')
+    
+                animation.playSegments([20,56], true)
+            } else {
+                container.classList.remove('check')
+                container.classList.add('uncheck')
+    
+                animation.setDirection(-1)
+                animation.playSegments([56,20], true)
+            }
+        })
+    }
+}
+
 async function displayAllTask() {
     // Get all task of the user
     let taskList
@@ -23,6 +62,7 @@ async function displayAllTask() {
     for (let i = 0; i < taskList.length; i++) {
         displayTask(taskList[i])
     }
+    setCheckAnimations()
 }
 
 function displayTask(task) {
@@ -30,7 +70,7 @@ function displayTask(task) {
     taskContainer.insertAdjacentHTML('beforeend', `
         <div class="task ${task.isDone ? 'taskDone': ''}" id="${task._id}">
             <div class="completeTaskContainer">
-                <div class="checkMark" onclick="changeTaskStatus('${task._id}')"></div>
+                <div class="checkMark ${task.isDone ? 'check': 'uncheck'}" onclick="changeTaskStatus('${task._id}')"></div>
             </div>
             <div class="taskTitle">
                 <p>${task.taskBody}</p>
@@ -39,12 +79,6 @@ function displayTask(task) {
         </div>
     `)
     const taskElement = document.getElementById(task._id)
-
-    if (task.isDone) {
-        taskElement.querySelector('.checkMark').style.backgroundImage = "url('../img/check.png')"
-    } else {
-        taskElement.querySelector('.checkMark').style.backgroundImage = "url('../img/uncheck.png')"
-    }
 
     setTaskData()
 }
@@ -80,11 +114,6 @@ async function changeTaskStatus(taskId) {
     const task = document.getElementById(taskId)
     task.classList.toggle('taskDone')
     
-    if (task.classList.contains('taskDone')) {
-        task.querySelector('.checkMark').style.backgroundImage = "url('../img/check.png')"
-    } else {
-        task.querySelector('.checkMark').style.backgroundImage = "url('../img/uncheck.png')"
-    }
 
     const data = {
         taskId: taskId,

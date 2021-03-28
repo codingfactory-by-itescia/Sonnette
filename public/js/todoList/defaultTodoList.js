@@ -4,6 +4,45 @@ userId = JSON.parse(localStorage.getItem('codringData')).userId
 setDefaultTaskData()
 displayAllDefaultTask().then(() => checkForDoneTask())
 
+function setDefaultCheckAnimations() {
+    const containers = document.querySelectorAll('.defaultTodoContainer .checkMark')
+    
+    for (let i = 0; i < containers.length; i++) {
+        const container = containers[i];
+        const animation = lottie.loadAnimation({
+            container: container, // Required
+            path: '../../img/checkList-animation.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: `checkmark${i}`,
+        })
+
+        if (container.classList.contains('uncheck')) {
+            animation.goToAndStop(90, true)
+            animation.playSegments([0,20])
+        } else {
+            animation.goToAndStop(90, true)
+            animation.playSegments([0,56])
+        }
+    
+        container.addEventListener('click', () => {
+            if (container.classList.contains('uncheck')) {
+                container.classList.remove('uncheck')
+                container.classList.add('check')
+    
+                animation.playSegments([20,56], true)
+            } else {
+                container.classList.remove('check')
+                container.classList.add('uncheck')
+    
+                animation.setDirection(-1)
+                animation.playSegments([56,20], true)
+            }
+        })
+    }
+}
+
 async function displayAllDefaultTask() {
     // Get all task of the user
     let taskList
@@ -39,16 +78,20 @@ async function checkForDoneTask() {
     .then(response => response.json())
     .then(async (defaultTodoList) => {
         for (let i = 0; i < defaultTodoList.length; i++) {
+
             const task = defaultTodoList[i];
+            const taskElementContainer = document.getElementById(task.taskId)
+            const taskElement = taskElementContainer.querySelector('.checkMark')
 
             if (task.isDone) {
-                const taskElement = document.getElementById(task.taskId)
-                
-                taskElement.classList.add('taskDone')
-                taskElement.querySelector('.checkMark').style.backgroundImage = "url('../img/check.png')"
+                taskElement.classList.add('check')
+                taskElement.parentElement.parentElement.classList.add('taskDone')
+            } else {
+                taskElement.classList.add('uncheck')
             }
         }
     })
+    setDefaultCheckAnimations()
     setDefaultTaskData()
 }
 
@@ -69,12 +112,6 @@ async function changeDefaultTaskStatus(taskId) {
     // Toggle the "done" or "undone" status of a task
     const task = document.getElementById(taskId)
     task.classList.toggle('taskDone')
-    
-    if (task.classList.contains('taskDone')) {
-        task.querySelector('.checkMark').style.backgroundImage = "url('../img/check.png')"
-    } else {
-        task.querySelector('.checkMark').style.backgroundImage = "url('../img/uncheck.png')"
-    }
     
     const data = {
         taskId: taskId,
@@ -104,6 +141,3 @@ async function setDefaultTaskData() {
     document.querySelector('.defaultTodoContainer .taskDoneTitle').innerHTML = `${taskDoneCounter} sur ${taskLength}`
     document.querySelector('.defaultTodoContainer .progressCircle2').style.strokeDashoffset = `calc(57 - (57 * ${(taskDoneCounter / taskLength) * 100}) / 100)`
 }
-
-
-//fetch('/db/addNewDefaultTask', { method: 'POST', body: 'Faire du sport' })
