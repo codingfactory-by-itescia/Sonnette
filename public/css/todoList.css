@@ -2,7 +2,6 @@ body {
     margin: 0;
     font-family: "poppins", 'comfortaa', sans-serif;
 }
-/* GENERIC TASK CLASS */
 .main {
     display: flex;
     justify-content: space-around;
@@ -11,8 +10,14 @@ body {
 .todoListContainer {
     width: 30%;
     box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
+    border-radius: 10px;
+}
+.defaultTodoContainer, .personalTodoContainer {
     padding: 20px;
     border-radius: 10px;
+}
+.defaultTodoContainer {
+    background-color: white;
 }
 /* TODOLIST TITLE */
 .todoListTitleContainer {
@@ -129,4 +134,22 @@ body {
 }
 .emptyTodoList a:hover {
     text-decoration: underline;
+}
+
+.agileContainer {
+    position: relative;
+}
+.agileContainer img {
+    width: 40px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: rotate(-30deg);
+    z-index: -1;
+    transition: all 1s ease-out;
+}
+.agileContainer:hover img {
+    right: -13px;
+    top: -33px;
+    transform: rotate(13deg);
 }
