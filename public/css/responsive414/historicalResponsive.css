@@ -1,0 +1,42 @@
+a {
+    font-size: x-large;
+}
+.unclickableHamb {
+    padding-right: 40px;
+}
+.closed {
+    transform: translateX(-279px) !important;
+}
+.menuContainer ul li a{
+    font-size: medium;
+}
+/* h2{
+    font-size: 16px;
+} */
+#flex {
+    flex-direction: column;
+    align-items: center;
+}
+header{
+    margin-bottom: 30px;
+}
+.msgHistoryPanel {
+    width: 92%;
+}
+p.userName.fontStyle {
+    font-size: 15px;
+}
+.msgHistoryContainer {
+    height: 85%;
+}
+.purchaseHistoryPanel {
+    width: 92%;
+}
+@media (max-width: 375px) {
+    .unclickableHamb {
+        padding-right: 5px;
+    }
+    h2.fontStyle {
+        font-size: 17px;
+    }
+}

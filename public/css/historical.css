@@ -9,161 +9,31 @@ body {
     align-items: center;
     position: relative;
 }
-.leftArrowContainer {
-  position: absolute;
-  top: 0;
-  left: 20px;
-  width: 25px;
-  height: 25px;
-  background-image: url('../img/blackLeftArrow.png');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-.formContainer {
-    display: flex;
-    align-items: center;
-    width: 500px;
-    height: 300px;
-    overflow: hidden;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
-    border-radius: 5px;
-}
-form {
-    width: 1500px;
-    height: 80%;
-    display: flex;
-    transition: .3s ease-in-out;
-}
-form button {
-    background-color: rgb(102, 0, 204);
-    border-radius: 8px;
-    border: none;
-    color: white;
-    font-weight: bold;
-    padding: 7px 12px;
-    margin: 20px 30px 0 0;
-    cursor: pointer;
-    font-size: 14px;
-    align-self: flex-end;
-    outline: none;
-}
-.textAreaContainer, .soundSelectionContainer, .sendMsgContainer {
-    width: 500px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
-#msgArea {
-    width: 83%;
-    height: 250px;
-    border: 2px solid rgb(102, 0, 204);
-    resize: none;
-    outline: none;
-    border-radius: 8px;
-    padding: 2%;
-    font-family: sans-serif;
-}
-.sendMsgBtn {
-    margin: 0;
-    width: 85%;
-    height: 100%;
-    align-self: center;
-}
-.radioContainer {
-    display: flex;
-    align-items: center;
-    margin: 7px 0;
-}
-.radioContainer label {
-    cursor: pointer;
-}
-.checkmark {
-    width: 13px;
-    height: 13px;
-    margin-right: 6px;
-    background-color: rgb(202, 202, 202);
-    border-radius: 50%;
-}
-.radioContainer input {
-    opacity: 0;
-    margin: 0;
-    margin-right: -12px;
-    cursor: pointer;
-}
-.radioContainer input:checked ~ .checkmark {
-    background-color: rgb(102, 0, 204);
-    box-shadow: 0 0px 8px 0 rgba(102, 0, 204, .2), 0 0px 20px 0 rgba(102, 0, 204, .2)
-}
-.radioContainer input:last-child {
-    opacity: 1;
-}
-.personalSound {
-    visibility: hidden;
-    width: 200px;
-}
-.personalSound:last-child {
-    margin-top: -20px;
-}
-.personalSound::before {
-    visibility: visible;
-    content: '+ Importer une alerte';
-    font-family: 'Comfortaa', cursive;
-    display: inline-block;
-    background-color: rgb(102, 0, 204);
-    padding: 9px 21px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-weight: 700;
-    color: white;
-}
-.radioInputContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 200px;
-}
-.sendMsgContainer #voiceList {
-    border-radius: 4px;
-    padding: 4px;
-    border: 1px solid rgb(102, 0, 204);
-    outline: none;
-    cursor: pointer;
-    appearance: none;
-    background-image: url('../img/blackDownArrow.png');
-    background-position: right 5px top 50%;
-    background-size: 9px;
-    background-repeat: no-repeat;
-    padding-right: 17px;
-}
-.sendMsgContainer p {
-  margin-top: 30px;
-}
 
-.validMsgBtn , .fontStyle , .sendMsgBtn{
+.fontStyle{
   font-family: 'Comfortaa', cursive;
 }
-
+#flex{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 70px;
+}
 
 /* #param{
     display: none;
 /* MSG HISTORY */
 .msgHistoryPanel {
   width: 40%;
-  height: 85%;
+  height: 600px;
   margin-right: 3px;
-  position: absolute;
-  top: 10vh;
-  left: 100px;
+  
   background-color: white;
   box-shadow: 10px 10px 13px 2px rgba(0, 0, 0, 0.2);
   border-style: solid;
   border-color: rgb(223, 227, 228);
   border-bottom: none;
   border-right: none;
+  border-radius: 8px;
 }
 .msgHistoryPanel header {
   display: flex;
@@ -177,13 +47,13 @@ form button {
 h2{
   font-size: 20px;
 }
-.msgHistoryPanel header .rightArrowContainer {
+/* .msgHistoryPanel header .rightArrowContainer {
   position: absolute;
   right: 20px;
   width: 20px;
   height: 20px;
   cursor: pointer;
-}
+} */ 
 .msgHistoryContainer{
   height: 90%;
   overflow-y: scroll;
@@ -242,11 +112,9 @@ h2{
 /* MSG HISTORY */
 .purchaseHistoryPanel {
     width: 40%;
-    height: 85%;
+    height: 600px;
     margin-right: 3px;
-    position: absolute;
-    top: 10vh;
-    right: 100px;
+    
     background-color: white;
     box-shadow: 10px 10px 13px 2px rgba(0, 0, 0, 0.2);
     border-style: solid;
@@ -410,9 +278,4 @@ h2{
     }
   }
 
-  @media (max-width: 1320px) {
-    .msgHistoryPanel {
-      display: none;
-    }
-  }
 
