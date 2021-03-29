@@ -27,7 +27,6 @@ input:-webkit-autofill {
 }
 .fontStyle{
     font-family: 'Comfortaa', cursive;
-    color: rgb(102, 0, 204);
 }
 .darkModeContainer {
     display: flex;
@@ -123,6 +122,7 @@ form button, .forgotPassword button {
 }
 #connectionBtn{
     color: white;
+    outline: none;
 }
 .showPasswordContainer {
     display: flex;
@@ -143,6 +143,9 @@ form p a {
     font-size: 13px;
     cursor: pointer;
     text-decoration: none;
+}
+form p a:hover {
+    text-decoration: underline;
 }
 .registerLink {
     margin-bottom: -4px;

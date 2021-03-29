@@ -3,7 +3,26 @@ const url = window.location.search
 const urlParams = new URLSearchParams(url)
 const userId = urlParams.get('id')
 
-setUserData()
+setUserData().then(() => {
+    // Set the number animation
+    setTimeout(() => {
+        const container = $('.numberAnimation')
+        setTimeout(() => {
+            document.querySelector('.numberAnimation').style.opacity = '1'
+
+            container.counterUp({
+                delay: 10,
+                time: 750,
+            })
+        }, 100)
+
+        ScrollReveal().reveal(container, {
+            distance: '20px',
+            origin: 'bottom',
+            opacity: -1,
+        })
+    }, 250)
+})
 
 async function setUserData() {
     // Get user profile from id
