@@ -11,5 +11,10 @@
 }
 #divLogo h1 {
     transition: .3s;
-    margin-top: 35px;
+    margin-top: 30%;
+}
+@media (max-width: 320px) {
+    #logo {
+        left: -25px;
+    }
 }

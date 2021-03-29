@@ -16,12 +16,29 @@ a {
 .fontStyle{
     font-size: medium;
 }
+.main {
+    flex-direction: column;
+}
+#title1 {
+    font-size: 300%;
+}
+lottie-player {
+    width: 350px !important;
+    height: 350px !important;
+}
 @media (max-width: 375px) {
     .unclickableHamb {
         padding-right: 5px;
     }
     h2.fontStyle {
         font-size: 17px;
+    }
+    .titles {
+        margin-top: 16%;
+    }
+    lottie-player {
+        width: 300px !important;
+        height: 300px !important;
     }
 }
 @media (max-width: 320px) {
@@ -52,7 +69,8 @@ a {
     .menuContainer {
         min-width: 74%;
     }
-    .fontStyle {
-        font-size: 15px;
+    lottie-player {
+        width: 200px !important;
+        height: 200px !important;
     }
 }
