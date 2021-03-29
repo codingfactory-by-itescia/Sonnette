@@ -18,12 +18,18 @@ async function displayAccounts() {
     for (let i = 0; i < accounts.length; i++) {
         const account = accounts[i];
         accountsListContainer.insertAdjacentHTML('afterbegin',`
-            <div class="account">
+            <div class="account" id="${account._id}">
                 <p class="accountName">${account.username}</p>
                 <p class="accountEmail">${account.email}</p>
                 <p class="accountPassword">${account.password}</p>
                 <p class="accountAdmin">${account.isAdmin ? 'oui' : 'non'}</p>
-                <div class="binContainer" onclick="deleteAccount('${account._id.toString()}')"></div>
+                <div class="binContainer">
+                    <div class='confirmDeleteAccountContainer'>
+                        <button onclick="deleteAccount('${account._id.toString()}')">Supprimer</button>
+                        <button onclick="hideDeleteAccountAlert('${account._id}')">Annuler</button>
+                    </div>
+                    <img src='../../img/blackBin.png' alt='Supprimer ce compte' onclick="displayDeleteAccountAlert('${account._id}')">
+                </div>
             </div>
         `)
     }
@@ -34,6 +40,17 @@ async function displayAccounts() {
     } else {
         document.querySelector('.accountErrorMsg').innerHTML = 'Aucun compte n\'a été trouvé'
     }
+}
+
+function hideDeleteAccountAlert(id) {
+    const account = document.getElementById(id)
+    account.querySelector('img').style.display = 'block'
+    account.querySelector('.confirmDeleteAccountContainer').style.display = 'none'
+}
+function displayDeleteAccountAlert(id) {
+    const account = document.getElementById(id)
+    account.querySelector('img').style.display = 'none'
+    account.querySelector('.confirmDeleteAccountContainer').style.display = 'flex'
 }
 
 async function deleteAccount(id) {
