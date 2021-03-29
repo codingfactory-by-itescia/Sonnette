@@ -21,7 +21,7 @@ function setDefaultCheckAnimations() {
         if (container.classList.contains('uncheck')) {
             animation.goToAndStop(90, true)
             animation.playSegments([0,20])
-        } else {
+        } else if (container.classList.contains('check')) {
             animation.goToAndStop(90, true)
             animation.playSegments([0,56])
         }
@@ -78,7 +78,6 @@ async function checkForDoneTask() {
     .then(response => response.json())
     .then(async (defaultTodoList) => {
         for (let i = 0; i < defaultTodoList.length; i++) {
-
             const task = defaultTodoList[i];
             const taskElementContainer = document.getElementById(task.taskId)
             const taskElement = taskElementContainer.querySelector('.checkMark')
