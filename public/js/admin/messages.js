@@ -32,14 +32,20 @@ async function displayMessages() {
             day = '0' + day
         }
         messagesList.insertAdjacentHTML('afterbegin',`
-            <div class="message">
+            <div class="message" id="${message._id}">
                 <div class="msgContent">
                     <a href='profil.html?id=${msg.authorId}'><p class="messageAuthor">${msg.author}</p></a>
                     <p class="messageBody">${message.body}</p>
                     <p class="msgTime fontStyle" style="opacity: .4">${day + '/' + month + ' '  + date.getHours() + ':' + min} </p>
                 </div>
                 
-                <div class="binContainer msgBinContainer" onclick="deleteMsg('${message._id.toString()}')"></div>
+                <div class="binContainer msgBinContainer">
+                <div class='confirmDeleteMsgContainer'>
+                        <button onclick="deleteMsg('${message._id}')">Supprimer</button>
+                        <button onclick="hideDeleteMsgAlert('${message._id}')">Annuler</button>
+                    </div>
+                    <img src='../../img/blackBin.png' alt='Supprimer ce message' onclick="displayDeleteMsgAlert('${message._id}')">
+                </div>
             </div>
         `)
     }
@@ -50,6 +56,17 @@ async function displayMessages() {
     } else {
         document.querySelector('.messagesErrorMsg').innerHTML = 'Aucun message n\'a été trouvé'
     }
+}
+
+function hideDeleteMsgAlert(id) {
+    const account = document.getElementById(id)
+    account.querySelector('img').style.display = 'block'
+    account.querySelector('.confirmDeleteMsgContainer').style.display = 'none'
+}
+function displayDeleteMsgAlert(id) {
+    const account = document.getElementById(id)
+    account.querySelector('img').style.display = 'none'
+    account.querySelector('.confirmDeleteMsgContainer').style.display = 'flex'
 }
 async function deleteMsg(id) {
     // Delete a message with his ID

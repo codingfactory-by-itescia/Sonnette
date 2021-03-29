@@ -246,7 +246,19 @@ app.post('/db/deleteDefaultTask', async (req, res) => {
     res.sendStatus(200)
 })
 // Create a new default task
-app.post('/db/addNewDefaultTask', (req, res) => {
+app.post('/db/addNewDefaultTask', async (req, res) => {
     const task = new DefaultTodoList ({ task: req.body })
-    task.save().then((task => res.send(task)))
+    await task.save().then((task => res.send(task)))
+
+    // Add the new default task in the "defaultTodoList" variable of each user
+    const userList = await Account.find()
+    for (let i = 0; i < userList.length; i++) {
+        const user = userList[i];
+        const newTask = {
+            taskId: task._id,
+            isDone: false
+        }
+        user.defaultTodoList.push(newTask)
+        await user.save()
+    }
 })

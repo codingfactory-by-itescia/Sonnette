@@ -134,19 +134,52 @@ form button {
     width: 20%;
     overflow: hidden;
 }
-.accountAdmin, .tableAdmin {
+.tableAdmin {
     padding: 1vh 1%;
+    width: 13%;
+}
+.accountAdmin {
+    padding: 1vh 0 1vh 2%;
     width: 3%;
 }
 .binContainer {
-    width: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 13%;
     height: 100%;
-    background-image: url('../img/blackBin.png');
-    background-repeat: no-repeat;
-    background-size: 15px;
-    background-position: center;
     cursor: pointer;
     right: 10px;
+}
+.binContainer img {
+    height: 23px;
+    margin-right: 20px;
+}
+.confirmDeleteAccountContainer, .confirmDeleteMsgContainer {
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+}
+.confirmDeleteAccountContainer button, .confirmDeleteMsgContainer button {
+    background-color: red;
+    border: none;
+    border-radius: 7px;
+    outline: none;
+    padding: 3px 5px;
+    border: 1px solid red;
+    cursor: pointer;
+    font-size: 12px;
+    margin-right: 2%;
+
+}
+.confirmDeleteAccountContainer button:nth-child(1), .confirmDeleteMsgContainer button:nth-child(1) {
+    color: white;
+    background-color: red;
+}
+.confirmDeleteAccountContainer button:nth-child(2), .confirmDeleteMsgContainer button:nth-child(2) {
+    background-color: white;
+    border: 1px solid black;
 }
 .messagesListContainer {
     position: absolute;
