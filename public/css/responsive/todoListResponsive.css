@@ -36,6 +36,40 @@
         width: 37%;
     }
 }
+@media (max-width:540px){
+    .main {
+        margin-top: -15%;
+    }
+    a {
+        text-decoration: none;
+        color:  rgb(102, 0, 204);
+        font-family: 'Comfortaa', cursive;
+        font-size: x-large;
+    }
+    .unclickableHamb {
+        padding-right: 40px;
+    }
+    .closed {
+        transform: translateX(-279px) !important;
+    }
+    .menuContainer ul li a{
+        font-size: medium;
+    }
+    .todoListContainer.agileContainer {
+        width: 45%;
+        margin-bottom: 5%;
+    }
+    .todoListContainer.personalTodoContainer {
+        width: 38%;
+        margin-bottom: 5%;
+    }
+    .todoListTitle p {
+        font-size: 17px;
+    }
+    .taskTitle p {
+        font-size: 14px;
+    }
+}
 @media (max-width:414px){
     a {
         text-decoration: none;

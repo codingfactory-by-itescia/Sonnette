@@ -23,6 +23,29 @@
         width: 37%;
     }
 }
+@media (max-width:540px){
+    div#flex {
+        margin-top: 5%;
+    }
+    a {
+        text-decoration: none;
+        color:  rgb(102, 0, 204);
+        font-family: 'Comfortaa', cursive;
+        font-size: x-large;
+    }
+    .unclickableHamb {
+        padding-right: 40px;
+    }
+    .closed {
+        transform: translateX(-279px) !important;
+    }
+    .menuContainer ul li a{
+        font-size: medium;
+    }
+    .howItWorksContainer p {
+        font-size: 17px;
+    }
+}
 @media (max-width:414px){
     a {
         text-decoration: none;
@@ -41,6 +64,9 @@
     }
     .fontStyle{
         font-size: medium;
+    }
+    .howItWorksContainer p {
+        font-size: 14px;
     }
 }
 @media (max-width: 375px) {

@@ -17,6 +17,23 @@
         width: 37%;
     }
 }
+@media (max-width:540px){
+    a {
+        text-decoration: none;
+        color:  rgb(102, 0, 204);
+        font-family: 'Comfortaa', cursive;
+        font-size: x-large;
+    }
+    .unclickableHamb {
+        padding-right: 40px;
+    }
+    .closed {
+        transform: translateX(-279px) !important;
+    }
+    .menuContainer ul li a{
+        font-size: medium;
+    }
+}
 @media (max-width:414px){
     a {
         text-decoration: none;

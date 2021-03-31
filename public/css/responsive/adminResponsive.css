@@ -17,6 +17,125 @@
         width: 37%;
     }
 }
+@media (max-width:540px){
+    a {
+        text-decoration: none;
+        color:  rgb(102, 0, 204);
+        font-family: 'Comfortaa', cursive;
+        font-size: x-large;
+    }
+    .unclickableHamb {
+        padding-right: 40px;
+    }
+    .closed {
+        transform: translateX(-279px) !important;
+    }
+    .menuContainer ul li a{
+        font-size: medium;
+    }
+    .createAccountForm h2 {
+        font-size: 18px;
+    }
+    .setTodoForm h2 {
+        font-size: 18px;
+    }
+    .leftContainer {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .messagesListContainer .messagesListTitle {
+        width: 98%;
+    }
+    .messagesListContainer {
+        width: 45%;
+    }
+    .accountsListContainer {
+        margin: none;
+    }
+    p.messageBody {
+        word-break: break-word;
+    }
+    .binContainer.msgBinContainer {
+        width: 11%;
+    }
+    .messagesListContainer .messagesListTitle {
+        width: 98%;
+    }
+    .formsContainer {
+        display: table-row;
+    }
+    form {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+    .createAccountForm{
+        height: none;
+    }
+    .leftContainer {
+        width: 94%;
+        height: 100%;
+        display: table-row;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 130%;
+        margin-left: 12.2%;
+    }
+    .tablePassword {
+        width: 100px;
+    }
+    .accountsListTitles {
+        margin-top: 0px;
+    }
+    .accountsListTitles p {
+        font-size: 15px;
+    }
+    .accountsListContainer {
+        width: 92%;
+        height: 52%;
+        margin-left: 0%;
+    }
+    p.tableName {
+        width: 22%;
+    }
+    .accountName{
+        width: 22%;
+    }
+    .accountPassword{
+        margin-right: 6%;
+    }
+    .account{
+        word-break: break-all;
+    }
+    .binContainer {
+        width: 4.5%;
+        height: 100%;
+        margin-left: 3.5%;
+    }
+    .accountAdmin, .tableAdmin {
+        width: 8%;
+    }
+    p.tableAdmin {
+        width: 70px;
+    }
+    .messagesListContainer {
+        position: relative;
+        width: 91%;
+        margin-left: 9.7%;
+    }
+    .accountsListContainer input {
+        position: relative;
+        width: 90%;
+    }
+    .panelContainer {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+    }
+}
 @media (max-width:414px){
     a {
         text-decoration: none;
