@@ -44,16 +44,29 @@ function setDefaultCheckAnimations() {
 }
 
 async function displayAllDefaultTask() {
-    // Get all task of the user
-    let taskList
+    let defaultTaskList
+    let userDefaultTaskList
 
+    // Get all default todoList
     await fetch('/db/getdefaultTodoList')
     .then(response => response.json())
-    .then(result => taskList = result)
+    .then(result => defaultTaskList = result)
 
-    for (let i = 0; i < taskList.length; i++) {
-        displayDefaultTask(taskList[i])
+    // Get all default todoList of the user
+    await fetch('/db/getUserDefaultTodoList', { method: 'POST', body: userId })
+    .then(response => response.json())
+    .then(result => userDefaultTaskList = result)
+
+    // Check if user has all default tasks
+    if (defaultTaskList.length == userDefaultTaskList.length) {
+        for (let i = 0; i < defaultTaskList.length; i++) {
+            displayDefaultTask(defaultTaskList[i])
+        }
+    } else {
+        // Case where user doesn't have all default task saved in his profil
+        await setAllDefaultTaskInUserProfil()
     }
+
 }
 
 async function displayDefaultTask(task) {
@@ -81,7 +94,6 @@ async function checkForDoneTask() {
             const task = defaultTodoList[i];
             const taskElementContainer = document.getElementById(task.taskId)
             const taskElement = taskElementContainer.querySelector('.checkMark')
-
             if (task.isDone) {
                 taskElement.classList.add('check')
                 taskElement.parentElement.parentElement.classList.add('taskDone')
@@ -139,4 +151,21 @@ async function setDefaultTaskData() {
     // Display the task data and set style to progress circle
     document.querySelector('.defaultTodoContainer .taskDoneTitle').innerHTML = `${taskDoneCounter} sur ${taskLength}`
     document.querySelector('.defaultTodoContainer .progressCircle2').style.strokeDashoffset = `calc(57 - (57 * ${(taskDoneCounter / taskLength) * 100}) / 100)`
+}
+
+async function setAllDefaultTaskInUserProfil() {
+    // Save all default task in the profil of the user
+    let defaultTaskList
+    // Get all default task
+    await fetch('/db/getDefaultTodoList')
+    .then(response => response.json())
+    .then(result => defaultTaskList = result)
+
+    const data = {
+        userId: userId,
+        defaultTaskList: defaultTaskList
+    }
+
+    await fetch('/db/setAllDefaultTaskInUserProfil', { method: 'POST', body: JSON.stringify(data) })
+    .then(() => console.log('done'))
 }

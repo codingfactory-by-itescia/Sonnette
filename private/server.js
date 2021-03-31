@@ -262,3 +262,18 @@ app.post('/db/addNewDefaultTask', async (req, res) => {
         await user.save()
     }
 })
+// Save all default task in the profil of the user
+app.post('/db/setAllDefaultTaskInUserProfil', async (req, res) => {
+    const data = JSON.parse(req.body)
+    await Account.findById(data.userId).then(async (user) => {
+        for (let i = 0; i < data.defaultTaskList.length; i++) {
+            const task = data.defaultTaskList[i];
+            const defaultTask = {
+                taskId: task._id,
+                isDone: false
+            }
+            user.defaultTodoList.push(defaultTask)
+        }
+        await user.save()
+    })
+})

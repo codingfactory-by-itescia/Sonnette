@@ -12,43 +12,45 @@ input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addNewTask(input.value)
 })
 
-function setCheckAnimations() {
+function setAllCheckAnimations() {
     const containers = document.querySelectorAll('.personalTodoContainer .checkMark')
 
     for (let i = 0; i < containers.length; i++) {
-        const container = containers[i];
-        const animation = lottie.loadAnimation({
-            container: container, // Required
-            path: '../../img/checkList-animation.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            name: `checkmark${i}`,
-        })
-
-        if (container.classList.contains('check')) {
-            animation.goToAndStop(90, true)
-            animation.playSegments([0,56])
-        } else {
-            animation.goToAndStop(90, true)
-            animation.playSegments([0,20])
-        }
-    
-        container.addEventListener('click', () => {
-            if (container.classList.contains('uncheck')) {
-                container.classList.remove('uncheck')
-                container.classList.add('check')
-    
-                animation.playSegments([20,56], true)
-            } else {
-                container.classList.remove('check')
-                container.classList.add('uncheck')
-    
-                animation.setDirection(-1)
-                animation.playSegments([56,20], true)
-            }
-        })
+        setCheckAnimation(containers[i])
     }
+}
+
+function setCheckAnimation(container) {
+    const animation = lottie.loadAnimation({
+        container: container, // Required
+        path: '../../img/checkList-animation.json',
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+    })
+
+    if (container.classList.contains('check')) {
+        animation.goToAndStop(90, true)
+        animation.playSegments([0,56])
+    } else {
+        animation.goToAndStop(90, true)
+        animation.playSegments([0,20])
+    }
+
+    container.addEventListener('click', () => {
+        if (container.classList.contains('uncheck')) {
+            container.classList.remove('uncheck')
+            container.classList.add('check')
+
+            animation.playSegments([20,56], true)
+        } else {
+            container.classList.remove('check')
+            container.classList.add('uncheck')
+
+            animation.setDirection(-1)
+            animation.playSegments([56,20], true)
+        }
+    })
 }
 
 async function displayAllTask() {
@@ -62,7 +64,7 @@ async function displayAllTask() {
     for (let i = 0; i < taskList.length; i++) {
         displayTask(taskList[i])
     }
-    setCheckAnimations()
+    setAllCheckAnimations()
 }
 
 function displayTask(task) {
@@ -93,9 +95,14 @@ async function addNewTask(taskBody) {
     }
     await fetch('/db/setNewTask', { method:'POST', body: JSON.stringify(task) })
     .then(response => response.json())
-    .then(task => displayTask(task))
+    .then(task => {
+        displayTask(task)
     
-    setTaskData()
+        const container = document.getElementById(task._id)
+        setCheckAnimation(container.querySelector('.checkMark'))
+        
+        setTaskData()
+    })
 }
 
 async function deleteTask(taskId) {
