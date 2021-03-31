@@ -40,11 +40,11 @@
 }
 form {
     width: 26.5%;
-    height: 100%;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 3%;
+    justify-content: center;
+    padding: 3%;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
     border-radius: 6px;
 }
@@ -73,7 +73,6 @@ form button {
     justify-self: center;
     font-size: 15px;
     text-transform: uppercase;
-    margin-top: 10%;
 }
 .isAdminContainer {
     width: 100%;

@@ -344,7 +344,7 @@ form button {
   position: absolute;
   bottom: 5%;
   left: 5%;
-  display: none;
+  display: flex;
   justify-content: space-around;
   height: 100px;
   cursor: pointer;
