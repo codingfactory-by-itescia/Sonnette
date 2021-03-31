@@ -51,6 +51,11 @@
         font-size: 17px;
     }
 }
+@media (max-width: 360px){
+    .howItWorksContainer p {
+        font-size: 14px;
+    }
+}
 @media (max-width: 320px) {
     .unclickableHamb {
         padding-right: 1px;
