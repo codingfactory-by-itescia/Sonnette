@@ -1,0 +1,125 @@
+div#flex {
+    margin-top: 10%;
+}
+.menuContainer ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 19px;
+}
+.msgHistoryPanel {
+    width: 40%;
+    height: 950px;
+}
+.purchaseHistoryPanel {
+    width: 40%;
+    height: 950px;
+}
+.msgHistoryContainer {
+    height: 89%;
+}
+.menuContainer ul {
+    width: 90%;
+}
+.menuContainer {
+    width: 33%;
+}
+.closed {
+    transform: translateX(-340px) !important;
+}
+@media (max-width:768px){
+    div#flex {
+        margin-top: 20%;
+    }
+    div#msgHistoryTitleContainer {
+        margin-left: 2%;
+    }
+    .menuContainer {
+        width: 37%;
+    }
+    .msgHistoryPanel {
+        height: 750px;
+    }
+    .purchaseHistoryPanel {
+        height: 750px;
+    }
+}
+@media (max-width:414px){
+    a {
+        font-size: x-large;
+    }
+    .unclickableHamb {
+        padding-right: 40px;
+    }
+    .closed {
+        transform: translateX(-279px) !important;
+    }
+    .menuContainer ul li a{
+        font-size: medium;
+    }
+    #flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    header{
+        margin-bottom: 30px;
+    }
+    .msgHistoryPanel {
+        width: 92%;
+    }
+    p.userName.fontStyle {
+        font-size: 15px;
+    }
+    .msgHistoryContainer {
+        height: 87.5%;
+    }
+    .purchaseHistoryPanel {
+        width: 92%;
+    }
+}
+@media (max-width: 375px) {
+    .unclickableHamb {
+        padding-right: 5px;
+    }
+    .leftContainer {
+    margin-bottom: 178%;
+    }
+}
+@media (max-width: 320px) {
+    .unclickableHamb {
+        padding-right: 1px;
+    }
+    a{
+        font-size: 20px;
+    }
+    #divConnexion {
+        margin-right: 10px;
+        margin-top: 4px;
+    }
+    #disconnectionBtn {
+        padding: 5px 6px;
+        font-size: 12px;
+    }
+    #userIcon {
+        width: 27px;
+    }
+    .hambContainer {
+        width: 25px;
+        height: 10px;
+    }
+    .menuContainer ul li a {
+        font-size: 15px;
+    }
+    .menuContainer {
+        min-width: 74%;
+    }
+    div#msgHistoryTitleContainer, #rewardsHistoryTitleContainer {
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+    .msgHistoryPanel {
+        margin-bottom: 4%;
+    }
+    .msgHistoryContainer {
+        height: 90%;
+    }
+}
