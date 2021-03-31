@@ -26,12 +26,12 @@ function setCheckAnimations() {
             name: `checkmark${i}`,
         })
 
-        if (container.classList.contains('uncheck')) {
-            animation.goToAndStop(90, true)
-            animation.playSegments([0,20])
-        } else {
+        if (container.classList.contains('check')) {
             animation.goToAndStop(90, true)
             animation.playSegments([0,56])
+        } else {
+            animation.goToAndStop(90, true)
+            animation.playSegments([0,20])
         }
     
         container.addEventListener('click', () => {
