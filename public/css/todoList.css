@@ -44,7 +44,7 @@ body {
 }
 .completeTaskContainer {
     width: 40px;
-    height: 30px;
+    height: 35px;
     cursor: pointer;
 }
 .progressTaskCircleContainer {
@@ -80,9 +80,8 @@ body {
 }
 /* ADD TASK */
 .addTaskContainer {
-    width: 72%;
     display: flex;
-    padding: 0 14%;
+    margin: 0 51px;
 }
 .addTaskContainer input {
     padding: 4px 8px;
@@ -90,7 +89,7 @@ body {
     border: 2px solid rgb(102, 0, 204);
     border-radius: 5px;
     outline: none;
-    width: inherit;
+    width: 100%;
 }
 .addTaskContainer img {
     height: 31px;
