@@ -22,6 +22,8 @@ fetch('/db/getAccount', options)
 function displayDiffTime(diffHours, diffDays) {
     const lastConnectionTxt = document.querySelector('.getRewardsContainer .lastConnection')
 
+    console.log(`\u23F0 Dernière connexion il y a ${diffHours} heure${diffHours > 1 ? 's' : ''}`);
+    
     if (diffDays > 0) {
         lastConnectionTxt.innerHTML += ` ${diffDays} jour${diffDays > 1 ? 's' : ''}`
     } else if (diffHours > 0) {
