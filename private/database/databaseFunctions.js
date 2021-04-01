@@ -27,6 +27,7 @@ module.exports = {
     schemas: {
         Account: schemas.Account,
         Message: schemas.Message,
-        DefaultTodoList: schemas.DefaultTodoList
+        DefaultTodoList: schemas.DefaultTodoList,
+        Rewards: schemas.Rewards,
     }
 }

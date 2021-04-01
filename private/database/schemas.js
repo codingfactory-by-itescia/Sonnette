@@ -35,7 +35,14 @@ const accountSchema = new mongoose.Schema({
             isDone: Boolean
 
         }
-    ]
+    ],
+    rewards: [
+        {
+            rewardId: String,
+            rewardTitle: String,
+            lastClaim: Date
+        }
+    ],
 }, {timestamps: true})
 
 const messagesSchema = new mongoose.Schema({
@@ -58,8 +65,23 @@ const defaultTodoListSchema = new mongoose.Schema({
         
 }, {timestamps: true})
 
+const rewardsSchema = new mongoose.Schema({
+    rewardTitle: {
+        type: String,
+        require: true
+    },
+    isRewardCycled: {
+        type: Boolean,
+        require: true
+    },
+    rewardCycle: {
+        type: Number
+    }
+}, {timestamps: true})
+
 module.exports = {
     Account: mongoose.model('accounts', accountSchema),
     Message: mongoose.model('messages', messagesSchema),
-    DefaultTodoList: mongoose.model('defaultTodoList', defaultTodoListSchema)
+    DefaultTodoList: mongoose.model('defaultTodoList', defaultTodoListSchema),
+    Rewards: mongoose.model('rewards', rewardsSchema),
 }
