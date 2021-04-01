@@ -17,7 +17,7 @@ async function displayReward(reward) {
             <div class="rewardTime">
                 <p class="rewardStatus">00:00:00</p>
             </div>
-            <button onclick="claimReward('${reward._id}')">${reward.rewardTitle}</button>
+            <button onclick="claimReward('${reward._id}', ${reward.isRewardCycled ? true : false})">${reward.rewardTitle}</button>
             <p class="rewardPoints">+${reward.rewardPoints}</p>
         </div>
     `)
@@ -26,6 +26,7 @@ async function displayReward(reward) {
 
 async function getRewardStatus(reward) {
     // Check if the reward is claimable or not
+    let userReward
     const data = {
         userId: userId,
         rewardId: reward._id
@@ -33,9 +34,10 @@ async function getRewardStatus(reward) {
     // Get the lastClaim date of the user for this reward
     await fetch('/db/rewards/getUserReward', { method: 'POST', body: JSON.stringify(data) })
     .then((response) => response.json())
-    .then(userReward => {
-        setDiffTime(reward, userReward.lastClaim)
-    })
+    .then(data => userReward = data)
+
+    if (reward.isRewardCycled) setDiffTime(reward, userReward.lastClaim)
+    else displayNoneCycledReward(reward, userReward)
 }
 
 function setDiffTime(reward, lastClaimDate) {
@@ -69,7 +71,7 @@ function setDiffTime(reward, lastClaimDate) {
     }, 1000)
 }
 
-async function claimReward(id) {
+async function claimReward(id, isRewardCycled) {
     // Check if user can click on the button
     if (document.getElementById(id).classList.contains('unlocked')) {
         // Set the locked classList
@@ -84,37 +86,71 @@ async function claimReward(id) {
         // Update the lastClaim date
         const options = {
             userId: userId,
-            rewardId: id
+            rewardId: id,
+            isRewardCycled: isRewardCycled
         }
     
         await fetch('/db/rewards/claimReward', { method: 'POST', body: JSON.stringify(options) })
         .then(response => response.json())
-        .then((reward) => setDiffTime(reward, new Date()))
+        .then((reward) => {
+            if (isRewardCycled) setDiffTime(reward, new Date())
+        })
     }
 }
 
-/* fetch('/db/rewards/addNewReward', { method: 'POST', body: JSON.stringify({
-        rewardTitle: "Récompense chaque jour",
-        rewardPoints: 2000,
-        isRewardCycled: true,
-        rewardCycle: 24, // In hour
-        rewardStatus: 'locked'
-    })
-}).then(() => console.log('done'))
-fetch('/db/rewards/addNewReward', { method: 'POST', body: JSON.stringify({
-    rewardTitle: "Récompense chaque heure",
-    rewardPoints: 70,
-    isRewardCycled: true,
-    rewardCycle: 1, // In hour
-    rewardStatus: 'locked'
-})
-}).then(() => console.log('done'))
-fetch('/db/rewards/addNewReward', { method: 'POST', body: JSON.stringify({
-    rewardTitle: "Récompense chaque minute",
-    rewardPoints: 1,
-    isRewardCycled: true,
-    rewardCycle: 0.0167, // In hour
-    rewardStatus: 'locked'
-})
-}).then(() => console.log('done')) */
+function displayNoneCycledReward(reward, userReward) {
+    let rewardElement = document.getElementById(reward._id)
+    let rewardStatusElement = rewardElement.querySelector('.rewardStatus')
+    
+    if (!userReward.claimed) {
+        rewardStatusElement.innerHTML = 'Réclame ta récompense !'
+        rewardElement.classList.remove('locked')
+        rewardElement.classList.add('unlocked')
+    } else {
+        rewardStatusElement.innerHTML = 'Récompense déjà récupérée'
+        rewardElement.classList.remove('unlocked')
+        rewardElement.classList.add('locked')
+    }
+}
 
+
+
+
+
+
+
+
+
+function setRewardsList() {
+    fetch('/db/rewards/addNewReward', { method: 'POST', body: JSON.stringify({
+        rewardTitle: "Récompense réclamable qu'une seule fois",
+        rewardPoints: 300,
+        isRewardCycled: false,
+    })
+    }).then(() => console.log('done'))
+    fetch('/db/rewards/addNewReward', { method: 'POST', body: JSON.stringify({
+            rewardTitle: "Récompense chaque jour",
+            rewardPoints: 1000,
+            isRewardCycled: true,
+            rewardCycle: 24, // In hour
+        })
+    }).then(() => console.log('done'))
+    fetch('/db/rewards/addNewReward', { method: 'POST', body: JSON.stringify({
+        rewardTitle: "Récompense chaque heure",
+        rewardPoints: 70,
+        isRewardCycled: true,
+        rewardCycle: 1, // In hour
+    })
+    }).then(() => console.log('done'))
+    fetch('/db/rewards/addNewReward', { method: 'POST', body: JSON.stringify({
+        rewardTitle: "Récompense chaque minute",
+        rewardPoints: 1,
+        isRewardCycled: true,
+        rewardCycle: 0.0167, // In hour
+    })
+    }).then(() => console.log('done'))
+}
+
+function deleteRewardsList() {
+    fetch('/db/rewards/deleteAllRewards')
+}

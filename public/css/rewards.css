@@ -12,14 +12,18 @@
     line-height: 290%;
 }
 .rewardsContainer {
-    width: 100%;
+    padding: 0 10%;
+    width: 80%;
     height: 83vh;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    align-content: center;
 }
 .reward {
     padding: 15px;
+    margin: 30px 0;
     border-radius: 10px;
     box-shadow: 0 0 30px 10px rgba(97, 97, 97, 0.1);
     display: flex;

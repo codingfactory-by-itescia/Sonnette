@@ -292,7 +292,6 @@ app.post('/db/rewards/addNewReward', async (req, res) => {
         rewardTitle: data.rewardTitle,
         rewardPoints: data.rewardPoints,
         isRewardCycled: data.isRewardCycled,
-        rewardStatus: data.rewardStatus
     })
     if (data.isRewardCycled) reward.rewardCycle = data.rewardCycle
 
@@ -302,6 +301,26 @@ app.post('/db/rewards/addNewReward', async (req, res) => {
 // Return all rewards
 app.get('/db/rewards/getAllRewards', (req, res) => {
     Rewards.find().then((rewards) => res.send(rewards))
+})
+//Delete all rewards
+app.get('/db/rewards/deleteAllRewards', (req, res) => {
+    Rewards.find().then(rewards => {
+        for (let i = 0; i < rewards.length; i++) {
+            rewards[i].remove()
+        }
+    })
+})
+// Delete a specific reward
+app.post('/db/rewards/deleteReward', (req, res) => {
+    const data = JSON.parse(req.body)
+
+    Account.findById(data.userId).then(async user => {
+        for (let i = 0; i < user.rewards.length; i++) {
+            const reward = user.rewards[i];
+            if (reward._id == data.userRewardId) reward.remove()
+        }
+        await user.save()
+    })
 })
 // Return a specific reward
 app.post('/db/rewards/getReward', (req, res) => {
@@ -341,13 +360,33 @@ app.post('/db/rewards/getUserReward', (req, res) => {
                 const newReward = {
                     rewardId: wantedReward._id,
                     rewardTitle: wantedReward.rewardTitle,
-                    lastClaim: new Date(),
-                    rewardStatus: 'locked'
                 }
+
+                if (wantedReward.isRewardCycled) newReward.lastClaim = new Date()
+                else newReward.claimed = false
+
                 user.rewards.push(newReward)
                 await user.save().then(() => res.send(newReward))
             })
         }
+    })
+})
+// Create a reward for specific user
+app.post('/db/rewards/createNewUserReward', (req, res) => {
+    const data = JSON.parse(req.body)
+
+    Account.findById(data.userId).then(async user => {
+        const newReward = {
+            rewardId: data.reward._id,
+            rewardTitle: data.reward.rewardTitle
+        }
+
+        if (data.reward.isRewardCycled) newReward.lastClaim = new Date()
+        else newReward.claimed = false
+
+        user.rewards.push(newReward)
+        await user.save()
+        console.log('new reward created');
     })
 })
 // Return all rewards of a user
@@ -369,7 +408,10 @@ app.post('/db/rewards/claimReward', async (req, res) => {
         for (let i = 0; i < user.rewards.length; i++) {
             const reward = user.rewards[i];
             if (reward.rewardId == data.rewardId) {
-                reward.lastClaim = new Date()
+                // If the reward is cycled, set the last claim date
+                if (data.isRewardCycled) reward.lastClaim = new Date()
+                // If the reward isn't cycled, save that this reward was claimed
+                else reward.claimed = true
             }
         }
         await user.save()

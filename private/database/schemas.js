@@ -45,7 +45,7 @@ const accountSchema = new mongoose.Schema({
             rewardId: String,
             rewardTitle: String,
             lastClaim: Date,
-            rewardStatus: String
+            claimed: Boolean
         }
     ],
 }, {timestamps: true})
