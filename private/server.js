@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 const database = require('./database/databaseFunctions');
 const dotenv = require('dotenv').config()
 const { WebClient } = require('@slack/web-api');
+//const { Rewards } = require('./database/schemas');
 require = require("esm")(module/*,options*/)
 
 // Slack initiation 
@@ -38,6 +39,7 @@ database.connect
 const Account = database.schemas.Account
 const Message = database.schemas.Message
 const DefaultTodoList = database.schemas.DefaultTodoList
+const Rewards = database.schemas.Rewards
 
 // Create new account
 app.post('/db/createAccount', (req, res) => {
@@ -275,5 +277,36 @@ app.post('/db/setAllDefaultTaskInUserProfil', async (req, res) => {
             user.defaultTodoList.push(defaultTask)
         }
         await user.save()
+    })
+})
+
+
+
+// Add a new reward
+app.post('/db/rewards/addNewReward', async (req, res) => {
+    const data = JSON.parse(req.body)
+
+    const reward = new Rewards({
+        rewardTitle: data.rewardTitle,
+        isRewardCycled: data.isRewardCycled,
+    })
+    if (data.isRewardCycled) reward.rewardCycle = data.rewardCycle
+
+    await reward.save()
+    .then(() => res.sendStatus(200))
+})
+// Return all rewards
+app.get('/db/rewards/getAllRewards', (req, res) => {
+    Rewards.find().then((rewards) => res.send(rewards))
+})
+// Get a reward of a user
+app.post('/db/rewards/getUserReward', (req, res) => {
+    const data = JSON.parse(req.body)
+
+    Account.findById(data.userId).then((user) => {
+        for (let i = 0; i < user.rewards.length; i++) {
+            const reward = user.rewards[i];
+            if (reward.rewardId == data.rewardId) res.send(reward)
+        }
     })
 })

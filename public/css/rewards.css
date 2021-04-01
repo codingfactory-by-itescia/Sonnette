@@ -4,11 +4,47 @@
     padding: 0;
     font-family: sans-serif;
 }
-
+.rewardsTitle {
+    height: 10vh;
+    color: rgb(102, 0, 204);
+    font-size: 30px;
+    margin-left: 15%;
+    line-height: 290%;
+}
 .rewardsContainer {
     width: 100%;
-    height: 93vh;
+    height: 83vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+}
+.reward {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px 10px rgba(97, 97, 97, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+}
+.reward p {
+    color: rgb(102, 0, 204);
+}
+.reward button {
+    border: none;
+    border-radius: 7px;
+    outline: none;
+    padding: 7px 12px;
+    font-weight: 600;
+    color: white;
+    font-size: 16px;
+    margin-top: 5px;
+}
+.unlocked button {
+    background-color: rgb(102, 0, 204);
+    cursor: pointer;
+}
+.locked button {
+    background-color: grey;
+    cursor: not-allowed;
 }
