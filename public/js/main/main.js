@@ -32,7 +32,6 @@ async function playSound(n) {
         let sound = new Audio('../audio/sound' + n + '.mp3') 
         await getDuration(sound)
     }
-    
 }
 
 // Check wich sound is selected
@@ -165,9 +164,7 @@ async function getDurationAndSpeak(audio, toSpeak) {
                 SpeakWithTimeOut(toSpeak)
             }, 7000)
         }
-        
     })
-    
 }
 
 function pauseAudio(x) {
@@ -208,8 +205,14 @@ async function sendMessage() {
     $('.sendMsgContainer .leftArrowContainer').css("pointer-events", "none")
     let txt = document.getElementById("msgArea").value;
     let msg = {"content": txt};
+    // Get the selected alert
+    let alert
+    const alertList = $('.radioInputContainer input')
+    for (let i = 0; i < alertList.length; i++) {
+        if (alertList[i].checked) alert = i
+    }
 
-    await addMsgToHistory(txt)
+    await addMsgToHistory(txt, alert)
     printHistoryMsg()
     
     // Display the message in the history section
@@ -301,16 +304,15 @@ setInterval(async function(){
     }
 }, 2000)
 
-
-async function addMsgToHistory(msg) {
+async function addMsgToHistory(msg, alert) {
     let authorId =  JSON.parse(localStorage.getItem('codringData')).userId
     let author = await getAuthor()
     let messageData = {
         author: author,
         authorId: authorId,
-        body: msg
+        body: msg,
+        alert: alert
     }
-
     // Set fetch options
     let options = {
         method: 'POST',

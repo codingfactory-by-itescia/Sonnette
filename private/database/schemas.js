@@ -57,6 +57,9 @@ const messagesSchema = new mongoose.Schema({
     body: {
         type: String,
         require: true
+    },
+    alert: {
+        type: Number
     }
 }, {timestamps: true})
 

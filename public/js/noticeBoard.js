@@ -9,7 +9,7 @@ async function printAllHistoryMSg() {
     }
 }
 
-function printMsg(msg, newMsg) {
+async function printMsg(msg, newMsg) {
     let msgHistoryContainer = document.querySelector('.msgHistoryContainer')
     const dateCrea = msg.createdAt; 
     const date = new Date(dateCrea);
@@ -33,14 +33,20 @@ function printMsg(msg, newMsg) {
     `)
 
     if (newMsg) {
-        // Read the message
-        let toSpeak = new SpeechSynthesisUtterance(msg.body);
-        speechSynthesis.speak(toSpeak)
+        const audio = new Audio(`../audio/sound${msg.alert+1}.mp3`)
 
-        // Play the sound
-
+        $(audio).on("loadedmetadata", async () => {
+            // Play the alert
+            audio.play()
+            // Read the message after the alert
+            setTimeout(() => {
+                let toSpeak = new SpeechSynthesisUtterance(msg.body);
+                speechSynthesis.speak(toSpeak)
+            }, audio.duration * 1000)
+        })
     }
 }
+
 
 async function getAllMessages() {
     let messages
@@ -57,7 +63,7 @@ setInterval(async function(){
 
     if (msgList.length != allMsgData.length) {
         let diffMsg = allMsgData.length - msgList.length
-        
+
         for (let i = 1; i <= diffMsg; i++) {
             printMsg(allMsgData[allMsgData.length - i], true)
         }

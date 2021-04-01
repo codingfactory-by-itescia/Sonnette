@@ -106,7 +106,8 @@ app.post('/db/newMessage', (req, res) => {
     const newMessage = new Message({
         author: msgData.author,
         authorId: msgData.authorId,
-        body: msgData.body
+        body: msgData.body,
+        alert: msgData.alert
     })
 
     newMessage.save()
