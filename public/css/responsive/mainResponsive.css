@@ -266,3 +266,57 @@
         width: 51%;
     }
 }
+@media (max-width:280px){
+    .menuContainer ul li a {
+        font-size: 13px;
+    }
+    div#divLogo {
+        width: 85px;
+    }
+    a {
+        font-size: 17px;
+    }
+    .formContainer {
+        width: 250px;
+    }
+    #msgArea {
+        width: 39%;
+        margin-right: 49%;
+    }
+    span.fontStyle {
+        margin-right: 27%;
+    }
+    button.validMsgBtn {
+        margin-right: 53%;
+    }
+    .radioInputContainer {
+        margin-right: 49%;
+    }
+    .leftArrowContainer {
+        margin-left: -2%;
+        margin-top: -4%;
+    }
+    div#responsive {
+        margin-right: 49%;
+    }
+    .preview {
+        margin-right: 49%;
+    }
+    .preview p {
+        font-size: 11px;
+    }
+    button.fontStyle {
+        margin-right: 53%;
+    }
+    select#voiceList {
+        width: 40%;
+        margin-right: 50%;
+    }
+    p.fontStyle {
+        margin-right: 50%;
+    }
+    button.sendMsgBtn {
+        margin-right: 50%;
+        width: 44%;
+    }
+}

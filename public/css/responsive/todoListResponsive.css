@@ -175,3 +175,20 @@
         margin-left: 3.7%;
     }
 }
+@media (max-width:280px){
+    .menuContainer ul li a {
+        font-size: 13px;
+    }
+    div#divLogo {
+        width: 85px;
+    }
+    a {
+        font-size: 17px;
+    }
+    .todoListContainer.personalTodoContainer {
+        margin-left: 3%;
+    }
+    .todoListContainer.agileContainer {
+        margin-left: 3%;
+    }
+}
