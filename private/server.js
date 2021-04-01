@@ -50,7 +50,8 @@ app.post('/db/createAccount', (req, res) => {
         email: userData.email,
         password: userData.password,
         isAdmin: userData.isAdmin,
-        lastConnection: userData.lastConnection
+        lastConnection: userData.lastConnection,
+        userPoints: 0
     })
     createAccount.save()
         .then(() => { res.sendStatus(200) })
@@ -289,7 +290,9 @@ app.post('/db/rewards/addNewReward', async (req, res) => {
 
     const reward = new Rewards({
         rewardTitle: data.rewardTitle,
+        rewardPoints: data.rewardPoints,
         isRewardCycled: data.isRewardCycled,
+        rewardStatus: data.rewardStatus
     })
     if (data.isRewardCycled) reward.rewardCycle = data.rewardCycle
 
@@ -300,14 +303,90 @@ app.post('/db/rewards/addNewReward', async (req, res) => {
 app.get('/db/rewards/getAllRewards', (req, res) => {
     Rewards.find().then((rewards) => res.send(rewards))
 })
+// Return a specific reward
+app.post('/db/rewards/getReward', (req, res) => {
+    Rewards.findById(req.body).then((reward) => res.send(reward))
+})
+// Return the total of cumulated points
+app.get('/db/rewards/getTotalPoints', (req, res) => {
+    
+    Account.find().then(users => {
+        let totalPoints = 0
+
+        for (let i = 0; i < users.length; i++) {
+            const userPoints = users[i].userPoints;
+            totalPoints += userPoints
+        }
+        res.send({totalPoints: totalPoints})
+    })
+})
 // Get a reward of a user
 app.post('/db/rewards/getUserReward', (req, res) => {
     const data = JSON.parse(req.body)
 
     Account.findById(data.userId).then((user) => {
+        let foundMatch = false
+
         for (let i = 0; i < user.rewards.length; i++) {
             const reward = user.rewards[i];
-            if (reward.rewardId == data.rewardId) res.send(reward)
+            if (reward.rewardId == data.rewardId) {
+                foundMatch = true
+                res.send(reward)
+            }
+        }
+        // If no match was found, create the reward in the user profil
+        if (!foundMatch) {
+            // Get the wanted reward
+            Rewards.findById(data.rewardId).then(async (wantedReward) => {
+                const newReward = {
+                    rewardId: wantedReward._id,
+                    rewardTitle: wantedReward.rewardTitle,
+                    lastClaim: new Date(),
+                    rewardStatus: 'locked'
+                }
+                user.rewards.push(newReward)
+                await user.save().then(() => res.send(newReward))
+            })
         }
     })
 })
+// Return all rewards of a user
+app.post('/db/rewards/getUserRewards', (req, res) => {
+    Account.findById(req.body).then(user => res.send(user.rewards))
+})
+// When user claim the reward, redefine the last claim date
+app.post('/db/rewards/claimReward', async (req, res) => {
+    const data = JSON.parse(req.body)
+
+    // Get the wanted reward
+    const reward = await Rewards.findById(data.rewardId)
+
+    Account.findById(data.userId).then(async (user) => {
+        // Give reward's points to the user
+        user.userPoints += reward.rewardPoints
+        
+        // Change the 'lastClaim' variable
+        for (let i = 0; i < user.rewards.length; i++) {
+            const reward = user.rewards[i];
+            if (reward.rewardId == data.rewardId) {
+                reward.lastClaim = new Date()
+            }
+        }
+        await user.save()
+    })
+    // When user is updated, return the wanted reward
+    Rewards.findById(data.rewardId).then(reward => res.send(reward))
+})
+// Compare two date to know if a reward is claimable or not
+/* app.post('/db/rewards/isRewardClaimable', (req, res) => {
+    const data = JSON.parse(req.body)
+    Account.findById(data.userId).then((user) => {
+        for (let i = 0; i < user.rewards.length; i++) {
+            const reward = user.rewards[i];
+            if (reward.rewardId == data.rewardId) {
+                if (reward.lastClaim <= new Date()) res.sendStatus(200)
+                else res.sendStatus(400)
+            }
+        }
+    })
+}) */

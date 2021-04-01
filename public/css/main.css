@@ -344,36 +344,40 @@ form button {
   position: absolute;
   bottom: 5%;
   left: 5%;
-  display: flex;
+  display: none;
   justify-content: space-around;
   height: 100px;
   cursor: pointer;
   color: white;
+  transition: transform .5s ease-out;
+}
+.getRewardsContainer:hover {
+    transform: scale(1.03);
 }
 .getRewardsContainer p {
-  background-color: transparent;
-  font-family: 'poppins', sans-serif;
+    background-color: transparent;
+    font-family: 'poppins', sans-serif;
 }
 .getRewardsContainer .rewardsTxt {
-  background-color: transparent;
-  align-self: center;
-  margin-right: 40px;
+    background-color: transparent;
+    align-self: center;
+    margin-right: 40px;
 }
-.rewardsTxt .lastConnection {
-  opacity: .7;
-  font-weight: 500;
-  font-size: 14px;
+.rewardsTxt .claimableRewards {
+    opacity: .7;
+    font-weight: 500;
+    font-size: 14px;
 }
 .rewardsTxt .getRewardsTxt {
-  font-size: 22px;
-  font-weight: bold;
-  margin-top: -6px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: -6px;
 }
 
 .getRewardsContainer img {
-  background: none;
-  height: 90%;
-  align-self: flex-end;
+    background: none;
+    height: 90%;
+    align-self: flex-end;
 }
 
 

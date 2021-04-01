@@ -217,6 +217,9 @@ form button {
     background-color: white;
     border-radius: 7px;
 }
+#messagesListInput, #accountListInput {
+    border: 1px solid rgba(0, 0, 0, .2) !important;
+}
 .messagesList {
     display: inline-flex;
     flex-direction: column;

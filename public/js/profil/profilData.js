@@ -6,17 +6,20 @@ const userId = urlParams.get('id')
 setUserData().then(() => {
     // Set the number animation
     setTimeout(() => {
-        const container = $('.numberAnimation')
+        const containers = $('.numberAnimation')
         setTimeout(() => {
-            document.querySelector('.numberAnimation').style.opacity = '1'
 
-            container.counterUp({
+            for (let i = 0; i < containers.length; i++) {
+                containers[i].style.opacity = '1'
+            }
+
+            containers.counterUp({
                 delay: 10,
                 time: 750,
             })
         }, 100)
 
-        ScrollReveal().reveal(container, {
+        ScrollReveal().reveal(containers, {
             distance: '20px',
             origin: 'bottom',
             opacity: -1,
@@ -25,6 +28,7 @@ setUserData().then(() => {
 })
 
 async function setUserData() {
+    const totalMsgElements = document.querySelectorAll('.userDataCounter p')
     // Get user profile from id
     const user = await getUser()
     
@@ -36,11 +40,15 @@ async function setUserData() {
     // Set the creation date of the account
     const creationDateElement = document.querySelector('.profilHeader .creationDate')
     creationDateElement.innerHTML = `Compte créé le ${getCreationDate(user.createdAt)}`
+
     // Set the total messages counter
-    const totalMsgElements = document.querySelectorAll('.userDataCounter .userTotalMsg p')
     const totalMsgCounter = await getAllUserMessages(userId)
     totalMsgElements[0].innerHTML = totalMsgCounter
     totalMsgElements[1].innerHTML = `message${totalMsgCounter > 1 ? 's' : ''}`
+
+    // Set the total points counter
+    totalMsgElements[2].innerHTML = user.userPoints
+    totalMsgElements[3].innerHTML = user.userPoints > 1 ? 'points' : 'point'
 }
 
 async function getUser() {

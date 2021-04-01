@@ -19,7 +19,7 @@ body {
     font-size: 45px;
     font-weight: 900;
 }
-.profilHeader .userTotalMsg span {
+.profilHeader span {
     font-weight: bold;
     font-size: 25px;
     height: 20px;
@@ -33,7 +33,10 @@ body {
     padding: 0 10%;
     display: flex;
 }
-.userDataCounter .userTotalMsg .dataCounter {
+.userDataCounter div {
+    margin-right: 50px;
+}
+.userDataCounter .dataCounter {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: -10px;

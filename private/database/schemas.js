@@ -36,11 +36,16 @@ const accountSchema = new mongoose.Schema({
 
         }
     ],
+    userPoints: {
+        type: Number,
+        require: true
+    },
     rewards: [
         {
             rewardId: String,
             rewardTitle: String,
-            lastClaim: Date
+            lastClaim: Date,
+            rewardStatus: String
         }
     ],
 }, {timestamps: true})
@@ -73,13 +78,17 @@ const rewardsSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    rewardPoints: {
+        type: Number,
+        require: true
+    },
     isRewardCycled: {
         type: Boolean,
         require: true
     },
     rewardCycle: {
         type: Number
-    }
+    },
 }, {timestamps: true})
 
 module.exports = {
