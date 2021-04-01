@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/historical.css">
+    <link rel="icon" href="../img/logo_sonnette.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+    <title>Tableau d'affichage</title>
+</head>
+<body>
+    <header>
+        <div class="unclickableHamb">
+            <div class="hambContainer">
+                <span class="topSpan"></span>
+                <span class="middleSpan"></span>
+                <span class="bottomSpan"></span>
+            </div>
+        </div>
+        <div id="divLogo">
+            <h1><a href="main.html">Cod' Ring</a></h1>
+        </div>
+        <div id="divConnexion">
+            <a id="disconnectionBtn">Déconnexion</a>
+            <a href="" class="goToProfilPageBtn"><img src="../img/user.png" alt="Profil" id="userIcon"></a>
+        </div>
+    </header>
+
+    <div class="menuContainer closed">
+        <ul>
+            <li><a href="main.html">Accueil</a></li>
+            <li><a href="todoList.html">Todo List</a></li>
+            <li><a href="historical.html">Historique</a></li>
+            <li><a href="rewards.html">Récompenses</a></li>
+            <li><a href="settings.html">Réglages</a></li>
+            <li><a href="howItWorks.html">Comment ça marche ?</a></li>
+        </ul>
+    </div>
+
+    <div class="msgHistoryContainer">
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/isConnected.js"></script>
+    <script src="../js/noticeBoard.js"></script>
+    <script src="../js/disconnection.js"></script>
+    <script src="../js/profil/goToProfilLink.js"></script>
+    <script src="../js/menu.js"></script>
+</body>
+</html>
