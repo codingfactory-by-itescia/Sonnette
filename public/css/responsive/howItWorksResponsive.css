@@ -119,3 +119,17 @@
         font-size: 15px;
     }
 }
+@media (max-width:280px){
+    .menuContainer ul li a {
+        font-size: 13px;
+    }
+    div#divLogo {
+        width: 85px;
+    }
+    a {
+        font-size: 17px;
+    }
+    .howItWorksContainer p {
+        font-size: 12px;
+    }
+}

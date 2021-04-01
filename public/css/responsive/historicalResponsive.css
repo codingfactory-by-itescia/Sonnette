@@ -154,3 +154,17 @@ div#flex {
         height: 90%;
     }
 }
+@media (max-width:280px){
+    .menuContainer ul li a {
+        font-size: 13px;
+    }
+    div#divLogo {
+        width: 85px;
+    }
+    a {
+        font-size: 17px;
+    }
+    .msgHistoryContainer {
+        height: 89%;
+    }
+}

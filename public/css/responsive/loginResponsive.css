@@ -20,3 +20,12 @@
         left: -25px;
     }
 }
+@media (max-width:280px){
+    form {
+        width: 250px;
+    }
+    div#divLogo {
+        width: 200px;
+        margin-left: 30%;
+    }
+}
