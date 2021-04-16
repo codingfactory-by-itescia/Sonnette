@@ -124,6 +124,7 @@
         position: relative;
         width: 91%;
         margin-left: 9.7%;
+        margin-top: -10%;
     }
     .accountsListContainer input {
         position: relative;
@@ -170,6 +171,7 @@
     }
     .messagesListContainer {
         width: 45%;
+        margin-top: -12%;
     }
     .accountsListContainer {
         margin: none;
@@ -254,6 +256,9 @@
         width: 90%;
         align-items: center;
     }
+    .websiteDataContainer div {
+        margin-right: 32px;
+    }
 }
 @media (max-width:379px){
     .unclickableHamb {
@@ -275,11 +280,31 @@
     }
     .messagesListContainer {
         margin-left: 10%;
+        margin-top: -15%;
+    }
+    .websiteDataContainer div {
+        margin-right: 24px;
+    }
+    .websiteDataContainer .dataNumber {
+        font-size: 35px;
     }
 }
 @media (max-width: 360px){
     .messagesListContainer {
-        margin-top: 10%;
+        margin-top: 1%;
+        margin-top: -8%;
+    }
+    .websiteDataContainer div {
+        margin-top: 10px;
+    }
+    .websiteDataContainer .dataNumber {
+        font-size: 35px;
+        height: 30px;
+        opacity: 0;
+        font-weight: bold;
+    }
+    .websiteDataContainer div {
+        margin-right: 15px;
     }
 }
 @media (max-width: 320px) {
@@ -348,6 +373,9 @@
     .binContainer {
         width: 5.8%;
     }
+    .websiteDataContainer .dataNumber {
+        font-size: 28px;
+    }
 }
 @media (max-width:280px){
     .menuContainer ul li a {
@@ -375,5 +403,12 @@
     }
     .messagesListContainer {
         width: 99%;
+        margin-top: -2%;
+    }
+    .websiteDataContainer div {
+        line-height: 15px;
+    }
+    .websiteDataContainer .dataNumber {
+        font-size: 20px;
     }
 }
